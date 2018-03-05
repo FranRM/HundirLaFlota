@@ -10,5 +10,5 @@ package proxectoprog;
  * @author femio23
  */
 public class Tableiro {
-    //aqui estará todo o relacionado co taboleiro.
+    //aqui estará todo o relacionado co taboleiro.99999
 }
