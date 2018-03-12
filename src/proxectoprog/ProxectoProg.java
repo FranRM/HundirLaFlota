@@ -16,7 +16,7 @@ public class ProxectoProg {
         t1.modoxogo();
         System.out.println(t1.getNumbarcos());
         System.out.println(t1.getTamañotab());
-        t1.display();
+        t1.elixbarcos();
         
     }
     

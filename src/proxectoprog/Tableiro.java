@@ -16,6 +16,7 @@ public class Tableiro {
     Barco b1=new Barco();
     private String tamaño;
     private int numbarcos,tamañotab;
+    String[][]tableiro;
 
     public Tableiro(String tamaño) {
         this.tamaño = tamaño;
@@ -49,7 +50,6 @@ public class Tableiro {
         
     }
     
-
     @Override
     public String toString() {
         return "Xogadores{" + "tama\u00f1o=" + tamaño + ", numbarcos=" + numbarcos + '}';
@@ -70,27 +70,37 @@ public class Tableiro {
     }
     public void elixbarcos(){
         if(getNumbarcos()==4){
-            flota.add(new Barco("destructor"));
-            flota.add(new Barco("submmarino"));
-            flota.add(new Barco("cruceiro"));
-            flota.add(new Barco("portaavions"));
+            flota.add(new Barco("destructor",2));
+            flota.add(new Barco("submarino",3));
+            flota.add(new Barco("cruceiro",4));
+            flota.add(new Barco("portaavions",5));
             
         }else{
-            flota.add(new Barco("destructor"));
-            flota.add(new Barco("destructor"));
-            flota.add(new Barco("destructor"));
-            flota.add(new Barco("destructor"));
-            flota.add(new Barco("submmarino"));
-            flota.add(new Barco("submmarino"));
-            flota.add(new Barco("submmarino"));
-            flota.add(new Barco("cruceiro"));
-            flota.add(new Barco("cruceiro"));
-            flota.add(new Barco("portaavions"));
+            flota.add(new Barco("destructor",2));
+            flota.add(new Barco("destructor",2));
+            flota.add(new Barco("destructor",2));
+            flota.add(new Barco("destructor",2));
+            flota.add(new Barco("submarino",3));
+            flota.add(new Barco("submarino",3));
+            flota.add(new Barco("submarino",3));
+            flota.add(new Barco("cruceiro",4));
+            flota.add(new Barco("cruceiro",4));
+            flota.add(new Barco("portaavions",5));
         }
     }
     public void display(){
         for(Barco f1:flota){
-            System.out.println(f1.toString());
+            System.out.println(f1.getTipo()+"="+f1.getTamaño());
+        }
+        System.out.println("fin");
+    }
+    public void crearTab(){
+        
+        tableiro=new String[tamañotab][tamañotab];
+    }
+    public void visualizartab(){
+        for(int i=0;i<tamañotab;i++){
+            
         }
     }
     

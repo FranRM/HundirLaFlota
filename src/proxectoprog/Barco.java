@@ -16,9 +16,9 @@ public class Barco {
     public Barco() {
     }
 
-    public Barco(String tipo) {
+    public Barco(String tipo, int tamaño) {
         this.tipo = tipo;
-        asigtam();
+        this.tamaño= tamaño;
     }
 
     public String getTipo() {
@@ -40,14 +40,5 @@ public class Barco {
     @Override
     public String toString() {
         return "Barco{" + "tipo=" + tipo + ", tama\u00f1o=" + tamaño + '}';
-    }
-    public void asigtam(){
-        switch(tipo){
-            case"desctructor":tamaño=2;
-            case"submarino":tamaño=3;
-            case"cruceiro":tamaño=4;
-            case"portaavions":tamaño=5;
-            default:;
-        }
     }
 }
