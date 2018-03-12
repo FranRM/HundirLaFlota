@@ -12,9 +12,11 @@ public class ProxectoProg {
      */
     public static void main(String[] args) {
         Tableiro t1=new Tableiro("grande");
-        t1.elexirtamaño();
+        Barco b1=new Barco();
+        t1.modoxogo();
         System.out.println(t1.getNumbarcos());
         System.out.println(t1.getTamañotab());
+        t1.display();
         
     }
     

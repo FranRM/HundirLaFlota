@@ -5,11 +5,15 @@
  */
 package proxectoprog;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author femio23
  */
 public class Tableiro {
+    private ArrayList<Barco> flota=new ArrayList();
+    Barco b1=new Barco();
     private String tamaño;
     private int numbarcos,tamañotab;
 
@@ -42,6 +46,7 @@ public class Tableiro {
 
     public void setTamañotab(int tamañotab) {
         this.tamañotab = tamañotab;
+        
     }
     
 
@@ -49,7 +54,7 @@ public class Tableiro {
     public String toString() {
         return "Xogadores{" + "tama\u00f1o=" + tamaño + ", numbarcos=" + numbarcos + '}';
     }
-    public void elexirtamaño(){
+    public void modoxogo(){
         switch(tamaño){
             case "pequeno":setNumbarcos(4);
             setTamañotab(6);
@@ -57,10 +62,36 @@ public class Tableiro {
             case "medio":setNumbarcos(10);
             setTamañotab(10);
             break;
-            case "grande":setNumbarcos(13);
+            case "grande":setNumbarcos(10);
             setTamañotab(13);
             break;
-        
+            default:;
         }
     }
+    public void elixbarcos(){
+        if(getNumbarcos()==4){
+            flota.add(new Barco("destructor"));
+            flota.add(new Barco("submmarino"));
+            flota.add(new Barco("cruceiro"));
+            flota.add(new Barco("portaavions"));
+            
+        }else{
+            flota.add(new Barco("destructor"));
+            flota.add(new Barco("destructor"));
+            flota.add(new Barco("destructor"));
+            flota.add(new Barco("destructor"));
+            flota.add(new Barco("submmarino"));
+            flota.add(new Barco("submmarino"));
+            flota.add(new Barco("submmarino"));
+            flota.add(new Barco("cruceiro"));
+            flota.add(new Barco("cruceiro"));
+            flota.add(new Barco("portaavions"));
+        }
+    }
+    public void display(){
+        for(Barco f1:flota){
+            System.out.println(f1.toString());
+        }
+    }
+    
 }
