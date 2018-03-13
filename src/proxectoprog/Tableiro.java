@@ -191,17 +191,39 @@ public class Tableiro {
         int aux1=15,aux2=15;
         switch(tamaño){
             case"pequeno":
-                while((aux1+1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2+1)){
-                aux1=(int)(Math.random()*4+1);
-                aux2=(int)(Math.random()*4+1);
-                }
                 if((Math.random())>=0.5){
-                tableiro[aux1][aux2]="d";
-                tableiro[aux1+1][aux2]="d";
+                    while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="d";
+                    tableiro[aux1+1][aux2]="d";
                 }else{
+                    while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
                     tableiro[aux1][aux2]="d";
                     tableiro[aux1][aux2+1]="d";
-                }
+                }System.out.println("Barco 1, colocado.");
+                
+                if((Math.random())>=0.5){
+                    while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="s";
+                    tableiro[aux1+1][aux2]="s";
+                    tableiro[aux1+2][aux2]="s";
+                }else{
+                    while((aux1)>=tamañotab||(aux2+2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="s";
+                    tableiro[aux1][aux2+1]="s";
+                    tableiro[aux1][aux2+2]="s";
+                }System.out.println("Barco 2, colocado.");
                 
             break;
             case"medio":
