@@ -97,10 +97,117 @@ public class Tableiro {
     public void crearTab(){
         
         tableiro=new String[tamañotab][tamañotab];
-    }
-    public void visualizartab(){
         for(int i=0;i<tamañotab;i++){
             
+            for(int j=0;j<tamañotab;j++){
+                tableiro[i][j]=" ";
+            }
+        }
+//        switch(tamaño){
+//            case"pequeno":
+//                tableiro[0][0]="s";
+//                tableiro[0][1]="s";
+//                tableiro[0][2]="s";
+//                tableiro[3][3]="d";
+//                tableiro[4][3]="d";
+//                tableiro[1][5]="p";
+//                tableiro[2][5]="p";
+//                tableiro[3][5]="p";
+//                tableiro[4][5]="p";
+//                tableiro[5][5]="p";
+//            break;
+//            case"medio":
+//                tableiro[0][0]="s";
+//                tableiro[0][1]="s";
+//                tableiro[0][2]="s";
+//                tableiro[6][6]="d";
+//                tableiro[7][6]="d";
+//                tableiro[5][9]="p";
+//                tableiro[6][9]="p";
+//                tableiro[7][9]="p";
+//                tableiro[8][9]="p";
+//                tableiro[9][9]="p";
+//            break;
+//            case"grande":
+//                tableiro[0][0]="s";
+//                tableiro[0][1]="s";
+//                tableiro[0][2]="s";
+//                tableiro[6][6]="d";
+//                tableiro[7][6]="d";
+//                tableiro[5][12]="p";
+//                tableiro[6][12]="p";
+//                tableiro[7][12]="p";
+//                tableiro[8][12]="p";
+//                tableiro[9][12]="p";
+//            break;
+//        }
+        
+        
+        
+        
+    }
+    public void visualizartab(){
+        switch(tamaño){
+            case"pequeno":
+                System.out.println("| |a|b|c|d|e|f|");
+                for(int i=0;i<tamañotab;i++){
+                    System.out.print("|"+(i+1)+"|");
+                    for(int j=0;j<tamañotab;j++){
+                        System.out.print(tableiro[i][j]+"|");
+                    }
+                    System.out.println();
+                }
+            break;
+            case"medio":
+                System.out.println("| |a|b|c|d|e|f|g|h|i|j|");
+                for(int i=0;i<tamañotab;i++){
+                    System.out.print("|"+(i+1)+"|");
+                    for(int j=0;j<tamañotab;j++){
+                        System.out.print(tableiro[i][j]+"|");
+                    }
+                    System.out.println();
+                }
+            break;
+            case"grande":
+                System.out.println("| |a|b|c|d|e|f|g|h|i|j|k|l|m|");
+                for(int i=0;i<tamañotab;i++){
+                    System.out.print("|"+(i+1)+"|");
+                    for(int j=0;j<tamañotab;j++){
+                        System.out.print(tableiro[i][j]+"|");
+                    }
+                    System.out.println();
+                }
+                break;
+        }
+    }
+    public boolean ocupado(int a, int b){
+        if(tableiro[a][b].equals(" ")){
+            return false;
+        }else{
+        return true;
+        }
+    }
+    public void montarTab(){
+        int aux1=15,aux2=15;
+        switch(tamaño){
+            case"pequeno":
+                while((aux1+1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2+1)){
+                aux1=(int)(Math.random()*4+1);
+                aux2=(int)(Math.random()*4+1);
+                }
+                if((Math.random())>=0.5){
+                tableiro[aux1][aux2]="d";
+                tableiro[aux1+1][aux2]="d";
+                }else{
+                    tableiro[aux1][aux2]="d";
+                    tableiro[aux1][aux2+1]="d";
+                }
+                
+            break;
+            case"medio":
+            break;
+            case"grande":
+            break;
         }
     }
     
