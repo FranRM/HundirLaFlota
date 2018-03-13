@@ -1,6 +1,10 @@
 
 package proxectoprog;
 
+import com.fran.xogadores.Puntuacion;
+import com.fran.xogadores.PuntuacionFich;
+import com.fran.xogadores.Xogadores;
+
 /**
  *Fran y Luis
  * 
@@ -17,6 +21,11 @@ public class ProxectoProg {
         System.out.println(t1.getNumbarcos());
         System.out.println(t1.getTamañotab());
         t1.elixbarcos();
+//        Puntuacion p1=new Puntuacion();
+//        Xogadores x1=new Xogadores();
+//        PuntuacionFich pf1=new PuntuacionFich();
+//        p1.addScore(x1);
+//        pf1.guardar(p1);
         
     }
     
