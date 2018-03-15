@@ -6,17 +6,20 @@
 package proxectoprog;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author femio23
  */
 public class Tableiro {
+    int aux1=15,aux2=15;
     private ArrayList<Barco> flota=new ArrayList();
     Barco b1=new Barco();
     private String tamaño;
     private int numbarcos,tamañotab;
     String[][]tableiro;
+    int direccion;
 
     public Tableiro(String tamaño) {
         this.tamaño = tamaño;
@@ -149,84 +152,74 @@ public class Tableiro {
         }
     }
     public void montarTab(){
-        int aux1=15,aux2=15;
+        
         switch(tamaño){
             case"pequeno":
-                    if((Math.random())>=0.5){
-                        while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)){
-                            aux1=(int)(Math.random()*4+1);
-                            aux2=(int)(Math.random()*4+1);
-                        }
-                        tableiro[aux1][aux2]="d";
-                        tableiro[aux1+1][aux2]="d";
-                    }else{
-                        while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)){
-                            aux1=(int)(Math.random()*4+1);
-                            aux2=(int)(Math.random()*4+1);
-                        }
-                        tableiro[aux1][aux2]="d";
-                        tableiro[aux1][aux2+1]="d";
-                    }System.out.println("Barco colocado.");
-                
-                    if((Math.random())>=0.5){
-                        while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)){
-                            aux1=(int)(Math.random()*4+1);
-                            aux2=(int)(Math.random()*4+1);
-                        }
-                        tableiro[aux1][aux2]="d";
-                        tableiro[aux1+1][aux2]="d";
-                    }else{
-                        while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)){
-                            aux1=(int)(Math.random()*4+1);
-                            aux2=(int)(Math.random()*4+1);
-                        }
-                        tableiro[aux1][aux2]="d";
-                        tableiro[aux1][aux2+1]="d";
-                    }System.out.println("Barco colocado.");
-                
-                if((Math.random())>=0.5){
-                    while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)){
-                        aux1=(int)(Math.random()*4+1);
-                        aux2=(int)(Math.random()*4+1);
-                    }
-                    tableiro[aux1][aux2]="s";
-                    tableiro[aux1+1][aux2]="s";
-                    tableiro[aux1+2][aux2]="s";
-                }else{
-                    while((aux1)>=tamañotab||(aux2+2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)){
-                        aux1=(int)(Math.random()*4+1);
-                        aux2=(int)(Math.random()*4+1);
-                    }
-                    tableiro[aux1][aux2]="s";
-                    tableiro[aux1][aux2+1]="s";
-                    tableiro[aux1][aux2+2]="s";
-                }System.out.println("Barco colocado.");
-                
-                if((Math.random())>=0.5){
-                    while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)){
-                        aux1=(int)(Math.random()*4+1);
-                        aux2=(int)(Math.random()*4+1);
-                    }
-                    tableiro[aux1][aux2]="s";
-                    tableiro[aux1+1][aux2]="s";
-                    tableiro[aux1+2][aux2]="s";
-                }else{
-                    while((aux1)>=tamañotab||(aux2+2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)){
-                        aux1=(int)(Math.random()*4+1);
-                        aux2=(int)(Math.random()*4+1);
-                    }
-                    tableiro[aux1][aux2]="s";
-                    tableiro[aux1][aux2+1]="s";
-                    tableiro[aux1][aux2+2]="s";
-                }System.out.println("Barco colocado.");
-                
-                
-                
+                //for(int i=0;i<2;i++){
+                colocardesth();
+                //colocarsubh();
+                //} 
             break;
             case"medio":
+                colocardestm();
+                colocardestm();
+                colocarsubm();
+                colocarsubm();
+                colocarcruzm();
+                colocarportm();
                 
-                if((Math.random())>=0.5){
-                    while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)||ocupado(aux1+3,aux2)){
+            break;
+            case"grande":
+                colocardestm();
+                colocardestm();
+                colocarsubm();
+                colocarsubm();
+                colocarcruzm();
+                colocarcruzm();
+                colocarportm();
+            break;
+        }
+    }
+    public void colocardestm(){
+        if((Math.random())>=0.5){
+                        while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)){
+                            aux1=(int)(Math.random()*4+1);
+                            aux2=(int)(Math.random()*4+1);
+                        }
+                        tableiro[aux1][aux2]="d";
+                        tableiro[aux1+1][aux2]="d";
+                    }else{
+                        while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)){
+                            aux1=(int)(Math.random()*4+1);
+                            aux2=(int)(Math.random()*4+1);
+                        }
+                        tableiro[aux1][aux2]="d";
+                        tableiro[aux1][aux2+1]="d";
+                    }System.out.println("Barco colocado.");
+    }
+    public void colocarsubm(){
+        if((Math.random())>=0.5){
+                    while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="s";
+                    tableiro[aux1+1][aux2]="s";
+                    tableiro[aux1+2][aux2]="s";
+                }else{
+                    while((aux1)>=tamañotab||(aux2+2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="s";
+                    tableiro[aux1][aux2+1]="s";
+                    tableiro[aux1][aux2+2]="s";
+                }System.out.println("Barco colocado.");
+                
+    }
+    public void colocarcruzm(){
+        if((Math.random())>=0.5){
+                    while((aux1+3)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)||ocupado(aux1+3,aux2)){
                         aux1=(int)(Math.random()*4+1);
                         aux2=(int)(Math.random()*4+1);
                     }
@@ -243,23 +236,113 @@ public class Tableiro {
                     tableiro[aux1][aux2+1]="c";
                     tableiro[aux1][aux2+2]="c";
                     tableiro[aux1][aux2+3]="c";
-                }System.out.println("Barco 3, colocado.");
-            break;
-            case"grande":
-            break;
-        }
+                }System.out.println("Barco colocado.");
     }
-    public void montardest(){
-        
+    public void colocarportm(){
+        if((Math.random())>=0.5){
+                    while((aux1+4)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)||ocupado(aux1+3,aux2)||ocupado(aux1+4,aux2)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="p";
+                    tableiro[aux1+1][aux2]="p";
+                    tableiro[aux1+2][aux2]="p";
+                    tableiro[aux1+3][aux2]="p";
+                    tableiro[aux1+4][aux2]="p";
+                }else{
+                    while((aux1)>=tamañotab||(aux2+4)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)||ocupado(aux1,aux2+3)||ocupado(aux1,aux2+4)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="p";
+                    tableiro[aux1][aux2+1]="p";
+                    tableiro[aux1][aux2+2]="p";
+                    tableiro[aux1][aux2+3]="p";
+                    tableiro[aux1][aux2+4]="p";
+                }System.out.println("Barco colocado.");
     }
-    public void montarsub(){
-        
+    public void colocardesth(){
+        while(direccion!=1&&direccion!=2){
+        direccion=Integer.parseInt(JOptionPane.showInputDialog("horizontal(1) ou vertical(2)?"));
+        if(direccion==2){
+                        while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)){
+                            aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
+                            aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
+                        }
+                        tableiro[aux1][aux2]="d";
+                        tableiro[aux1+1][aux2]="d";
+                    }else{
+                        while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)){
+                            aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
+                            aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
+                        }
+                        tableiro[aux1][aux2]="d";
+                        tableiro[aux1][aux2+1]="d";
+                    }System.out.println("Barco colocado.");
+                }
     }
-    public void montarcruz(){
-        
+    public void colocarsubh(){
+        if((Math.random())>=0.5){
+                    while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="s";
+                    tableiro[aux1+1][aux2]="s";
+                    tableiro[aux1+2][aux2]="s";
+                }else{
+                    while((aux1)>=tamañotab||(aux2+2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="s";
+                    tableiro[aux1][aux2+1]="s";
+                    tableiro[aux1][aux2+2]="s";
+                }System.out.println("Barco colocado.");
+                
     }
-    public void montarport(){
-        
+    public void colocarcruzh(){
+        if((Math.random())>=0.5){
+                    while((aux1+3)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)||ocupado(aux1+3,aux2)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="c";
+                    tableiro[aux1+1][aux2]="c";
+                    tableiro[aux1+2][aux2]="c";
+                    tableiro[aux1+3][aux2]="c";
+                }else{
+                    while((aux1)>=tamañotab||(aux2+3)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)||ocupado(aux1,aux2+3)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="c";
+                    tableiro[aux1][aux2+1]="c";
+                    tableiro[aux1][aux2+2]="c";
+                    tableiro[aux1][aux2+3]="c";
+                }System.out.println("Barco colocado.");
     }
-    
+    public void colocarporth(){
+        if((Math.random())>=0.5){
+                    while((aux1+4)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)||ocupado(aux1+3,aux2)||ocupado(aux1+4,aux2)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="p";
+                    tableiro[aux1+1][aux2]="p";
+                    tableiro[aux1+2][aux2]="p";
+                    tableiro[aux1+3][aux2]="p";
+                    tableiro[aux1+4][aux2]="p";
+                }else{
+                    while((aux1)>=tamañotab||(aux2+4)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)||ocupado(aux1,aux2+3)||ocupado(aux1,aux2+4)){
+                        aux1=(int)(Math.random()*4+1);
+                        aux2=(int)(Math.random()*4+1);
+                    }
+                    tableiro[aux1][aux2]="p";
+                    tableiro[aux1][aux2+1]="p";
+                    tableiro[aux1][aux2+2]="p";
+                    tableiro[aux1][aux2+3]="p";
+                    tableiro[aux1][aux2+4]="p";
+                }System.out.println("Barco colocado.");
+    }
 }

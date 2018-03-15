@@ -30,11 +30,6 @@ public class ProxectoProg {
 //        p1.addScore(x1);
 //        pf1.guardar(p1);
 
-<<<<<<< HEAD
-       
-=======
-        
->>>>>>> fa041dcee210a0401a6918065f70e1c36bbeca07
     }
     
 }
