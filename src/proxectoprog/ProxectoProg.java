@@ -28,12 +28,18 @@ public class ProxectoProg {
         t1.elixbarcos();
         t1.crearTab();
         t1.montarTab();
-        t1.visualizartab();
+        t1.visualizartabH();
+        System.out.println();
+        t1.visualizartabM();
 //        Puntuacion p1=new Puntuacion();
 //        Xogadores x1=new Xogadores();
 //        PuntuacionFich pf1=new PuntuacionFich();
 //        p1.addScore(x1);
 //        pf1.guardar(p1);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 396fec8f1a290942787d906c28c8f802ce088794
     }
     
 }
