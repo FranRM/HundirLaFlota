@@ -46,6 +46,7 @@ public class InterfazFlota extends javax.swing.JFrame {
                 jTable1.setValueAt(copiataM[i][j], i, j);
             }
         }
+        t1.xogar();
 
 //      
     }
