@@ -18,7 +18,7 @@ public class Tableiro {
     Barco b1=new Barco();
     private String tamaño;
     private int numbarcos,tamañotab;
-    String[][]tableiro;
+    String[][]taH,taM;
     int direccion;
 
     public Tableiro(String tamaño) {
@@ -52,8 +52,11 @@ public class Tableiro {
         this.tamañotab = tamañotab;
         
     }
-    public String[][] gettableiro(){
-        return tableiro;
+    public String[][] gettableiroH(){
+        return taH;
+    }
+    public String[][] gettableiroM(){
+        return taM;
     }
     
     @Override
@@ -102,50 +105,97 @@ public class Tableiro {
     }
     public void crearTab(){
         
-        tableiro=new String[tamañotab][tamañotab];
+        taH=new String[tamañotab][tamañotab];
         for(int i=0;i<tamañotab;i++){
             
             for(int j=0;j<tamañotab;j++){
-                tableiro[i][j]=" ";
+                taH[i][j]=" ";
+            }
+        }
+        taM=new String[tamañotab][tamañotab];
+        for(int i=0;i<tamañotab;i++){
+            
+            for(int j=0;j<tamañotab;j++){
+                taM[i][j]=" ";
             }
         }
     }
-    public void visualizartab(){
+    public void visualizartabH(){
         switch(tamaño){
             case"pequeno":
+                System.out.println("Tableiro do xogador");
                 System.out.println("| |a|b|c|d|e|f|");
                 for(int i=0;i<tamañotab;i++){
                     System.out.print("|"+(i+1)+"|");
                     for(int j=0;j<tamañotab;j++){
-                        System.out.print(tableiro[i][j]+"|");
+                        System.out.print(taH[i][j]+"|");
                     }
                     System.out.println();
                 }
             break;
             case"medio":
+                System.out.println("Tableiro do xogador");
                 System.out.println("| |a|b|c|d|e|f|g|h|i|j|");
                 for(int i=0;i<tamañotab;i++){
                     System.out.print("|"+(i+1)+"|");
                     for(int j=0;j<tamañotab;j++){
-                        System.out.print(tableiro[i][j]+"|");
+                        System.out.print(taH[i][j]+"|");
                     }
                     System.out.println();
                 }
             break;
             case"grande":
+                System.out.println("Tableiro do xogador");
                 System.out.println("| |a|b|c|d|e|f|g|h|i|j|k|l|m|");
                 for(int i=0;i<tamañotab;i++){
                     System.out.print("|"+(i+1)+"|");
                     for(int j=0;j<tamañotab;j++){
-                        System.out.print(tableiro[i][j]+"|");
+                        System.out.print(taH[i][j]+"|");
                     }
                     System.out.println();
                 }
                 break;
         }
     }
-    public boolean ocupado(int a, int b){
-        if(tableiro[a][b].equals(" ")){
+    public void visualizartabM(){
+        switch(tamaño){
+            case"pequeno":
+                System.out.println("Tableiro da máquina");
+                System.out.println("| |a|b|c|d|e|f|");
+                for(int i=0;i<tamañotab;i++){
+                    System.out.print("|"+(i+1)+"|");
+                    for(int j=0;j<tamañotab;j++){
+                        System.out.print(taM[i][j]+"|");
+                    }
+                    System.out.println();
+                }
+            break;
+            case"medio":
+                System.out.println("Tableiro da máquina");
+                System.out.println("| |a|b|c|d|e|f|g|h|i|j|");
+                for(int i=0;i<tamañotab;i++){
+                    System.out.print("|"+(i+1)+"|");
+                    for(int j=0;j<tamañotab;j++){
+                        System.out.print(taM[i][j]+"|");
+                    }
+                    System.out.println();
+                }
+            break;
+            case"grande":
+                System.out.println("Tableiro da máquina");
+                System.out.println("| |a|b|c|d|e|f|g|h|i|j|k|l|m|");
+                for(int i=0;i<tamañotab;i++){
+                    System.out.print("|"+(i+1)+"|");
+                    for(int j=0;j<tamañotab;j++){
+                        System.out.print(taM[i][j]+"|");
+                    }
+                    System.out.println();
+                }
+                break;
+        }
+    }
+    public boolean ocupado(String[][] tab,int a, int b){
+        if(tab[a][b].equals(" ")){
             return false;
         }else{
         return true;
@@ -155,10 +205,15 @@ public class Tableiro {
         
         switch(tamaño){
             case"pequeno":
-                //for(int i=0;i<2;i++){
+                
                 colocardesth();
-                //colocarsubh();
-                //} 
+                colocarsubh();
+                colocardesth();
+                colocarsubh();
+                colocardestm();
+                colocarsubm();
+                
+
             break;
             case"medio":
                 colocardestm();
@@ -167,6 +222,7 @@ public class Tableiro {
                 colocarsubm();
                 colocarcruzm();
                 colocarportm();
+                
                 
             break;
             case"grande":
@@ -182,167 +238,197 @@ public class Tableiro {
     }
     public void colocardestm(){
         if((Math.random())>=0.5){
-                        while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)){
+                        while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1+1,aux2)){
                             aux1=(int)(Math.random()*4+1);
                             aux2=(int)(Math.random()*4+1);
                         }
-                        tableiro[aux1][aux2]="d";
-                        tableiro[aux1+1][aux2]="d";
+                        taM[aux1][aux2]="d";
+                        taM[aux1+1][aux2]="d";
                     }else{
-                        while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)){
+                        while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1,aux2+1)){
                             aux1=(int)(Math.random()*4+1);
                             aux2=(int)(Math.random()*4+1);
                         }
-                        tableiro[aux1][aux2]="d";
-                        tableiro[aux1][aux2+1]="d";
+                        taM[aux1][aux2]="d";
+                        taM[aux1][aux2+1]="d";
                     }System.out.println("Barco colocado.");
+                    aux1=15;
+                    aux2=15;
     }
     public void colocarsubm(){
         if((Math.random())>=0.5){
-                    while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)){
+                    while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1+1,aux2)||ocupado(taM,aux1+2,aux2)){
                         aux1=(int)(Math.random()*4+1);
                         aux2=(int)(Math.random()*4+1);
                     }
-                    tableiro[aux1][aux2]="s";
-                    tableiro[aux1+1][aux2]="s";
-                    tableiro[aux1+2][aux2]="s";
+                    taM[aux1][aux2]="s";
+                    taM[aux1+1][aux2]="s";
+                    taM[aux1+2][aux2]="s";
                 }else{
-                    while((aux1)>=tamañotab||(aux2+2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)){
+                    while((aux1)>=tamañotab||(aux2+2)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1,aux2+1)||ocupado(taM,aux1,aux2+2)){
                         aux1=(int)(Math.random()*4+1);
                         aux2=(int)(Math.random()*4+1);
                     }
-                    tableiro[aux1][aux2]="s";
-                    tableiro[aux1][aux2+1]="s";
-                    tableiro[aux1][aux2+2]="s";
+                    taM[aux1][aux2]="s";
+                    taM[aux1][aux2+1]="s";
+                    taM[aux1][aux2+2]="s";
                 }System.out.println("Barco colocado.");
+                aux1=15;
+                aux2=15;
                 
     }
     public void colocarcruzm(){
         if((Math.random())>=0.5){
-                    while((aux1+3)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)||ocupado(aux1+3,aux2)){
+                    while((aux1+3)>=tamañotab||(aux2)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1+1,aux2)||ocupado(taM,aux1+2,aux2)||ocupado(taM,aux1+3,aux2)){
                         aux1=(int)(Math.random()*4+1);
                         aux2=(int)(Math.random()*4+1);
                     }
-                    tableiro[aux1][aux2]="c";
-                    tableiro[aux1+1][aux2]="c";
-                    tableiro[aux1+2][aux2]="c";
-                    tableiro[aux1+3][aux2]="c";
+                    taM[aux1][aux2]="c";
+                    taM[aux1+1][aux2]="c";
+                    taM[aux1+2][aux2]="c";
+                    taM[aux1+3][aux2]="c";
                 }else{
-                    while((aux1)>=tamañotab||(aux2+3)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)||ocupado(aux1,aux2+3)){
+                    while((aux1)>=tamañotab||(aux2+3)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1,aux2+1)||ocupado(taM,aux1,aux2+2)||ocupado(taM,aux1,aux2+3)){
                         aux1=(int)(Math.random()*4+1);
                         aux2=(int)(Math.random()*4+1);
                     }
-                    tableiro[aux1][aux2]="c";
-                    tableiro[aux1][aux2+1]="c";
-                    tableiro[aux1][aux2+2]="c";
-                    tableiro[aux1][aux2+3]="c";
+                    taM[aux1][aux2]="c";
+                    taM[aux1][aux2+1]="c";
+                    taM[aux1][aux2+2]="c";
+                    taM[aux1][aux2+3]="c";
                 }System.out.println("Barco colocado.");
+                aux1=15;
+                aux2=15;
     }
     public void colocarportm(){
         if((Math.random())>=0.5){
-                    while((aux1+4)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)||ocupado(aux1+3,aux2)||ocupado(aux1+4,aux2)){
+                    while((aux1+4)>=tamañotab||(aux2)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1+1,aux2)||ocupado(taM,aux1+2,aux2)||ocupado(taM,aux1+3,aux2)||ocupado(taM,aux1+4,aux2)){
                         aux1=(int)(Math.random()*4+1);
                         aux2=(int)(Math.random()*4+1);
                     }
-                    tableiro[aux1][aux2]="p";
-                    tableiro[aux1+1][aux2]="p";
-                    tableiro[aux1+2][aux2]="p";
-                    tableiro[aux1+3][aux2]="p";
-                    tableiro[aux1+4][aux2]="p";
+                    taM[aux1][aux2]="p";
+                    taM[aux1+1][aux2]="p";
+                    taM[aux1+2][aux2]="p";
+                    taM[aux1+3][aux2]="p";
+                    taM[aux1+4][aux2]="p";
                 }else{
-                    while((aux1)>=tamañotab||(aux2+4)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)||ocupado(aux1,aux2+3)||ocupado(aux1,aux2+4)){
+                    while((aux1)>=tamañotab||(aux2+4)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1,aux2+1)||ocupado(taM,aux1,aux2+2)||ocupado(taM,aux1,aux2+3)||ocupado(taM,aux1,aux2+4)){
                         aux1=(int)(Math.random()*4+1);
                         aux2=(int)(Math.random()*4+1);
                     }
-                    tableiro[aux1][aux2]="p";
-                    tableiro[aux1][aux2+1]="p";
-                    tableiro[aux1][aux2+2]="p";
-                    tableiro[aux1][aux2+3]="p";
-                    tableiro[aux1][aux2+4]="p";
+                    taM[aux1][aux2]="p";
+                    taM[aux1][aux2+1]="p";
+                    taM[aux1][aux2+2]="p";
+                    taM[aux1][aux2+3]="p";
+                    taM[aux1][aux2+4]="p";
                 }System.out.println("Barco colocado.");
+                aux1=15;
+                aux2=15;
     }
     public void colocardesth(){
         while(direccion!=1&&direccion!=2){
         direccion=Integer.parseInt(JOptionPane.showInputDialog("horizontal(1) ou vertical(2)?"));
         if(direccion==2){
-                        while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)){
+                        while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)){
                             aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
                             aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
                         }
-                        tableiro[aux1][aux2]="d";
-                        tableiro[aux1+1][aux2]="d";
+                        taH[aux1][aux2]="d";
+                        taH[aux1+1][aux2]="d";
                     }else{
-                        while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)){
+                        while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)){
                             aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
                             aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
                         }
-                        tableiro[aux1][aux2]="d";
-                        tableiro[aux1][aux2+1]="d";
+                        taH[aux1][aux2]="d";
+                        taH[aux1][aux2+1]="d";
                     }System.out.println("Barco colocado.");
+                    aux1=15;
+                    aux2=15;
                 }
+        direccion=3;
     }
     public void colocarsubh(){
-        if((Math.random())>=0.5){
-                    while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)){
-                        aux1=(int)(Math.random()*4+1);
-                        aux2=(int)(Math.random()*4+1);
+        while(direccion!=1&&direccion!=2){
+        direccion=Integer.parseInt(JOptionPane.showInputDialog("horizontal(1) ou vertical(2)?"));
+        if(direccion==2){
+                    while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)){
+                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
+                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
                     }
-                    tableiro[aux1][aux2]="s";
-                    tableiro[aux1+1][aux2]="s";
-                    tableiro[aux1+2][aux2]="s";
+                    taH[aux1][aux2]="s";
+                    taH[aux1+1][aux2]="s";
+                    taH[aux1+2][aux2]="s";
                 }else{
-                    while((aux1)>=tamañotab||(aux2+2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)){
-                        aux1=(int)(Math.random()*4+1);
-                        aux2=(int)(Math.random()*4+1);
+                    while((aux1)>=tamañotab||(aux2+2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)||ocupado(taH,aux1,aux2+2)){
+                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
+                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
                     }
-                    tableiro[aux1][aux2]="s";
-                    tableiro[aux1][aux2+1]="s";
-                    tableiro[aux1][aux2+2]="s";
+                    taH[aux1][aux2]="s";
+                    taH[aux1][aux2+1]="s";
+                    taH[aux1][aux2+2]="s";
                 }System.out.println("Barco colocado.");
-                
+                aux1=15;
+                    aux2=15;
+        
+        }
+        direccion=3;  
     }
     public void colocarcruzh(){
-        if((Math.random())>=0.5){
-                    while((aux1+3)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)||ocupado(aux1+3,aux2)){
-                        aux1=(int)(Math.random()*4+1);
-                        aux2=(int)(Math.random()*4+1);
+        while(direccion!=1&&direccion!=2){
+        direccion=Integer.parseInt(JOptionPane.showInputDialog("horizontal(1) ou vertical(2)?"));
+        if(direccion==2){
+                    while((aux1+3)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)||ocupado(taH,aux1+3,aux2)){
+                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
+                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
                     }
-                    tableiro[aux1][aux2]="c";
-                    tableiro[aux1+1][aux2]="c";
-                    tableiro[aux1+2][aux2]="c";
-                    tableiro[aux1+3][aux2]="c";
+                    taH[aux1][aux2]="c";
+                    taH[aux1+1][aux2]="c";
+                    taH[aux1+2][aux2]="c";
+                    taH[aux1+3][aux2]="c";
                 }else{
-                    while((aux1)>=tamañotab||(aux2+3)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)||ocupado(aux1,aux2+3)){
-                        aux1=(int)(Math.random()*4+1);
-                        aux2=(int)(Math.random()*4+1);
+                    while((aux1)>=tamañotab||(aux2+3)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)||ocupado(taH,aux1,aux2+2)||ocupado(taH,aux1,aux2+3)){
+                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
+                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
                     }
-                    tableiro[aux1][aux2]="c";
-                    tableiro[aux1][aux2+1]="c";
-                    tableiro[aux1][aux2+2]="c";
-                    tableiro[aux1][aux2+3]="c";
+                    taH[aux1][aux2]="c";
+                    taH[aux1][aux2+1]="c";
+                    taH[aux1][aux2+2]="c";
+                    taH[aux1][aux2+3]="c";
                 }System.out.println("Barco colocado.");
+                aux1=15;
+                    aux2=15;
+               
+        }
+        direccion=3;  
     }
     public void colocarporth(){
-        if((Math.random())>=0.5){
-                    while((aux1+4)>=tamañotab||(aux2)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1+1,aux2)||ocupado(aux1+2,aux2)||ocupado(aux1+3,aux2)||ocupado(aux1+4,aux2)){
-                        aux1=(int)(Math.random()*4+1);
-                        aux2=(int)(Math.random()*4+1);
+        while(direccion!=1&&direccion!=2){
+        direccion=Integer.parseInt(JOptionPane.showInputDialog("horizontal(1) ou vertical(2)?"));
+        if(direccion==2){
+                    while((aux1+4)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)||ocupado(taH,aux1+3,aux2)||ocupado(taH,aux1+4,aux2)){
+                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
+                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
                     }
-                    tableiro[aux1][aux2]="p";
-                    tableiro[aux1+1][aux2]="p";
-                    tableiro[aux1+2][aux2]="p";
-                    tableiro[aux1+3][aux2]="p";
-                    tableiro[aux1+4][aux2]="p";
+                    taH[aux1][aux2]="p";
+                    taH[aux1+1][aux2]="p";
+                    taH[aux1+2][aux2]="p";
+                    taH[aux1+3][aux2]="p";
+                    taH[aux1+4][aux2]="p";
                 }else{
-                    while((aux1)>=tamañotab||(aux2+4)>=tamañotab||ocupado(aux1,aux2)||ocupado(aux1,aux2+1)||ocupado(aux1,aux2+2)||ocupado(aux1,aux2+3)||ocupado(aux1,aux2+4)){
-                        aux1=(int)(Math.random()*4+1);
-                        aux2=(int)(Math.random()*4+1);
+                    while((aux1)>=tamañotab||(aux2+4)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)||ocupado(taH,aux1,aux2+2)||ocupado(taH,aux1,aux2+3)||ocupado(taH,aux1,aux2+4)){
+                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
+                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
                     }
-                    tableiro[aux1][aux2]="p";
-                    tableiro[aux1][aux2+1]="p";
-                    tableiro[aux1][aux2+2]="p";
-                    tableiro[aux1][aux2+3]="p";
-                    tableiro[aux1][aux2+4]="p";
+                    taH[aux1][aux2]="p";
+                    taH[aux1][aux2+1]="p";
+                    taH[aux1][aux2+2]="p";
+                    taH[aux1][aux2+3]="p";
+                    taH[aux1][aux2+4]="p";
                 }System.out.println("Barco colocado.");
+                aux1=15;
+                aux2=15;
+        }
+        direccion=3;  
     }
 }
