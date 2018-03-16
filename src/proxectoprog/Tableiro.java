@@ -18,7 +18,8 @@ public class Tableiro {
     Barco b1=new Barco();
     private String tamaño;
     private int numbarcos,tamañotab;
-    String[][]taH,taM,tiroH,tiroM;
+    String[][]taH,tiroH,tiroM;
+   public static String[][] taM;
     int direccion;
     public String[][] devol(){
         return taM;

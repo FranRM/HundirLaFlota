@@ -16,16 +16,15 @@ public class InterfazFlota extends javax.swing.JFrame {
 
     Tableiro obx;
     String[][] tab;
-    DefaultTableModel mod;
+    DefaultTableModel model = new DefaultTableModel();
 
     /**
      * Creates new form Interfaz
      */
     public InterfazFlota() {
         initComponents();
-         obx = new Tableiro();
-<<<<<<< HEAD
-                Tableiro t1 = new Tableiro("medio");
+        obx = new Tableiro();
+        Tableiro t1 = new Tableiro("medio");
         Barco b1 = new Barco();
         t1.modoxogo();
         System.out.println(t1.getNumbarcos());
@@ -36,23 +35,21 @@ public class InterfazFlota extends javax.swing.JFrame {
         t1.visualizartabH();
         System.out.println();
         t1.visualizartabM();
-        
-        String[][]copiataM=obx.devol();
-     for(int i=0;i<copiataM.length;i++){
-         mod.addColumn(i);
-            for(int j=0;j<copiataM[i].length;i++){
 
-         
-     }
-     }
-       
-    
-=======
-        tab = obx.gettableiroM();
->>>>>>> fe5f773b9e0c5be4a34c8a82571d5056ed94376d
-        
+        String[][] copiataM = Tableiro.taM;
+        int n = copiataM.length;
+        model.setRowCount(n);
+        model.setColumnCount(n);
+        for (int i = 0; i < n; i++) {
+
+            for (int j = 0; j < n; j++) {
+                jTable1.setValueAt(copiataM[i][j], i, j);
+            }
+        }
+
+//      
     }
-//    
+
 //    public void algo(){
 //        
 //        
@@ -64,7 +61,6 @@ public class InterfazFlota extends javax.swing.JFrame {
 //                {obx.tableiro[5][0], obx.tableiro[5][1], obx.tableiro[5][2], obx.tableiro[5][3], obx.tableiro[5][4], obx.tableiro[5][5]}
 //            }
 //    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,15 +78,22 @@ public class InterfazFlota extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "", "", "Title 3", "Title 4", "Title 5", "Title 6"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
