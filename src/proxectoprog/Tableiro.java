@@ -17,8 +17,8 @@ public class Tableiro {
     private ArrayList<Barco> flota=new ArrayList();
     Barco b1=new Barco();
     private String tamaño;
-    private int numbarcos,tamañotab;
-    String[][]taH,taM,tiroH,tiroM;
+    private int numbarcos,tamañotab,acertoH,acertoM;
+    String[][]taH,taM,tiroH;
     int direccion;
     public String[][] devol(){
         return taM;
@@ -129,14 +129,6 @@ public class Tableiro {
                 tiroH[i][j]=" ";
             }
         }
-        tiroM=new String[tamañotab][tamañotab];
-        for(int i=0;i<tamañotab;i++){
-            
-            for(int j=0;j<tamañotab;j++){
-                tiroM[i][j]=" ";
-            }
-        }
-        
     }
     public void visualizartabH(){
         switch(tamaño){
@@ -461,6 +453,70 @@ public class Tableiro {
         return puntos;
 }
     public void xogar(){
-        
+        int n=15,le=15;
+        String l="x";
+        while(n<0||n>getTamañotab()||le<0||le>getTamañotab()){
+            n=Integer.parseInt(JOptionPane.showInputDialog("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
+            l=JOptionPane.showInputDialog("Coordenadas de disparo\nIndique a direccion (letras minusculas).");
+            switch(l){
+                case "a":
+                    le=0;
+                break;
+                case "b":
+                    le=1;
+                break;
+                case "c":
+                    le=2;
+                break;
+                case "d":
+                    le=3;
+                break;
+                case "e":
+                    le=4;
+                break;
+                case "f":
+                    le=5;
+                break;
+                case "g":
+                    le=6;
+                break;
+                case "h":
+                    le=7;
+                break;
+                case "i":
+                    le=8;
+                break;
+                case "j":
+                    le=9;
+                break;
+                case "k":
+                    le=10;
+                break;
+                case "l":
+                    le=11;
+                break;
+                case "m":
+                    le=12;
+                break;
+                default:
+                    le=15;
+                break; 
+                
+            }
+            if(n<0||n>getTamañotab()){
+                JOptionPane.showMessageDialog(null,"Error en la elevación, introduzca otras coordenadas(\""+n+"\","+l+")");
+            }
+            if(le<0||le>getTamañotab()){
+                JOptionPane.showMessageDialog(null,"Error en la dirección, introduzca otras coordenadas("+n+",\""+l+"\")");
+            }
+        }
+        if(taM[n][le].equals("d")||taM[n][le].equals("s")||taM[n][le].equals("c")||taM[n][le].equals("p")){
+            tiroH[n][le]="X";
+            JOptionPane.showMessageDialog(null,"Impacto");
+        }else{
+            tiroH[n][le]="A";
+            JOptionPane.showMessageDialog(null,"Auga");
+        }
     }
+    
 }
