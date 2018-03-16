@@ -17,14 +17,18 @@ public class ProxectoProg {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-<<<<<<< HEAD
-        Tableiro t1=new Tableiro("");
-=======
-       
-       jPanel1 h = new jPanel();
-        h.setVisible(true);
-        Tableiro t1=new Tableiro("pequeno");
->>>>>>> 38b25899882605751210ff5a5365a7948eb16543
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        Tableiro t1=new Tableiro("medio");
         Barco b1=new Barco();
         t1.modoxogo();
         System.out.println(t1.getNumbarcos());
@@ -35,15 +39,22 @@ public class ProxectoProg {
         t1.visualizartabH();
         System.out.println();
         t1.visualizartabM();
+        
 //        Puntuacion p1=new Puntuacion();
 //        Xogadores x1=new Xogadores();
 //        PuntuacionFich pf1=new PuntuacionFich();
 //        p1.addScore(x1);
 //        pf1.guardar(p1);
-<<<<<<< HEAD
-=======
 
->>>>>>> 396fec8f1a290942787d906c28c8f802ce088794
+
+
+
+
+
+
+
+
+
     }
     
 }

@@ -24,7 +24,7 @@ public class InterfazFlota extends javax.swing.JFrame {
     public InterfazFlota() {
         initComponents();
          obx = new Tableiro();
-        tab = obx.gettableiro();
+        tab = obx.gettableiroM();
         
     }
 //    

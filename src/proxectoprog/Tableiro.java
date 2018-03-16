@@ -447,8 +447,17 @@ public class Tableiro {
         direccion=3;  
     }
     public int puntuacion(){
-    int puntos=0;
-    return puntos;
+        int puntos=0;
+        for(int i=0;i<getTamañotab();i++){
+           for(int j=0;j<getTamañotab();j++){
+               if(tiroH[i][j].equals("X")){
+               puntos=puntos+10;
+               }
+           } 
+        }
+        return puntos;
 }
-
+    public void xogar(){
+        
+    }
 }
