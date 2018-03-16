@@ -18,7 +18,7 @@ public class Tableiro {
     Barco b1=new Barco();
     private String tamaño;
     private int numbarcos,tamañotab;
-    String[][]taH,taM;
+    String[][]taH,taM,tiroH,tiroM;
     int direccion;
 
     public Tableiro(String tamaño) {
@@ -119,6 +119,21 @@ public class Tableiro {
                 taM[i][j]=" ";
             }
         }
+        tiroH=new String[tamañotab][tamañotab];
+        for(int i=0;i<tamañotab;i++){
+            
+            for(int j=0;j<tamañotab;j++){
+                tiroH[i][j]=" ";
+            }
+        }
+        tiroM=new String[tamañotab][tamañotab];
+        for(int i=0;i<tamañotab;i++){
+            
+            for(int j=0;j<tamañotab;j++){
+                tiroM[i][j]=" ";
+            }
+        }
+        
     }
     public void visualizartabH(){
         switch(tamaño){
@@ -431,4 +446,9 @@ public class Tableiro {
         }
         direccion=3;  
     }
+    public int puntuacion(){
+    int puntos=0;
+    return puntos;
+}
+
 }

@@ -15,7 +15,7 @@ public class ProxectoProg {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Tableiro t1=new Tableiro("pequeno");
+        Tableiro t1=new Tableiro("");
         Barco b1=new Barco();
         t1.modoxogo();
         System.out.println(t1.getNumbarcos());
