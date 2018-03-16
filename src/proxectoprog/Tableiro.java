@@ -17,8 +17,14 @@ public class Tableiro {
     private ArrayList<Barco> flota=new ArrayList();
     Barco b1=new Barco();
     private String tamaño;
+<<<<<<< HEAD
     private int numbarcos,tamañotab,acertoH,acertoM;
     String[][]taH,taM,tiroH;
+=======
+    private int numbarcos,tamañotab;
+    String[][]taH,tiroH,tiroM;
+   public static String[][] taM;
+>>>>>>> 7f943606327ec59992ee485923405b6fb82793ca
     int direccion;
     public String[][] devol(){
         return taM;
