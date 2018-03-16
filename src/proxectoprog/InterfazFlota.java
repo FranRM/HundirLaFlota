@@ -24,6 +24,7 @@ public class InterfazFlota extends javax.swing.JFrame {
     public InterfazFlota() {
         initComponents();
          obx = new Tableiro();
+<<<<<<< HEAD
                 Tableiro t1 = new Tableiro("medio");
         Barco b1 = new Barco();
         t1.modoxogo();
@@ -46,6 +47,9 @@ public class InterfazFlota extends javax.swing.JFrame {
      }
        
     
+=======
+        tab = obx.gettableiroM();
+>>>>>>> fe5f773b9e0c5be4a34c8a82571d5056ed94376d
         
     }
 //    
