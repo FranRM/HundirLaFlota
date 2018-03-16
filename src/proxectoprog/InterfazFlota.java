@@ -6,26 +6,39 @@
 package proxectoprog;
 
 import javax.swing.table.DefaultTableModel;
+import proxectoprog.Tableiro;
 
 /**
  *
  * @author adm
  */
-public class Interfaz extends javax.swing.JFrame {
-DefaultTableModel modelo;
+public class InterfazFlota extends javax.swing.JFrame {
+
+    Tableiro obx;
+    String[][] tab;
+    DefaultTableModel mod;
+
     /**
      * Creates new form Interfaz
      */
-    public Interfaz() {
+    public InterfazFlota() {
         initComponents();
-        modelo.addColumn("A");
-        modelo.addColumn("B");
-        modelo.addColumn("C");
-        modelo.addColumn("D");
-        modelo.addColumn("E");
-        modelo.addColumn("F");
-        this.jTable1.setModel(modelo);
+         obx = new Tableiro();
+        tab = obx.gettableiro();
+        
     }
+//    
+//    public void algo(){
+//        
+//        
+//         {obx.tableiro[0][0], obx.tableiro[0][1], obx.tableiro[0][2], obx.tableiro[0][3], obx.tableiro[0][4], obx.tableiro[0][5]},
+//                {obx.tableiro[1][0], obx.tableiro[1][1], obx.tableiro[1][2], obx.tableiro[1][3], obx.tableiro[1][4], obx.tableiro[1][5]},
+//                {obx.tableiro[2][0], obx.tableiro[2][1], obx.tableiro[2][2], obx.tableiro[2][3], obx.tableiro[2][4], obx.tableiro[2][5]},
+//                {obx.tableiro[3][0], obx.tableiro[3][1], obx.tableiro[3][2], obx.tableiro[3][3], obx.tableiro[3][4], obx.tableiro[3][5]},
+//                {obx.tableiro[4][0], obx.tableiro[4][1], obx.tableiro[4][2], obx.tableiro[4][3], obx.tableiro[4][4], obx.tableiro[4][5]},
+//                {obx.tableiro[5][0], obx.tableiro[5][1], obx.tableiro[5][2], obx.tableiro[5][3], obx.tableiro[5][4], obx.tableiro[5][5]}
+//            }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,13 +57,15 @@ DefaultTableModel modelo;
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-
+                "", "", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -59,11 +74,11 @@ DefaultTableModel modelo;
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -76,6 +91,8 @@ DefaultTableModel modelo;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        getAccessibleContext().setAccessibleParent(this);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -97,27 +114,28 @@ DefaultTableModel modelo;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazFlota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazFlota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazFlota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazFlota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz().setVisible(true);
+                new InterfazFlota().setVisible(true);
             }
+
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    public static javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private static javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

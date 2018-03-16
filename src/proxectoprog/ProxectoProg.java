@@ -1,20 +1,25 @@
 
 package proxectoprog;
 
-import com.fran.xogadores.Puntuacion;
-import com.fran.xogadores.PuntuacionFich;
-import com.fran.xogadores.Xogadores;
+import com.fran.xogadores.*;
+import javax.swing.JFrame;
+import static proxectoprog.InterfazFlota.jPanel1;
+
 
 /**
  *Fran y Luis
  * 
  */
 public class ProxectoProg {
-
+ 
+ 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+       
+       jPanel1 h = new jPanel();
+        h.setVisible(true);
         Tableiro t1=new Tableiro("pequeno");
         Barco b1=new Barco();
         t1.modoxogo();
@@ -29,12 +34,6 @@ public class ProxectoProg {
 //        PuntuacionFich pf1=new PuntuacionFich();
 //        p1.addScore(x1);
 //        pf1.guardar(p1);
-
-<<<<<<< HEAD
-       
-=======
-        
->>>>>>> fa041dcee210a0401a6918065f70e1c36bbeca07
     }
     
 }
