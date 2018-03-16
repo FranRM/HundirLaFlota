@@ -20,7 +20,10 @@ public class Tableiro {
     private int numbarcos,tamañotab;
     String[][]taH,taM;
     int direccion;
-
+    public String[][] devol(){
+        return taM;
+    }
+    
     public Tableiro(String tamaño) {
         this.tamaño = tamaño;
     }
