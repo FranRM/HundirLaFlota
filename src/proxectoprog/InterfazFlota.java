@@ -29,7 +29,6 @@ public class InterfazFlota extends javax.swing.JFrame {
         t1.modoxogo();
         System.out.println(t1.getNumbarcos());
         System.out.println(t1.getTamañotab());
-        t1.elixbarcos();
         t1.crearTab();
         t1.montarTab();
         t1.visualizartabH();
@@ -46,7 +45,13 @@ public class InterfazFlota extends javax.swing.JFrame {
                 jTable1.setValueAt(copiataM[i][j], i, j);
             }
         }
+<<<<<<< HEAD
         
+=======
+        t1.xogar();
+
+//      
+>>>>>>> 28329c10fb53623ed6b49ce53e288a2acd37e687
     }
 
     /**
