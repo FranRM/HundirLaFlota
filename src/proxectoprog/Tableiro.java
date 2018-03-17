@@ -540,11 +540,23 @@ public class Tableiro {
                 JOptionPane.showMessageDialog(null,"Auga");
             }
             while( aux1>=tamañotab || aux2>=tamañotab){
-                while(taH[aux1][aux2].equals("A")||taH[aux1][aux2].equals("X")){
+//                while(taH[aux1][aux2].equals("A")||taH[aux1][aux2].equals("X")){
                             aux1=(int)(Math.random()*tamañotab+1);
                             aux2=(int)(Math.random()*tamañotab+1);
+                            System.out.println(aux1+" "+aux2);
                 }
-             }
+//             }
+//             if(taH[n-1][le].equals("d")||taH[n-1][le].equals("s")||taH[n-1][le].equals("c")||taH[n-1][le].equals("p")){
+//                taH[n-1][le]="X";
+//                JOptionPane.showMessageDialog(null,"Fuego enemigo entrante... Impacto!!!");
+//                acertoH++;
+//            }else{
+//                taH[n-1][le]="A";
+//                JOptionPane.showMessageDialog(null,"Fuego enemigo entrante... Agua!!!");
+//            }
+            visualizartiroH();
+            visualizartabH();
+
         }
     }
     
