@@ -28,7 +28,7 @@ public class ProxectoProg {
         t1.visualizartabH();
         System.out.println();
         t1.visualizartabM();
-        t1.xogar();
+        //t1.xogar();
 
         
 //        Puntuacion p1=new Puntuacion();

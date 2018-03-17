@@ -460,15 +460,15 @@ public class Tableiro {
         }
         return puntos;
 }
-    public void xogar(){
+    public void xogar(JOptionPane AvisosXogar){
         acertoH=0;
         acertoM=0;
         while(acertoH<acertofin||acertoM<acertofin){
             int n=15,le=15;
             String l="x";
             while((n-1)<0||n>getTamañotab()||le<0||le>getTamañotab()){
-                n=Integer.parseInt(JOptionPane.showInputDialog("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
-                l=JOptionPane.showInputDialog("Coordenadas de disparo\nIndique a direccion (letras minusculas).");
+                n=Integer.parseInt(AvisosXogar.showInputDialog("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
+                l=AvisosXogar.showInputDialog("Coordenadas de disparo\nIndique a direccion (letras minusculas).");
                 switch(l){
                     case "a":
                         le=0;
@@ -515,19 +515,19 @@ public class Tableiro {
 
                 }
                 if((n-1)<0||n>getTamañotab()){
-                    JOptionPane.showMessageDialog(null,"Error en la elevación, introduzca otras coordenadas(\""+n+"\","+l+")");
+                    AvisosXogar.showMessageDialog(null,"Error en la elevación, introduzca otras coordenadas(\""+n+"\","+l+")");
                 }
                 if(le<0||le>getTamañotab()){
-                    JOptionPane.showMessageDialog(null,"Error en la dirección, introduzca otras coordenadas("+n+",\""+l+"\")");
+                    AvisosXogar.showMessageDialog(null,"Error en la dirección, introduzca otras coordenadas("+n+",\""+l+"\")");
                 }
             }
             if(taM[n-1][le].equals("d")||taM[n-1][le].equals("s")||taM[n-1][le].equals("c")||taM[n-1][le].equals("p")){
                 tiroH[n-1][le]="X";
-                JOptionPane.showMessageDialog(null,"Impacto");
+                AvisosXogar.showMessageDialog(null,"Impacto");
                 acertoH++;
             }else{
                 tiroH[n-1][le]="A";
-                JOptionPane.showMessageDialog(null,"Auga");
+                AvisosXogar.showMessageDialog(null,"Auga");
             }
             aux1=15;
             aux2=15;
@@ -541,11 +541,11 @@ public class Tableiro {
              }
              if(taH[aux1][le].equals("d")||taH[aux1][aux2].equals("s")||taH[aux1][aux2].equals("c")||taH[aux1][aux2].equals("p")){
                 taH[aux1][aux2]="X";
-                JOptionPane.showMessageDialog(null,"Fuego enemigo entrante... Impacto!!!");
+                AvisosXogar.showMessageDialog(null,"Fuego enemigo entrante... Impacto!!!");
                 acertoM++;
             }else{
                 taH[aux1][aux2]="A";
-                JOptionPane.showMessageDialog(null,"Fuego enemigo entrante... Agua!!!");
+                AvisosXogar.showMessageDialog(null,"Fuego enemigo entrante... Agua!!!");
             }
              
             visualizartiroH();
