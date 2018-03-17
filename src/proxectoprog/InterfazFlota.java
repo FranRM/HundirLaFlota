@@ -22,6 +22,7 @@ public class InterfazFlota extends javax.swing.JFrame {
      * Creates new form Interfaz
      */
     public InterfazFlota() {
+
         initComponents();
         obx = new Tableiro();
         Tableiro t1 = new Tableiro("medio");
@@ -56,6 +57,10 @@ public class InterfazFlota extends javax.swing.JFrame {
             }
         }
         t1.xogar();
+        TabHumano.setShowHorizontalLines(true);
+        TabHumano.setShowVerticalLines(true);
+        TablaTiro.setShowHorizontalLines(true);
+        TablaTiro.setShowVerticalLines(true);
     }
 
     /**
@@ -76,6 +81,8 @@ public class InterfazFlota extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTable2.setBackground(new java.awt.Color(0, 0, 0));
+        jTable2.setForeground(new java.awt.Color(255, 153, 0));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1"},
@@ -84,7 +91,7 @@ public class InterfazFlota extends javax.swing.JFrame {
                 {"4"},
                 {"5"},
                 {"6"},
-                {"7"},{"8"},{"9"},{"10"},{"11"},{"12"},
+                {"7"},{"8"},{"9"},{"10"},{"11"},{"12"},{"13"}
             },
             new String [] {
                 " "
@@ -151,11 +158,12 @@ public class InterfazFlota extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleParent(this);
