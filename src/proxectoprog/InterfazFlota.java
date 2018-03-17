@@ -66,7 +66,8 @@ public class InterfazFlota extends javax.swing.JFrame {
         TabHumano.setShowVerticalLines(true);
         TablaTiro.setShowHorizontalLines(true);
         TablaTiro.setShowVerticalLines(true);
-        //.showMessageDialog(null,"Impacto");
+        
+        jOptionPane1.showMessageDialog(null,"Impacto");
         //t1.xogar( avisosxogar);
     }
 
