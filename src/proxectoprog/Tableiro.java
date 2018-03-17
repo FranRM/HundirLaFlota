@@ -5,6 +5,7 @@
  */
 package proxectoprog;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -13,7 +14,7 @@ import javax.swing.JOptionPane;
 public class Tableiro {
     Barco b1=new Barco();
     private String tamaño;
-    private int numbarcos,tamañotab,acertoH,acertoM,acertofin,aux1=15,aux2=15;
+    private int tamañotab,acertoH,acertoM,acertofin,aux1=15,aux2=15;
 
     public static String[][] taM,taH,tiroH;
     int direccion;
@@ -30,14 +31,6 @@ public class Tableiro {
 
     public void setTamaño(String tamaño) {
         this.tamaño = tamaño;
-    }
-
-    public int getNumbarcos() {
-        return numbarcos;
-    }
-
-    public void setNumbarcos(int numbarcos) {
-        this.numbarcos = numbarcos;
     }
 
     public int getTamañotab() {
@@ -62,15 +55,15 @@ public class Tableiro {
     }
     public void modoxogo(){
         switch(tamaño){
-            case "pequeno":setNumbarcos(4);
+            case "pequeno":
             setTamañotab(6);
             setAcertofin(2);
             break;
-            case "medio":setNumbarcos(10);
+            case "medio":
             setTamañotab(10);
             setAcertofin(3);
             break;
-            case "grande":setNumbarcos(10);
+            case "grande":
             setTamañotab(13);
             break;
             default:;
@@ -460,15 +453,20 @@ public class Tableiro {
         }
         return puntos;
 }
-    public void xogar(JOptionPane AvisosXogar){
+    public void testaviso(String texto,JPanel aviso){
+         JOptionPane.showMessageDialog(aviso,texto);
+    }
+    public void xogar(JOptionPane avisosxogar){
+        
         acertoH=0;
         acertoM=0;
+        System.out.println(" acertoH "+acertoH+" acertoM "+acertoM+" acertofin "+acertofin);
         while(acertoH<acertofin||acertoM<acertofin){
             int n=15,le=15;
             String l="x";
             while((n-1)<0||n>getTamañotab()||le<0||le>getTamañotab()){
-                n=Integer.parseInt(AvisosXogar.showInputDialog("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
-                l=AvisosXogar.showInputDialog("Coordenadas de disparo\nIndique a direccion (letras minusculas).");
+                n=Integer.parseInt(avisosxogar.showInputDialog("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
+                l=avisosxogar.showInputDialog("Coordenadas de disparo\nIndique a direccion (letras minusculas).");
                 switch(l){
                     case "a":
                         le=0;
@@ -515,19 +513,19 @@ public class Tableiro {
 
                 }
                 if((n-1)<0||n>getTamañotab()){
-                    AvisosXogar.showMessageDialog(null,"Error en la elevación, introduzca otras coordenadas(\""+n+"\","+l+")");
+                    avisosxogar.showMessageDialog(null,"Error en la elevación, introduzca otras coordenadas(\""+n+"\","+l+")");
                 }
                 if(le<0||le>getTamañotab()){
-                    AvisosXogar.showMessageDialog(null,"Error en la dirección, introduzca otras coordenadas("+n+",\""+l+"\")");
+                    avisosxogar.showMessageDialog(null,"Error en la dirección, introduzca otras coordenadas("+n+",\""+l+"\")");
                 }
             }
             if(taM[n-1][le].equals("d")||taM[n-1][le].equals("s")||taM[n-1][le].equals("c")||taM[n-1][le].equals("p")){
                 tiroH[n-1][le]="X";
-                AvisosXogar.showMessageDialog(null,"Impacto");
+                avisosxogar.showMessageDialog(null,"Impacto");
                 acertoH++;
             }else{
                 tiroH[n-1][le]="A";
-                AvisosXogar.showMessageDialog(null,"Auga");
+                avisosxogar.showMessageDialog(null,"Auga");
             }
             aux1=15;
             aux2=15;
@@ -541,16 +539,16 @@ public class Tableiro {
              }
              if(taH[aux1][le].equals("d")||taH[aux1][aux2].equals("s")||taH[aux1][aux2].equals("c")||taH[aux1][aux2].equals("p")){
                 taH[aux1][aux2]="X";
-                AvisosXogar.showMessageDialog(null,"Fuego enemigo entrante... Impacto!!!");
+                avisosxogar.showMessageDialog(null,"Fuego enemigo entrante... Impacto!!!");
                 acertoM++;
             }else{
                 taH[aux1][aux2]="A";
-                AvisosXogar.showMessageDialog(null,"Fuego enemigo entrante... Agua!!!");
+                avisosxogar.showMessageDialog(null,"Fuego enemigo entrante... Agua!!!");
             }
              
             visualizartiroH();
             visualizartabH();
-            System.out.println("M"+acertoM+"H"+acertoH);
+            
 
         }
         System.out.println("Fin");
