@@ -21,6 +21,7 @@ public class ProxectoProg {
         t1.modoxogo();
         System.out.println(t1.getNumbarcos());
         System.out.println(t1.getTamañotab());
+        System.out.println(t1.getAcertofin());
         t1.crearTab();
         t1.montarTab();
         t1.visualizartabH();
