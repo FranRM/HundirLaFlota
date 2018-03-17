@@ -51,7 +51,7 @@ public class Tableiro {
     
     @Override
     public String toString() {
-        return "Xogadores{" + "tama\u00f1o=" + tamaño + ", numbarcos=" + numbarcos + '}';
+        return "Xogadores{" + "tama\u00f1o=" + tamaño+ '}';
     }
     public void modoxogo(){
         switch(tamaño){
