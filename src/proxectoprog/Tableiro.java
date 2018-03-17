@@ -242,8 +242,8 @@ public class Tableiro {
 
             break;
             case"medio":
-                colocardestm();
-                colocardestm();
+                colocardesth();
+                colocardesth();
                 colocarsubm();
                 colocarsubm();
                 colocarcruzm();

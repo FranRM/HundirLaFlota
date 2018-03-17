@@ -2,8 +2,6 @@
 package proxectoprog;
 
 import com.fran.xogadores.*;
-import javax.swing.JFrame;
-import static proxectoprog.InterfazFlota.jPanel1;
 
 
 /**
