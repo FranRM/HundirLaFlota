@@ -6,6 +6,8 @@
 package proxectoprog;
 
 
+import javax.swing.JFrame;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,9 +24,8 @@ public class InterfazFlota extends javax.swing.JFrame {
      * Creates new form Interfaz
      */
     public InterfazFlota() {
-
+        
         initComponents();
-        obx = new Tableiro();
         Tableiro t1 = new Tableiro("medio");
         Barco b1 = new Barco();
         t1.modoxogo();
@@ -35,7 +36,6 @@ public class InterfazFlota extends javax.swing.JFrame {
         t1.visualizartabH();
         System.out.println();
         t1.visualizartabM();
-        
         String[][] copiataH = Tableiro.taH;
         int n = copiataH.length;
         model.setRowCount(n);
@@ -46,6 +46,7 @@ public class InterfazFlota extends javax.swing.JFrame {
                 TabHumano.setValueAt(copiataH[i][j], i, j);
             }
         }
+        
         String[][] tirohum = Tableiro.tiroH;
         int p = tirohum.length;
         model.setRowCount(p);
@@ -56,7 +57,11 @@ public class InterfazFlota extends javax.swing.JFrame {
                 TablaTiro.setValueAt(tirohum[i][j], i, j);
             }
         }
+     
         t1.xogar();
+        
+
+             
         TabHumano.setShowHorizontalLines(true);
         TabHumano.setShowVerticalLines(true);
         TablaTiro.setShowHorizontalLines(true);
@@ -78,6 +83,8 @@ public class InterfazFlota extends javax.swing.JFrame {
         TabHumano = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         TablaTiro = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,26 +151,49 @@ public class InterfazFlota extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(TablaTiro);
 
+        jTable3.setBackground(new java.awt.Color(0, 0, 0));
+        jTable3.setForeground(new java.awt.Color(255, 153, 0));
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"1"},
+                {"2"},
+                {"3"},
+                {"4"},
+                {"5"},
+                {"6"},
+                {"7"},{"8"},{"9"},{"10"},{"11"},{"12"},{"13"}
+            },
+            new String [] {
+                " "
+            }
+        ));
+        jScrollPane4.setViewportView(jTable3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleParent(this);
@@ -207,13 +237,15 @@ public class InterfazFlota extends javax.swing.JFrame {
         });
     }
 
-
+            
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JTable TabHumano;
     private javax.swing.JTable TablaTiro;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
 }
