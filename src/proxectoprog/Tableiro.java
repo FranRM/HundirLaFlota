@@ -6,6 +6,7 @@
 package proxectoprog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,14 +16,16 @@ public class Tableiro {
     Barco b1=new Barco();
     private String tamaño;
     private int tamañotab,acertoH,acertoM,acertofin,aux1=15,aux2=15;
+    private String [][] taH;
 
-    public static String[][] taM,taH,tiroH;
+    public static String[][] taM,tiroH;
     int direccion;
     public Tableiro(String tamaño) {
-        this.tamaño = tamaño;
+        setTamaño(tamaño);
     }
 
-    public Tableiro() {
+    public String[][] getTaH() {
+        return taH;
     }
 
     public String getTamaño() {
@@ -31,6 +34,7 @@ public class Tableiro {
 
     public void setTamaño(String tamaño) {
         this.tamaño = tamaño;
+        modoxogo();
     }
 
     public int getTamañotab() {
@@ -53,7 +57,7 @@ public class Tableiro {
     public String toString() {
         return "Xogadores{" + "tama\u00f1o=" + tamaño+ '}';
     }
-    public void modoxogo(){
+    private void modoxogo(){
         switch(tamaño){
             case "pequeno":
             setTamañotab(6);
@@ -68,6 +72,8 @@ public class Tableiro {
             break;
             default:;
         }
+        crearTab();
+        montarTab();
     }
     public void crearTab(){
         
@@ -453,88 +459,25 @@ public class Tableiro {
         }
         return puntos;
 }
-    public void testaviso(String texto,JPanel aviso){
-         JOptionPane.showMessageDialog(aviso,texto);
-    }
-    public void xogar(JOptionPane avisosxogar){
-        
+    public Boolean xogar(JOptionPane avisosxogar){
+        int n=15,le=15;
+        String l="x";
         acertoH=0;
         acertoM=0;
         System.out.println(" acertoH "+acertoH+" acertoM "+acertoM+" acertofin "+acertofin);
         while(acertoH<acertofin||acertoM<acertofin){
-            int n=15,le=15;
-            String l="x";
-            while((n-1)<0||n>getTamañotab()||le<0||le>getTamañotab()){
-                n=Integer.parseInt(avisosxogar.showInputDialog("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
-                l=avisosxogar.showInputDialog("Coordenadas de disparo\nIndique a direccion (letras minusculas).");
-                switch(l){
-                    case "a":
-                        le=0;
-                    break;
-                    case "b":
-                        le=1;
-                    break;
-                    case "c":
-                        le=2;
-                    break;
-                    case "d":
-                        le=3;
-                    break;
-                    case "e":
-                        le=4;
-                    break;
-                    case "f":
-                        le=5;
-                    break;
-                    case "g":
-                        le=6;
-                    break;
-                    case "h":
-                        le=7;
-                    break;
-                    case "i":
-                        le=8;
-                    break;
-                    case "j":
-                        le=9;
-                    break;
-                    case "k":
-                        le=10;
-                    break;
-                    case "l":
-                        le=11;
-                    break;
-                    case "m":
-                        le=12;
-                    break;
-                    default:
-                        le=15;
-                    break; 
-
-                }
-                if((n-1)<0||n>getTamañotab()){
-                    avisosxogar.showMessageDialog(null,"Error en la elevación, introduzca otras coordenadas(\""+n+"\","+l+")");
-                }
-                if(le<0||le>getTamañotab()){
-                    avisosxogar.showMessageDialog(null,"Error en la dirección, introduzca otras coordenadas("+n+",\""+l+"\")");
-                }
+            int [] cordenadas = insertarCordenadasHumano(avisosxogar);
+            while (comprobarCordenadasHumano(avisosxogar, cordenadas)){
+                cordenadas = insertarCordenadasHumano(avisosxogar);
             }
-            if(taM[n-1][le].equals("d")||taM[n-1][le].equals("s")||taM[n-1][le].equals("c")||taM[n-1][le].equals("p")){
-                tiroH[n-1][le]="X";
-                avisosxogar.showMessageDialog(null,"Impacto");
-                acertoH++;
-            }else{
-                tiroH[n-1][le]="A";
-                avisosxogar.showMessageDialog(null,"Auga");
-            }
+            comprobarDisparoHumano(cordenadas[0], cordenadas[1]);
             aux1=15;
             aux2=15;
             while( aux1>=tamañotab || aux2>=tamañotab){
-                aux1=(int)(Math.random()*tamañotab);
-                aux2=(int)(Math.random()*tamañotab);
                 while(taH[aux1][aux2].equals("A")||taH[aux1][aux2].equals("X")){
-                            aux1=(int)(Math.random()*tamañotab);
-                            aux2=(int)(Math.random()*tamañotab);
+                    int[] cordenadasMaquina = insertarCordenadasMaquina();
+                    aux1=cordenadasMaquina[0];
+                    aux2=cordenadasMaquina[1];
                 }
              }
              if(taH[aux1][le].equals("d")||taH[aux1][aux2].equals("s")||taH[aux1][aux2].equals("c")||taH[aux1][aux2].equals("p")){
@@ -545,13 +488,99 @@ public class Tableiro {
                 taH[aux1][aux2]="A";
                 avisosxogar.showMessageDialog(null,"Fuego enemigo entrante... Agua!!!");
             }
-             
+
             visualizartiroH();
             visualizartabH();
-            
-
+            return true;
         }
-        System.out.println("Fin");
+        return false;
     }
+
+    private int convertirLetraANumero(String caracter) {
+        int numero;
+        switch(caracter){
+            case "a":
+                numero=0;
+                break;
+            case "b":
+                numero=1;
+                break;
+            case "c":
+                numero=2;
+                break;
+            case "d":
+                numero=3;
+                break;
+            case "e":
+                numero=4;
+                break;
+            case "f":
+                numero=5;
+                break;
+            case "g":
+                numero=6;
+                break;
+            case "h":
+                numero=7;
+                break;
+            case "i":
+                numero=8;
+                break;
+            case "j":
+                numero=9;
+                break;
+            case "k":
+                numero=10;
+                break;
+            case "l":
+                numero=11;
+                break;
+            case "m":
+                numero=12;
+                break;
+            default:
+                numero=15;
+                break;
+        }
+        return numero;
+    }
+
+    private void comprobarDisparoHumano(int elevacion, int direccion) {
+        if(taM[elevacion-1][direccion].equals("d")|| taM[elevacion-1][direccion].equals("s")|| taM[elevacion-1][direccion].equals("c")|| taM[elevacion-1][direccion].equals("p")){
+            tiroH[elevacion-1][direccion]="X";
+            JOptionPane.showMessageDialog(null,"Impacto");
+            acertoH++;
+        }else{
+            tiroH[elevacion-1][direccion]="A";
+            JOptionPane.showMessageDialog(null,"Auga");
+        }
+    }
+
+    private int[] insertarCordenadasHumano (JOptionPane avisosXogar){
+        int n=Integer.parseInt(avisosXogar.showInputDialog("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
+        String l=avisosXogar.showInputDialog("Coordenadas de disparo\nIndique a direccion (letras minusculas).");
+        int le = convertirLetraANumero(l);
+        int [] resultado = {n, le};
+        return resultado;
+    }
+
+    private int[] insertarCordenadasMaquina (){
+        aux1=(int)(Math.random()*tamañotab);
+        aux2=(int)(Math.random()*tamañotab);
+        int [] resultado = {aux1, aux2};
+        return resultado;
+    }
+
+    private Boolean comprobarCordenadasHumano (JOptionPane avisosXogar, int [] cordenadas) {
+        if((cordenadas[0]-1)<0||cordenadas[0]>getTamañotab()){
+            avisosXogar.showMessageDialog(null,"Error en la elevación, introduzca otras coordenadas(\""+cordenadas[0]+"\","+cordenadas[1]+")");
+            return false;
+        } else if(cordenadas[1]<0||cordenadas[1]>getTamañotab()){
+            avisosXogar.showMessageDialog(null,"Error en la dirección, introduzca otras coordenadas("+cordenadas[0]+",\""+cordenadas[1]+"\")");
+            return false;
+        }
+        return true;
+    }
+
     
 }

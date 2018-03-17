@@ -17,34 +17,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class InterfazFlota extends javax.swing.JFrame {
 
-    Tableiro obx;
+    Tableiro tableiro;
     String[][] tab;
     DefaultTableModel model = new DefaultTableModel();
   
     /**
      * Creates new form Interfaz
      */
-    public InterfazFlota() {
-
-
-
-
+    public InterfazFlota(Tableiro tableiro) {
         initComponents();
-        Tableiro t1 = new Tableiro("medio");
-        Barco b1 = new Barco();
-        t1.modoxogo();
-        System.out.println(t1.getTamañotab());
-        t1.crearTab();
-        t1.montarTab();
-        t1.visualizartabH();
-        System.out.println();
-        t1.visualizartabM();
-        String[][] copiataH = Tableiro.taH;
-        int n = copiataH.length;
-        model.setRowCount(n);
-        model.setColumnCount(n);
+        String[][] copiataH = tableiro.getTaH();
+        int n = tableiro.getTamañotab();
+        model.setRowCount(tableiro.getTamañotab());
+        model.setColumnCount(tableiro.getTamañotab());
         for (int i = 0; i < n; i++) {
-            
             for (int j = 0; j < n; j++) {
                 TabHumano.setValueAt(copiataH[i][j], i, j);
             }
@@ -60,18 +46,16 @@ public class InterfazFlota extends javax.swing.JFrame {
                 TablaTiro.setValueAt(tirohum[i][j], i, j);
             }
         }
-             
 
-        
-
-             
         TabHumano.setShowHorizontalLines(true);
         TabHumano.setShowVerticalLines(true);
         TablaTiro.setShowHorizontalLines(true);
         TablaTiro.setShowVerticalLines(true);
-        
-        jOptionPane1.showMessageDialog(null,"Impacto");
-        //t1.xogar( avisosxogar);
+
+    }
+
+    public void refrescarTablas (Tableiro tablas){
+
     }
 
     /**
@@ -245,7 +229,7 @@ public class InterfazFlota extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazFlota().setVisible(true);
+                //new InterfazFlota().setVisible(true);
             }
 
         });

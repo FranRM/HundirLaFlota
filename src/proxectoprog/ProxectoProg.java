@@ -16,19 +16,19 @@ public class ProxectoProg {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//
-//        Tableiro t1=new Tableiro("pequeno");
-//        Barco b1=new Barco();
-//        t1.modoxogo();
-//        System.out.println(t1.getNumbarcos());
-//        System.out.println(t1.getTamañotab());
-//        System.out.println(t1.getAcertofin());
-//        t1.crearTab();
-//        t1.montarTab();
-//        t1.visualizartabH();
-//        System.out.println();
-//        t1.visualizartabM();
-//        //t1.xogar();
+
+        Tableiro tableiro=new Tableiro("pequeno");
+        //tableiro.visualizartabH();
+        //tableiro.visualizartabM();
+        InterfazFlota ventanaXogo = new InterfazFlota(tableiro);
+        ventanaXogo.setVisible(true);
+        while (tableiro.xogar(new JOptionPane())){
+            ventanaXogo.refrescarTablas(tableiro);
+            //actualizamos vista
+        }
+        //finalizamos
+
+
 
         
 //        Puntuacion p1=new Puntuacion();
