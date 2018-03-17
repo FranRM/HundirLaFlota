@@ -25,7 +25,10 @@ public class InterfazFlota extends javax.swing.JFrame {
      * Creates new form Interfaz
      */
     public InterfazFlota() {
-        
+
+
+
+
         initComponents();
         Tableiro t1 = new Tableiro("medio");
         Barco b1 = new Barco();
