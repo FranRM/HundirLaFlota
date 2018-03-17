@@ -2,6 +2,7 @@
 package proxectoprog;
 
 import com.fran.xogadores.*;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -28,6 +29,7 @@ public class ProxectoProg {
         System.out.println();
         t1.visualizartabM();
         t1.xogar();
+
         
 //        Puntuacion p1=new Puntuacion();
 //        Xogadores x1=new Xogadores();

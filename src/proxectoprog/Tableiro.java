@@ -17,10 +17,6 @@ public class Tableiro {
 
     public static String[][] taM,taH,tiroH;
     int direccion;
-    public String[][] devol(){
-        return taM;
-    }
-    
     public Tableiro(String tamaño) {
         this.tamaño = tamaño;
     }
@@ -52,13 +48,6 @@ public class Tableiro {
         this.tamañotab = tamañotab;
         
     }
-    public String[][] gettableiroH(){
-        return taH;
-    }
-    public String[][] gettableiroM(){
-        return taM;
-    }
-
     public int getAcertofin() {
         return acertofin;
     }
@@ -79,6 +68,7 @@ public class Tableiro {
             break;
             case "medio":setNumbarcos(10);
             setTamañotab(10);
+            setAcertofin(3);
             break;
             case "grande":setNumbarcos(10);
             setTamañotab(13);
@@ -471,6 +461,8 @@ public class Tableiro {
         return puntos;
 }
     public void xogar(){
+        acertoH=0;
+        acertoM=0;
         while(acertoH<acertofin||acertoM<acertofin){
             int n=15,le=15;
             String l="x";
