@@ -75,7 +75,7 @@ public class Tableiro {
         switch(tamaño){
             case "pequeno":setNumbarcos(4);
             setTamañotab(6);
-            setAcertofin(10);
+            setAcertofin(2);
             break;
             case "medio":setNumbarcos(10);
             setTamañotab(10);
@@ -232,8 +232,6 @@ public class Tableiro {
         
         switch(tamaño){
             case"pequeno":
-                colocardesth();
-                colocarsubh();
                 colocardesth();
                 colocarsubh();
                 colocardestm();
@@ -539,25 +537,31 @@ public class Tableiro {
                 tiroH[n-1][le]="A";
                 JOptionPane.showMessageDialog(null,"Auga");
             }
+            aux1=15;
+            aux2=15;
             while( aux1>=tamañotab || aux2>=tamañotab){
-//                while(taH[aux1][aux2].equals("A")||taH[aux1][aux2].equals("X")){
-                            aux1=(int)(Math.random()*tamañotab+1);
-                            aux2=(int)(Math.random()*tamañotab+1);
-                            System.out.println(aux1+" "+aux2);
+                aux1=(int)(Math.random()*tamañotab);
+                aux2=(int)(Math.random()*tamañotab);
+                while(taH[aux1][aux2].equals("A")||taH[aux1][aux2].equals("X")){
+                            aux1=(int)(Math.random()*tamañotab);
+                            aux2=(int)(Math.random()*tamañotab);
                 }
-//             }
-//             if(taH[n-1][le].equals("d")||taH[n-1][le].equals("s")||taH[n-1][le].equals("c")||taH[n-1][le].equals("p")){
-//                taH[n-1][le]="X";
-//                JOptionPane.showMessageDialog(null,"Fuego enemigo entrante... Impacto!!!");
-//                acertoH++;
-//            }else{
-//                taH[n-1][le]="A";
-//                JOptionPane.showMessageDialog(null,"Fuego enemigo entrante... Agua!!!");
-//            }
+             }
+             if(taH[aux1][le].equals("d")||taH[aux1][aux2].equals("s")||taH[aux1][aux2].equals("c")||taH[aux1][aux2].equals("p")){
+                taH[aux1][aux2]="X";
+                JOptionPane.showMessageDialog(null,"Fuego enemigo entrante... Impacto!!!");
+                acertoM++;
+            }else{
+                taH[aux1][aux2]="A";
+                JOptionPane.showMessageDialog(null,"Fuego enemigo entrante... Agua!!!");
+            }
+             
             visualizartiroH();
             visualizartabH();
+            System.out.println("M"+acertoM+"H"+acertoH);
 
         }
+        System.out.println("Fin");
     }
     
 }
