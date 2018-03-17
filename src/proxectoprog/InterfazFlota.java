@@ -29,7 +29,6 @@ public class InterfazFlota extends javax.swing.JFrame {
         t1.modoxogo();
         System.out.println(t1.getNumbarcos());
         System.out.println(t1.getTamañotab());
-        t1.elixbarcos();
         t1.crearTab();
         t1.montarTab();
         t1.visualizartabH();
