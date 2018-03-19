@@ -5,10 +5,6 @@
  */
 package proxectoprog;
 
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,14 +16,15 @@ public class InterfazFlota extends javax.swing.JFrame {
     Tableiro tableiro;
     String[][] tab;
     DefaultTableModel model = new DefaultTableModel();
-  
+    String[][] copiataH,tirohum;
+    int n,p;
     /**
      * Creates new form Interfaz
      */
     public InterfazFlota(Tableiro tableiro) {
         initComponents();
-        String[][] copiataH = tableiro.getTaH();
-        int n = tableiro.getTamañotab();
+        copiataH = tableiro.getTaH();
+        n = tableiro.getTamañotab();
         model.setRowCount(tableiro.getTamañotab());
         model.setColumnCount(tableiro.getTamañotab());
         for (int i = 0; i < n; i++) {
@@ -36,8 +33,8 @@ public class InterfazFlota extends javax.swing.JFrame {
             }
         }
         
-        String[][] tirohum = Tableiro.tiroH;
-        int p = tirohum.length;
+        tirohum = Tableiro.tiroH;
+        p = tirohum.length;
         model.setRowCount(p);
         model.setColumnCount(p);
         for (int i = 0; i < p; i++) {
@@ -54,8 +51,32 @@ public class InterfazFlota extends javax.swing.JFrame {
 
     }
 
-    public void refrescarTablas (Tableiro tablas){
+    public void refrescarTablas (Tableiro tableiro){
+        copiataH = tableiro.getTaH();
+        n = tableiro.getTamañotab();
+        model.setRowCount(tableiro.getTamañotab());
+        model.setColumnCount(tableiro.getTamañotab());
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                TabHumano.setValueAt(copiataH[i][j], i, j);
+            }
+        }
+        
+        tirohum = Tableiro.tiroH;
+        p = tirohum.length;
+        model.setRowCount(p);
+        model.setColumnCount(p);
+        for (int i = 0; i < p; i++) {
+            
+            for (int j = 0; j < p; j++) {
+                TablaTiro.setValueAt(tirohum[i][j], i, j);
+            }
+        }
 
+        TabHumano.setShowHorizontalLines(true);
+        TabHumano.setShowVerticalLines(true);
+        TablaTiro.setShowHorizontalLines(true);
+        TablaTiro.setShowVerticalLines(true);
     }
 
     /**
@@ -75,7 +96,6 @@ public class InterfazFlota extends javax.swing.JFrame {
         TablaTiro = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        jOptionPane1 = new javax.swing.JOptionPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,19 +185,14 @@ public class InterfazFlota extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(277, 277, 277)
-                        .addComponent(jOptionPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(129, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -189,9 +204,7 @@ public class InterfazFlota extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(jOptionPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleParent(this);
@@ -239,7 +252,6 @@ public class InterfazFlota extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JTable TabHumano;
     private javax.swing.JTable TablaTiro;
-    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

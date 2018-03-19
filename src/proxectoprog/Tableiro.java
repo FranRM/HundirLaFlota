@@ -5,8 +5,7 @@
  */
 package proxectoprog;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import java.util.ArrayList;
+
 
 /**
  *
@@ -59,15 +58,15 @@ public class Tableiro {
     }
     private void modoxogo(){
         switch(tamaño){
-            case "pequeno":
+            case "Pequeno":
             setTamañotab(6);
             setAcertofin(2);
             break;
-            case "medio":
+            case "Medio":
             setTamañotab(10);
             setAcertofin(3);
             break;
-            case "grande":
+            case "Grande":
             setTamañotab(13);
             break;
             default:;
@@ -460,27 +459,29 @@ public class Tableiro {
         return puntos;
 }
     public Boolean xogar(JOptionPane avisosxogar){
-        int n=15,le=15;
-        String l="x";
-        acertoH=0;
-        acertoM=0;
-        System.out.println(" acertoH "+acertoH+" acertoM "+acertoM+" acertofin "+acertofin);
+        
         while(acertoH<acertofin||acertoM<acertofin){
+            String l="x";
+            acertoH=0;
+            acertoM=0;
+            System.out.println(" acertoH "+acertoH+" acertoM "+acertoM+" acertofin "+acertofin);
             int [] cordenadas = insertarCordenadasHumano(avisosxogar);
-            while (comprobarCordenadasHumano(avisosxogar, cordenadas)){
+            while (!comprobarCordenadasHumano(avisosxogar,cordenadas)){
                 cordenadas = insertarCordenadasHumano(avisosxogar);
             }
             comprobarDisparoHumano(cordenadas[0], cordenadas[1]);
-            aux1=15;
-            aux2=15;
+            
+                aux1=15;
+                aux2=15;
             while( aux1>=tamañotab || aux2>=tamañotab){
+                int[] cordenadasMaquina = insertarCordenadasMaquina();
                 while(taH[aux1][aux2].equals("A")||taH[aux1][aux2].equals("X")){
-                    int[] cordenadasMaquina = insertarCordenadasMaquina();
+                    cordenadasMaquina= insertarCordenadasMaquina();
                     aux1=cordenadasMaquina[0];
                     aux2=cordenadasMaquina[1];
                 }
              }
-             if(taH[aux1][le].equals("d")||taH[aux1][aux2].equals("s")||taH[aux1][aux2].equals("c")||taH[aux1][aux2].equals("p")){
+             if(taH[aux1][aux2].equals("d")||taH[aux1][aux2].equals("s")||taH[aux1][aux2].equals("c")||taH[aux1][aux2].equals("p")){
                 taH[aux1][aux2]="X";
                 avisosxogar.showMessageDialog(null,"Fuego enemigo entrante... Impacto!!!");
                 acertoM++;

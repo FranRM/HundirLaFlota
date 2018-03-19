@@ -16,15 +16,19 @@ public class ProxectoProg {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        Tableiro tableiro=new Tableiro("pequeno");
+        String auxiliarTamaño;
+        do{
+        auxiliarTamaño=JOptionPane.showInputDialog("Elixa o tamaño do mapa.\n-Pequeno\n-Medio\n-Grande");
+        }
+        while(!auxiliarTamaño.equals("Pequeno")||!auxiliarTamaño.equals("Medio")||!auxiliarTamaño.equals("Grande"));
+        Tableiro tableiro=new Tableiro(auxiliarTamaño);
         //tableiro.visualizartabH();
         //tableiro.visualizartabM();
         InterfazFlota ventanaXogo = new InterfazFlota(tableiro);
         ventanaXogo.setVisible(true);
         while (tableiro.xogar(new JOptionPane())){
             ventanaXogo.refrescarTablas(tableiro);
-            //actualizamos vista
+
         }
         //finalizamos
 
