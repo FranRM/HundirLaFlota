@@ -228,12 +228,17 @@ public class Tableiro {
 
             break;
             case"Medio":
-                colocarporth();
-                colocarporth();
-                colocarsubm();
+                colocardesth();
+//                colocarsubh();
+//                colocarcruzh();
+                //colocarporth();
+                
+               
+                colocardestm();
                 colocarsubm();
                 colocarcruzm();
                 colocarportm();
+
                 
             break;
             case"Grande":
