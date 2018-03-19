@@ -1,6 +1,7 @@
 
 package proxectoprog;
 
+import com.fran.metodos.Entradaspred;
 import com.fran.xogadores.*;
 import javax.swing.JOptionPane;
 
@@ -15,13 +16,14 @@ public class ProxectoProg {
     /**
      * @param args the command line arguments
      */
+
     public static void main(String[] args) {
         boolean repetir=true;
         while(repetir){
-        String username=JOptionPane.showInputDialog("Benvido a Batalla naval, indique o seu usuario.");
+        String username=Entradaspred.pedirString("Benvido a Batalla naval, indique o seu usuario.");
         String auxiliarTamaño;
         do{
-        auxiliarTamaño=JOptionPane.showInputDialog("Elixa o tamaño do mapa.\n-Pequeno\n-Medio\n-Grande");
+        auxiliarTamaño=Entradaspred.pedirString("Elixa o tamaño do mapa.\n-Pequeno\n-Medio\n-Grande");
         }while(!auxiliarTamaño.equalsIgnoreCase("Pequeno")&&!auxiliarTamaño.equalsIgnoreCase("Medio")&&!auxiliarTamaño.equalsIgnoreCase("Grande"));
         Tableiro tableiro=new Tableiro(auxiliarTamaño);
         InterfazFlota ventanaXogo = new InterfazFlota(tableiro);
@@ -32,7 +34,7 @@ public class ProxectoProg {
         }
         JOptionPane.showMessageDialog(null, "Fin do xogo");
         ventanaXogo.setVisible(false);
-        String auxiliar=JOptionPane.showInputDialog("Desexa volver a xogar?\n      Y/N");
+        String auxiliar=Entradaspred.pedirString("Desexa volver a xogar?\n      Y/N");
         switch(auxiliar){
             case"Y":
                 repetir=true;

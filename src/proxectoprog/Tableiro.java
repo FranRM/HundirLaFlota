@@ -5,6 +5,7 @@
  */
 package proxectoprog;
 import javax.swing.JOptionPane;
+import com.fran.metodos.Entradaspred;
 
 
 /**
@@ -338,18 +339,20 @@ public class Tableiro {
     public void colocardesth(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un destructor(2 casillas).");
-        direccion=Integer.parseInt(JOptionPane.showInputDialog("horizontal(1) ou vertical(2)?"));
+        direccion=Integer.parseInt(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
         if(direccion==2){
                         while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)){
-                            aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
-                            aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
+                            aux1=Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
+                            String auxili=Entradaspred.pedirString("Letra de columna.");
+                            aux2=convertirLetraANumero(auxili);
                         }
                         taH[aux1][aux2]="d";
                         taH[aux1+1][aux2]="d";
                     }else{
                         while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)){
-                            aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
-                            aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
+                            aux1=Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
+                            String auxili=Entradaspred.pedirString("Letra de columna.");
+                            aux2=convertirLetraANumero(auxili);
                         }
                         taH[aux1][aux2]="d";
                         taH[aux1][aux2+1]="d";
@@ -362,19 +365,21 @@ public class Tableiro {
     public void colocarsubh(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un submarino(3 casillas).");
-        direccion=Integer.parseInt(JOptionPane.showInputDialog("horizontal(1) ou vertical(2)?"));
+        direccion=Integer.parseInt(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
         if(direccion==2){
                     while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)){
-                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
-                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
+                        aux1=Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
+                        String auxili=Entradaspred.pedirString("Letra de columna.");
+                            aux2=convertirLetraANumero(auxili);
                     }
                     taH[aux1][aux2]="s";
                     taH[aux1+1][aux2]="s";
                     taH[aux1+2][aux2]="s";
                 }else{
                     while((aux1)>=tamañotab||(aux2+2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)||ocupado(taH,aux1,aux2+2)){
-                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
-                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
+                        aux1=Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
+                        String auxili=Entradaspred.pedirString("Letra de columna.");
+                            aux2=convertirLetraANumero(auxili);
                     }
                     taH[aux1][aux2]="s";
                     taH[aux1][aux2+1]="s";
@@ -389,11 +394,12 @@ public class Tableiro {
     public void colocarcruzh(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un cruceiro(4 casillas).");
-            direccion=Integer.parseInt(JOptionPane.showInputDialog("Dirección:\nJHorizontal(1) ou vertical(2)?"));
+            direccion=Integer.parseInt(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
         if(direccion==2){
                     while((aux1+3)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)||ocupado(taH,aux1+3,aux2)){
-                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
-                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
+                        aux1=Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
+                        String auxili=Entradaspred.pedirString("Letra de columna.");
+                            aux2=convertirLetraANumero(auxili);
                     }
                     taH[aux1][aux2]="c";
                     taH[aux1+1][aux2]="c";
@@ -401,8 +407,9 @@ public class Tableiro {
                     taH[aux1+3][aux2]="c";
                 }else{
                     while((aux1)>=tamañotab||(aux2+3)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)||ocupado(taH,aux1,aux2+2)||ocupado(taH,aux1,aux2+3)){
-                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
-                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
+                        aux1=Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
+                        String auxili=Entradaspred.pedirString("Letra de columna.");
+                            aux2=convertirLetraANumero(auxili);
                     }
                     taH[aux1][aux2]="c";
                     taH[aux1][aux2+1]="c";
@@ -418,11 +425,12 @@ public class Tableiro {
     public void colocarporth(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un portavions(5 casillas).");
-        direccion=Integer.parseInt(JOptionPane.showInputDialog("horizontal(1) ou vertical(2)?"));
+        direccion=Integer.parseInt(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
         if(direccion==2){
                     while((aux1+4)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)||ocupado(taH,aux1+3,aux2)||ocupado(taH,aux1+4,aux2)){
-                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
-                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
+                        aux1=Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
+                        String auxili=Entradaspred.pedirString("Letra de columna.");
+                            aux2=convertirLetraANumero(auxili);
                     }
                     taH[aux1][aux2]="p";
                     taH[aux1+1][aux2]="p";
@@ -431,8 +439,9 @@ public class Tableiro {
                     taH[aux1+4][aux2]="p";
                 }else{
                     while((aux1)>=tamañotab||(aux2+4)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)||ocupado(taH,aux1,aux2+2)||ocupado(taH,aux1,aux2+3)||ocupado(taH,aux1,aux2+4)){
-                        aux1=Integer.parseInt(JOptionPane.showInputDialog("Numero de fila?"));
-                        aux2=Integer.parseInt(JOptionPane.showInputDialog("Numero de columna?"));
+                        aux1=Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
+                        String auxili=Entradaspred.pedirString("Letra de columna.");
+                            aux2=convertirLetraANumero(auxili);
                     }
                     taH[aux1][aux2]="p";
                     taH[aux1][aux2+1]="p";
@@ -556,8 +565,8 @@ public class Tableiro {
     }
 
     private int[] insertarCordenadasHumano (JOptionPane avisosXogar){
-        int n=Integer.parseInt(avisosXogar.showInputDialog("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
-        String l=avisosXogar.showInputDialog("Coordenadas de disparo\nIndique a direccion (letras minusculas).");
+        int n=Integer.parseInt(Entradaspred.pedirString("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
+        String l=Entradaspred.pedirString("Coordenadas de disparo\nIndique a direccion (letras minusculas).");
         int le = convertirLetraANumero(l);
         int [] resultado = {n, le};
         return resultado;
