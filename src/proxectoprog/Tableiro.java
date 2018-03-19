@@ -67,7 +67,8 @@ public class Tableiro {
             setAcertofin(3);
             break;
             case "Grande":
-            setTamañotab(13);
+            setTamañotab(12);
+            setAcertofin(3);
             break;
             default:;
         }
@@ -217,34 +218,31 @@ public class Tableiro {
         }
     }
     public void montarTab(){
-        
         switch(tamaño){
-            case"pequeno":
+            case"Pequeno":
                 colocardesth();
                 colocarsubh();
                 colocardestm();
                 colocarsubm();
-                
 
             break;
-            case"medio":
+            case"Medio":
                 colocardesth();
                 colocardesth();
                 colocarsubm();
                 colocarsubm();
                 colocarcruzm();
                 colocarportm();
-                
                 
             break;
-            case"grande":
+            case"Grande":
                 colocardestm();
                 colocardestm();
                 colocarsubm();
                 colocarsubm();
                 colocarcruzm();
                 colocarcruzm();
-                colocarportm();
+                colocarporth();
             break;
         }
     }
@@ -339,7 +337,7 @@ public class Tableiro {
     }
     public void colocardesth(){
         while(direccion!=1&&direccion!=2){
-            JOptionPane.showMessageDialog(null,"Vai a colocar un destructor.");
+            JOptionPane.showMessageDialog(null,"Vai a colocar un destructor(2 casillas).");
         direccion=Integer.parseInt(JOptionPane.showInputDialog("horizontal(1) ou vertical(2)?"));
         if(direccion==2){
                         while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)){
@@ -363,7 +361,7 @@ public class Tableiro {
     }
     public void colocarsubh(){
         while(direccion!=1&&direccion!=2){
-            JOptionPane.showMessageDialog(null,"Vai a colocar un submarino.");
+            JOptionPane.showMessageDialog(null,"Vai a colocar un submarino(3 casillas).");
         direccion=Integer.parseInt(JOptionPane.showInputDialog("horizontal(1) ou vertical(2)?"));
         if(direccion==2){
                     while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)){
@@ -390,7 +388,7 @@ public class Tableiro {
     }
     public void colocarcruzh(){
         while(direccion!=1&&direccion!=2){
-            JOptionPane.showMessageDialog(null,"Vai a colocar un cruceiro.");
+            JOptionPane.showMessageDialog(null,"Vai a colocar un cruceiro(4 casillas).");
             direccion=Integer.parseInt(JOptionPane.showInputDialog("Dirección:\nJHorizontal(1) ou vertical(2)?"));
         if(direccion==2){
                     while((aux1+3)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)||ocupado(taH,aux1+3,aux2)){
@@ -419,7 +417,7 @@ public class Tableiro {
     }
     public void colocarporth(){
         while(direccion!=1&&direccion!=2){
-            JOptionPane.showMessageDialog(null,"Vai a colocar un portavions.");
+            JOptionPane.showMessageDialog(null,"Vai a colocar un portavions(5 casillas).");
         direccion=Integer.parseInt(JOptionPane.showInputDialog("horizontal(1) ou vertical(2)?"));
         if(direccion==2){
                     while((aux1+4)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)||ocupado(taH,aux1+3,aux2)||ocupado(taH,aux1+4,aux2)){
@@ -459,11 +457,11 @@ public class Tableiro {
         return puntos;
 }
     public Boolean xogar(JOptionPane avisosxogar){
-        
-        while(acertoH<acertofin||acertoM<acertofin){
+
+        while(acertoH<acertofin&&acertoM<acertofin){
+            visualizartabH();
+            visualizartabM();
             String l="x";
-            acertoH=0;
-            acertoM=0;
             System.out.println(" acertoH "+acertoH+" acertoM "+acertoM+" acertofin "+acertofin);
             int [] cordenadas = insertarCordenadasHumano(avisosxogar);
             while (!comprobarCordenadasHumano(avisosxogar,cordenadas)){
@@ -483,11 +481,11 @@ public class Tableiro {
              }
              if(taH[aux1][aux2].equals("d")||taH[aux1][aux2].equals("s")||taH[aux1][aux2].equals("c")||taH[aux1][aux2].equals("p")){
                 taH[aux1][aux2]="X";
-                avisosxogar.showMessageDialog(null,"Fuego enemigo entrante... Impacto!!!");
+                avisosxogar.showMessageDialog(null,"Fogo enemigo entrante... Impacto!!!");
                 acertoM++;
             }else{
                 taH[aux1][aux2]="A";
-                avisosxogar.showMessageDialog(null,"Fuego enemigo entrante... Agua!!!");
+                avisosxogar.showMessageDialog(null,"Fogo enemigo entrante... Auga!!!");
             }
 
             visualizartiroH();
@@ -574,10 +572,10 @@ public class Tableiro {
 
     private Boolean comprobarCordenadasHumano (JOptionPane avisosXogar, int [] cordenadas) {
         if((cordenadas[0]-1)<0||cordenadas[0]>getTamañotab()){
-            avisosXogar.showMessageDialog(null,"Error en la elevación, introduzca otras coordenadas(\""+cordenadas[0]+"\","+cordenadas[1]+")");
+            avisosXogar.showMessageDialog(null,"Erro na elevación, introduza outras coordenadas(\""+cordenadas[0]+"\","+cordenadas[1]+")");
             return false;
         } else if(cordenadas[1]<0||cordenadas[1]>getTamañotab()){
-            avisosXogar.showMessageDialog(null,"Error en la dirección, introduzca otras coordenadas("+cordenadas[0]+",\""+cordenadas[1]+"\")");
+            avisosXogar.showMessageDialog(null,"Erro na dirección, introduza outras coordenadas("+cordenadas[0]+",\""+cordenadas[1]+"\")");
             return false;
         }
         return true;

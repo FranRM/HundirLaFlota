@@ -16,23 +16,33 @@ public class ProxectoProg {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        boolean repetir=true;
+        while(repetir){
+        String username=JOptionPane.showInputDialog("Benvido a Batalla naval, indique o seu usuario.");
         String auxiliarTamaño;
         do{
         auxiliarTamaño=JOptionPane.showInputDialog("Elixa o tamaño do mapa.\n-Pequeno\n-Medio\n-Grande");
-        }
-        while(!auxiliarTamaño.equals("Pequeno")||!auxiliarTamaño.equals("Medio")||!auxiliarTamaño.equals("Grande"));
+        }while(!auxiliarTamaño.equalsIgnoreCase("Pequeno")&&!auxiliarTamaño.equalsIgnoreCase("Medio")&&!auxiliarTamaño.equalsIgnoreCase("Grande"));
         Tableiro tableiro=new Tableiro(auxiliarTamaño);
-        //tableiro.visualizartabH();
-        //tableiro.visualizartabM();
         InterfazFlota ventanaXogo = new InterfazFlota(tableiro);
         ventanaXogo.setVisible(true);
+        ventanaXogo.acotarMapa(tableiro);
         while (tableiro.xogar(new JOptionPane())){
             ventanaXogo.refrescarTablas(tableiro);
-
         }
-        //finalizamos
-
-
+        JOptionPane.showMessageDialog(null, "Fin do xogo");
+        ventanaXogo.setVisible(false);
+        String auxiliar=JOptionPane.showInputDialog("Desexa volver a xogar?\n      Y/N");
+        switch(auxiliar){
+            case"Y":
+                repetir=true;
+                break;
+            default:
+                repetir=false;
+        }
+        
+    }
+        JOptionPane.showMessageDialog(null, "Ata a proxima.");
 
         
 //        Puntuacion p1=new Puntuacion();
