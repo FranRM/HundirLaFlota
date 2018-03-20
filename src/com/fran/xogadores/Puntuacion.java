@@ -53,17 +53,17 @@ public class Puntuacion {
     }
 
 public void guardarFichero(){
+    archivo = new File("puntuacionFich.txt");
      try{
-            archivo = new File("puntuacionFich.txt");
             pw = new PrintWriter(archivo);
-
             for (Puntuacion contador:score){
-                pw.println(contador.username+","+contador.puntuacion);
+                pw.println(contador.username+","+contador.puntuacion+",");
             }
-
         }catch (FileNotFoundException fnfe1){
-                pw.close();
-        } 
+                System.out.println("Error: "+fnfe1.getMessage());
+        } finally{
+        pw.close();
+     }
     }
 
 public void leerFicheiro(){
@@ -80,12 +80,12 @@ public void leerFicheiro(){
        sc.close();
       }
    }
-public String vertablascore(){
-    String salida="*****Score*****";
+public void vertablascore(){
+    String salida="*****Score*****\n";
     for(Puntuacion c:score){
-        salida="\n"+salida+c.username+"-->"+c.puntuacion;
+        salida=salida+c.username+"-->"+c.puntuacion+"\n";
     }
-    return salida;
+    JOptionPane.showMessageDialog(null,salida );
 }
     public void ordear(){
         score.sort(c1);
