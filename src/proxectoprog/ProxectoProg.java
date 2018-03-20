@@ -18,10 +18,10 @@ public class ProxectoProg {
      */
 
     public static void main(String[] args) {
-        Puntuacion punt=new Puntuacion();
+        Puntuacion obx=new Puntuacion();
         boolean repetir=true;
         while(repetir){
-        punt.setUsername(Entradaspred.pedirString("Benvido a Batalla naval, indique o seu usuario."));
+        obx.setUsername(Entradaspred.pedirString("Benvido a Batalla naval, indique o seu usuario."));
         String auxiliarTamaño;
         do{
         auxiliarTamaño=Entradaspred.pedirString("Elixa o tamaño do mapa.\n-Pequeno\n-Medio\n-Grande");
@@ -32,11 +32,12 @@ public class ProxectoProg {
         ventanaXogo.acotarMapa(tableiro);
         while (tableiro.xogar(new JOptionPane())){
             ventanaXogo.refrescarTablas(tableiro);
-            punt.sumPuntuacion();
+            obx.sumPuntuacion();
+            obx.leerFicheiro();
         }
         JOptionPane.showMessageDialog(null, "Fin do xogo");
-        JOptionPane.showMessageDialog(null,"Puntuacion Final: "+punt.getPuntuacion());
-        punt.guardarFichero();
+        JOptionPane.showMessageDialog(null,"Puntuacion Final: "+obx.getPuntuacion());
+        obx.guardarFichero();
         ventanaXogo.setVisible(false);
         String auxiliar=Entradaspred.pedirString("Desexa volver a xogar?\n      Y/N");
         switch(auxiliar){

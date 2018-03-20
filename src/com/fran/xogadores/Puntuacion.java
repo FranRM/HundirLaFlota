@@ -1,12 +1,19 @@
 
 package com.fran.xogadores;
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 import proxectoprog.Tableiro;
 
 public class Puntuacion {
-     FileWriter fichero = null;
-        PrintWriter pw = null;
+    File archivo=null;
+    FileWriter fichero = null;
+    PrintWriter pw = null;
+    FileReader fr = null;
+    BufferedReader br = null;
     private String username;
 
     public String getUsername() {
@@ -43,17 +50,41 @@ public void guardarFichero(){
             for (int i = 0; i < 1; i++)
                 pw.println(username+": "+puntuacion+" Puntos");
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
            try {
-           // Nuevamente aprovechamos el finally para 
-           // asegurarnos que se cierra el fichero.
            if (null != fichero)
               fichero.close();
-           } catch (Exception e2) {
+           } catch (IOException e2) {
               e2.printStackTrace();
            }
         }
     }
+public void leerFicheiro(){
+    try{
+        
+        Scanner sc;
+    archivo = new File ("puntuacionFich.txt");
+         sc= new Scanner(archivo);   
+         
+         while(sc.hasNext()){
+           JOptionPane.showMessageDialog(null,sc.nextLine());
+         }
+    
+      }catch(Exception e){
+         e.printStackTrace();
+      }finally{
+        
+         try{                    
+            if( null != fr ){   
+               fr.close();     
+            }                  
+         }catch (IOException e2){ 
+            e2.printStackTrace();
+         }
+      }
+   }
+
 }
+

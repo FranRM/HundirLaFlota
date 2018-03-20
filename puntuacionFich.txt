@@ -1,3 +1,5 @@
-Luis: 20 Puntos
-LL: 10 Puntos
 Fran: 30 Puntos
+Luis: 20 Puntos
+P1: 20 Puntos
+Fr: 10 Puntos
+LF: 10 Puntos
