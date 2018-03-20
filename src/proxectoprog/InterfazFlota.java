@@ -83,15 +83,15 @@ public class InterfazFlota extends javax.swing.JFrame {
         TablaTiro.setShowVerticalLines(true);
     }
     public void acotarMapa(Tableiro tableiro){
-        if(tableiro.getTamañotab()!=13){
-       for(int i=0;i<13;i++){
+        if(tableiro.getTamañotab()!=12){
+       for(int i=0;i<12;i++){
             for (int j = p; j < 12; j++) {
                 TablaTiro.setValueAt("W", i, j);
                 TabHumano.setValueAt("W", i, j);
             }
         }
     
-        for(int i=p;i<13;i++){
+        for(int i=p;i<12;i++){
             for (int j = 0; j < p; j++) {
                 TablaTiro.setValueAt("W", i, j);
                 TabHumano.setValueAt("W", i, j);
