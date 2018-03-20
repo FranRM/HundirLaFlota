@@ -14,9 +14,9 @@ import javax.swing.JOptionPane;
 public class Tableiro {
     Barco b1=new Barco();
     private String tamaño;
-    private int tamañotab,acertoH,acertoM,acertofin,aux1=15,aux2=15;
+    public static int tamañotab,acertoH,acertoM,acertofin,aux1=15,aux2=15;
     private String [][] taH;
-
+    private int puntuacion=0;
     public static String[][] taM,tiroH;
     int direccion;
     public Tableiro(String tamaño) {
@@ -447,17 +447,7 @@ public class Tableiro {
         }
         direccion=3;  
     }
-    public int puntuacion(){
-        int puntos=0;
-        for(int i=0;i<getTamañotab();i++){
-           for(int j=0;j<getTamañotab();j++){
-               if(tiroH[i][j].equals("X")){
-               puntos=puntos+10;
-               }
-           } 
-        }
-        return puntos;
-}
+
     public Boolean xogar(JOptionPane avisosxogar){
         
         while(acertoH<acertofin||acertoM<acertofin){
