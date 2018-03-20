@@ -6,8 +6,6 @@
 package proxectoprog;
 import javax.swing.JOptionPane;
 import com.fran.metodos.Entradaspred;
-
-
 /**
  *
  * @author femio23
@@ -22,39 +20,27 @@ public class Tableiro {
     public Tableiro(String tamaño) {
         setTamaño(tamaño);
     }
-
     public String[][] getTaH() {
         return taH;
     }
-
     public String getTamaño() {
         return tamaño;
     }
-
     public void setTamaño(String tamaño) {
         this.tamaño = tamaño;
         modoxogo();
     }
-
     public int getTamañotab() {
         return tamañotab;
     }
-
     public void setTamañotab(int tamañotab) {
         this.tamañotab = tamañotab;
-        
     }
     public int getAcertofin() {
         return acertofin;
     }
-
     public void setAcertofin(int acertofin) {
         this.acertofin = acertofin;
-    }
-    
-    @Override
-    public String toString() {
-        return "Xogadores{" + "tama\u00f1o=" + tamaño+ '}';
     }
     private void modoxogo(){
         switch(tamaño){
@@ -99,43 +85,6 @@ public class Tableiro {
             }
         }
     }
-    public void visualizartabH(){
-        switch(tamaño){
-            case"pequeno":
-                System.out.println("Tableiro do xogador");
-                System.out.println("| |a|b|c|d|e|f|");
-                for(int i=0;i<tamañotab;i++){
-                    System.out.print("|"+(i+1)+"|");
-                    for(int j=0;j<tamañotab;j++){
-                        System.out.print(taH[i][j]+"|");
-                    }
-                    System.out.println();
-                }
-            break;
-            case"medio":
-                System.out.println("Tableiro do xogador");
-                System.out.println("| |a|b|c|d|e|f|g|h|i|j|");
-                for(int i=0;i<tamañotab;i++){
-                    System.out.print("|"+(i+1)+"|");
-                    for(int j=0;j<tamañotab;j++){
-                        System.out.print(taH[i][j]+"|");
-                    }
-                    System.out.println();
-                }
-            break;
-            case"grande":
-                System.out.println("Tableiro do xogador");
-                System.out.println("| |a|b|c|d|e|f|g|h|i|j|k|l|m|");
-                for(int i=0;i<tamañotab;i++){
-                    System.out.print("|"+(i+1)+"|");
-                    for(int j=0;j<tamañotab;j++){
-                        System.out.print(taH[i][j]+"|");
-                    }
-                    System.out.println();
-                }
-                break;
-        }
-    }
     public void visualizartabM(){
         switch(tamaño){
             case"pequeno":
@@ -173,43 +122,6 @@ public class Tableiro {
                 break;
         }
     }
-    public void visualizartiroH(){
-        switch(tamaño){
-            case"pequeno":
-                System.out.println("Tableiro da máquina");
-                System.out.println("| |a|b|c|d|e|f|");
-                for(int i=0;i<tamañotab;i++){
-                    System.out.print("|"+(i+1)+"|");
-                    for(int j=0;j<tamañotab;j++){
-                        System.out.print(tiroH[i][j]+"|");
-                    }
-                    System.out.println();
-                }
-            break;
-            case"medio":
-                System.out.println("Tableiro da máquina");
-                System.out.println("| |a|b|c|d|e|f|g|h|i|j|");
-                for(int i=0;i<tamañotab;i++){
-                    System.out.print("|"+(i+1)+"|");
-                    for(int j=0;j<tamañotab;j++){
-                        System.out.print(tiroH[i][j]+"|");
-                    }
-                    System.out.println();
-                }
-            break;
-            case"grande":
-                System.out.println("Tableiro da máquina");
-                System.out.println("| |a|b|c|d|e|f|g|h|i|j|k|l|m|");
-                for(int i=0;i<tamañotab;i++){
-                    System.out.print("|"+(i+1)+"|");
-                    for(int j=0;j<tamañotab;j++){
-                        System.out.print(tiroH[i][j]+"|");
-                    }
-                    System.out.println();
-                }
-                break;
-        }
-    }
     public boolean ocupado(String[][] tab,int a, int b){
         if(tab[a][b].equals(" ")){
             return false;
@@ -232,12 +144,10 @@ public class Tableiro {
 //                colocarcruzh();
                 //colocarporth();
                 
-               
                 colocardestm();
                 colocarsubm();
                 colocarcruzm();
                 colocarportm();
-
                 
             break;
             case"Grande":
@@ -355,7 +265,6 @@ public class Tableiro {
                                 String auxili=Entradaspred.pedirString("Letra de columna.");
                                     aux2=convertirLetraANumero(auxili);
                             }
-
                                 taH[aux1][aux2]="d";
                                 taH[aux1+1][aux2]="d";
                             }else{
@@ -364,7 +273,6 @@ public class Tableiro {
                                     String auxili=Entradaspred.pedirString("Letra de columna.");
                                     aux2=convertirLetraANumero(auxili);
                                 }
-             
                                 taH[aux1][aux2]="d";
                                 taH[aux1][aux2+1]="d";
                             }System.out.println("Barco colocado.");
@@ -372,12 +280,16 @@ public class Tableiro {
                             aux2=15;
                         }
                 direccion=3;
-
     }
     public void colocarsubh(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un submarino(3 casillas).");
-        direccion=convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
+        try{
+                direccion=convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
+            }catch(NullPointerException npe1){
+                 JOptionPane.showMessageDialog(null,"Erro, colocase en horizontal por defecto.");
+                 direccion=1;
+            }
         if(direccion==2){
                     while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)){
                         aux1=(-1)+Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
@@ -399,14 +311,18 @@ public class Tableiro {
                 }System.out.println("Barco colocado.");
                 aux1=15;
                     aux2=15;
-        
         }
         direccion=3;  
     }
     public void colocarcruzh(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un cruceiro(4 casillas).");
-            direccion=convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
+            try{
+                direccion=convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
+            }catch(NullPointerException npe1){
+                 JOptionPane.showMessageDialog(null,"Erro, colocase en horizontal por defecto.");
+                 direccion=1;
+            }
         if(direccion==2){
                     while((aux1+3)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)||ocupado(taH,aux1+3,aux2)){
                         aux1=(-1)+Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
@@ -430,14 +346,18 @@ public class Tableiro {
                 }System.out.println("Barco colocado.");
                 aux1=15;
                     aux2=15;
-               
         }
         direccion=3;  
     }
     public void colocarporth(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un portavions(5 casillas).");
-        direccion=convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
+        try{
+                direccion=convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
+            }catch(NullPointerException npe1){
+                 JOptionPane.showMessageDialog(null,"Erro, colocase en horizontal por defecto.");
+                 direccion=1;
+            }
         if(direccion==2){
                     while((aux1+4)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)||ocupado(taH,aux1+2,aux2)||ocupado(taH,aux1+3,aux2)||ocupado(taH,aux1+4,aux2)){
                         aux1=(-1)+Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
@@ -466,12 +386,8 @@ public class Tableiro {
         }
         direccion=3;  
     }
-
     public Boolean xogar(JOptionPane avisosxogar){
-
         while(acertoH<acertofin&&acertoM<acertofin){
-            visualizartabH();
-            visualizartabM();
             String l="x";
             System.out.println(" acertoH "+acertoH+" acertoM "+acertoM+" acertofin "+acertofin);
             int [] cordenadas = insertarCordenadasHumano(avisosxogar);
@@ -479,7 +395,6 @@ public class Tableiro {
                 cordenadas = insertarCordenadasHumano(avisosxogar);
             }
             comprobarDisparoHumano(cordenadas[0], cordenadas[1]);
-            
                 aux1=15;
                 aux2=15;
             while( aux1>=tamañotab || aux2>=tamañotab){
@@ -502,47 +417,46 @@ public class Tableiro {
         }
         return false;
     }
-
     private int convertirLetraANumero(String caracter) {
         int numero;
         switch(caracter){
-            case "a":
+            case "A":
                 numero=0;
                 break;
-            case "b":
+            case "B":
                 numero=1;
                 break;
-            case "c":
+            case "C":
                 numero=2;
                 break;
-            case "d":
+            case "D":
                 numero=3;
                 break;
-            case "e":
+            case "E":
                 numero=4;
                 break;
-            case "f":
+            case "F":
                 numero=5;
                 break;
-            case "g":
+            case "G":
                 numero=6;
                 break;
-            case "h":
+            case "H":
                 numero=7;
                 break;
-            case "i":
+            case "I":
                 numero=8;
                 break;
-            case "j":
+            case "J":
                 numero=9;
                 break;
-            case "k":
+            case "K":
                 numero=10;
                 break;
-            case "l":
+            case "L":
                 numero=11;
                 break;
-            case "m":
+            case "M":
                 numero=12;
                 break;
             default:
@@ -562,7 +476,6 @@ public class Tableiro {
         }
         return 3;
     }
-
     private void comprobarDisparoHumano(int elevacion, int direccion) {
         if(taM[elevacion-1][direccion].equals("d")|| taM[elevacion-1][direccion].equals("s")|| taM[elevacion-1][direccion].equals("c")|| taM[elevacion-1][direccion].equals("p")){
             tiroH[elevacion-1][direccion]="X";
@@ -573,22 +486,19 @@ public class Tableiro {
             JOptionPane.showMessageDialog(null,"Auga");
         }
     }
-
     private int[] insertarCordenadasHumano (JOptionPane avisosXogar){
         int n=Integer.parseInt(Entradaspred.pedirString("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
-        String l=Entradaspred.pedirString("Coordenadas de disparo\nIndique a direccion (letras minusculas).");
+        String l=Entradaspred.pedirString("Coordenadas de disparo\nIndique a direccion (letras maiusculas).");
         int le = convertirLetraANumero(l);
         int [] resultado = {n, le};
         return resultado;
     }
-
     private int[] insertarCordenadasMaquina (){
         aux1=(int)(Math.random()*tamañotab);
         aux2=(int)(Math.random()*tamañotab);
         int [] resultado = {aux1, aux2};
         return resultado;
     }
-
     private Boolean comprobarCordenadasHumano (JOptionPane avisosXogar, int [] cordenadas) {
         if((cordenadas[0]-1)<0||cordenadas[0]>getTamañotab()){
             avisosXogar.showMessageDialog(null,"Erro na elevación, introduza outras coordenadas(\""+cordenadas[0]+"\","+cordenadas[1]+")");
@@ -599,6 +509,4 @@ public class Tableiro {
         }
         return true;
     }
-
-    
 }
