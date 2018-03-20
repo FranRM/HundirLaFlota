@@ -45,7 +45,7 @@ public class ProxectoProg {
         
     }
         JOptionPane.showMessageDialog(null, "Ata a proxima.");
-
+//Hola
         
 //        Puntuacion p1=new Puntuacion();
 //        Xogadores x1=new Xogadores();
