@@ -34,7 +34,7 @@ public class ProxectoProg {
             ventanaXogo.refrescarTablas(tableiro);
             tableiro.visualizartabM();
         }
-        punt.sumPuntuacion();
+        punt.sumPuntuacion(tableiro);
         JOptionPane.showMessageDialog(null, "Fin do xogo.\nA sua puntuación: "+punt.getPuntuacion());
         punt.ordear();
         punt.vertablascore();

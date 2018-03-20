@@ -10,38 +10,88 @@ import com.fran.metodos.Entradaspred;
  *
  * @author femio23
  */
+
 public class Tableiro {
     private String tamaño;
-    public static int tamañotab,acertoH,acertoM,acertofin,aux1=15,aux2=15;
+    private static int tamañotab,acertoH,acertoM,acertofin,aux1=15,aux2=15;
     private String [][] taH;
     private int puntuacion=0;
-    public static String[][] taM,tiroH;
+    private static String[][] taM,tiroH;
     int direccion;
+/**
+ * Constructor parametrico da clase taboleiro.
+ * @param tamaño Valor a engadir.
+ */
     public Tableiro(String tamaño) {
         setTamaño(tamaño);
     }
+    /**
+     * Getter do array TableiroHumano.
+     * @return Retorna dito tableiro.
+     */
     public String[][] getTaH() {
         return taH;
     }
+    /**
+     * Getter de Tamaño que é o string que garda o nome.
+     * @return Devolve dito string.
+     */
     public String getTamaño() {
         return tamaño;
     }
+    /**
+     * Setter de Tamaño.
+     * @param tamaño Valor que se desexa engadir, o cal sestará restrinxido no futuro,
+     */
     public void setTamaño(String tamaño) {
         this.tamaño = tamaño;
         modoxogo();
     }
+    /**
+     * Getter de TamañoTab, que é un int que garda o tamaño de ancho e alto da matriz.
+     * @return Devolve dito valor.
+     */
     public int getTamañotab() {
         return tamañotab;
     }
+    /**
+     * Setter de TamañoTab, que é un int que garda o tamaño de ancho e alto da matriz.
+     * @param tamañotab Valor numérico a inserir.
+     */
     public void setTamañotab(int tamañotab) {
         this.tamañotab = tamañotab;
     }
+    /**
+     * Getter da variable de AcertoFin.
+     * @return Retorna a variable limite de impactos maximos a os que se xoga.
+     */
     public int getAcertofin() {
         return acertofin;
     }
+    /**
+     * Setter de acertofin.
+     * @param acertofin Valor de acertos máximos ata o que se xogará
+     */
     public void setAcertofin(int acertofin) {
         this.acertofin = acertofin;
     }
+    /**
+     * Getter da taboa tiro humano.
+     * @return  Taboa en cuestion.
+     */
+    public String[][] getTiroH(){
+        return tiroH;
+    }
+    /**
+     * Getter de acertosHumano.
+     * @return Int en cuestion.
+     */
+    public int getAcertoH(){
+        return acertoH;
+    }
+    /**
+     * Método que, segundo o valor en Tamaño, parametriza o Tamaño das taboas e o numero de impactos a os que se xoga. 
+     */
     private void modoxogo(){
         switch(tamaño){
             case "Pequeno":
@@ -50,17 +100,23 @@ public class Tableiro {
             break;
             case "Medio":
             setTamañotab(10);
-            setAcertofin(3);
+            setAcertofin(14);
             break;
             case "Grande":
             setTamañotab(12);
-            setAcertofin(3);
+            setAcertofin(23);
             break;
-            default:;
+            default:
+            setTamañotab(6);
+            setAcertofin(2);
+            break;
         }
         crearTab();
         montarTab();
     }
+    /**
+     * Método que inicializa as tres taboas que utilizamos(tiroHumano, TaboaHumano e TaboaMáquina), segundo o tamaño anteriormente designado, e dando o valor "espacio" a cada posición.
+     */
     public void crearTab(){
         
         taH=new String[tamañotab][tamañotab];
@@ -85,6 +141,9 @@ public class Tableiro {
             }
         }
     }
+    /**
+     * Método utilizado para visualizar a taboa da maquina, evisualizar os seus barcos.
+     */
     public void visualizartabM(){
         switch(tamaño){
             case"pequeno":
@@ -122,6 +181,13 @@ public class Tableiro {
                 break;
         }
     }
+    /**
+     * Método que permite consultar, se unha posición en particular dunha taboa en particular , se esta ou non vacia, retornando o booleano correspondente.
+     * @param tab Taboa a consultar.
+     * @param a Posicion de fila.
+     * @param b Posicion de columna.
+     * @return Boolean que retorna true se esta ocupado, e viceversa.
+     */
     public boolean ocupado(String[][] tab,int a, int b){
         if(tab[a][b].equals(" ")){
             return false;
@@ -129,20 +195,24 @@ public class Tableiro {
         return true;
         }
     }
+    /**
+     * Metodo que define, en función do tamaño, os barcos a colocar.
+     */
     public void montarTab(){
         switch(tamaño){
             case"Pequeno":
                 colocardesth();
-                //colocarsubh();
+                colocarsubh();
                 colocardestm();
                 colocarsubm();
+                colocarportm();
 
             break;
             case"Medio":
+                colocardesth();
+                colocarsubh();
+                colocarcruzh();
                 colocarporth();
-//                colocarsubh();
-//                colocarcruzh();
-                //colocarporth();
                 
                 colocardestm();
                 colocarsubm();
@@ -157,10 +227,19 @@ public class Tableiro {
                 colocarsubm();
                 colocarcruzm();
                 colocarcruzm();
+
+                colocardesth();
+                colocardesth();
+                colocarsubh();
+                colocarsubh();
+                colocarcruzh();
                 colocarcruzh();
             break;
         }
     }
+    /**
+     * Metodo que coloca automaticamente un destructor no taboleiro da maquina.
+     */
     public void colocardestm(){
         if((Math.random())>=0.5){
                         while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1+1,aux2)){
@@ -180,6 +259,9 @@ public class Tableiro {
                     aux1=15;
                     aux2=15;
     }
+    /**
+     * Metodo que coloca automaticamente un submarino na taboa da maquina.
+     */
     public void colocarsubm(){
         if((Math.random())>=0.5){
                     while((aux1+2)>=tamañotab||(aux2)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1+1,aux2)||ocupado(taM,aux1+2,aux2)){
@@ -202,6 +284,9 @@ public class Tableiro {
                 aux2=15;
                 
     }
+    /**
+     * Método que coloca un cruceiro automaticamente  na taboa da maquina.
+     */
     public void colocarcruzm(){
         if((Math.random())>=0.5){
                     while((aux1+3)>=tamañotab||(aux2)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1+1,aux2)||ocupado(taM,aux1+2,aux2)||ocupado(taM,aux1+3,aux2)){
@@ -225,6 +310,9 @@ public class Tableiro {
                 aux1=15;
                 aux2=15;
     }
+    /**
+     * Método que coloca automáticamente un portaavions na taboa da maquina.
+     */
     public void colocarportm(){
         if((Math.random())>=0.5){
                     while((aux1+4)>=tamañotab||(aux2)>=tamañotab||ocupado(taM,aux1,aux2)||ocupado(taM,aux1+1,aux2)||ocupado(taM,aux1+2,aux2)||ocupado(taM,aux1+3,aux2)||ocupado(taM,aux1+4,aux2)){
@@ -250,6 +338,9 @@ public class Tableiro {
                 aux1=15;
                 aux2=15;
     }
+    /**
+     * Metodo que coloca un destructor, nas coordenadas dadas polo xogador, no seu tableiro.
+     */
     public void colocardesth(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un destructor(2 casillas).");
@@ -281,6 +372,9 @@ public class Tableiro {
                         }
                 direccion=3;
     }
+    /**
+     * Metodo que coloca un submarino, nas coordenadas dadas polo xogador, no seu tableiro.
+     */
     public void colocarsubh(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un submarino(3 casillas).");
@@ -314,6 +408,9 @@ public class Tableiro {
         }
         direccion=3;  
     }
+    /**
+     * Metodo que coloca un cruceiro, nas coordenadas dadas polo xogador, no seu tableiro.
+     */
     public void colocarcruzh(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un cruceiro(4 casillas).");
@@ -349,6 +446,9 @@ public class Tableiro {
         }
         direccion=3;  
     }
+    /**
+     * Metodo que coloca un portaavions, nas coordenadas dadas polo xogador, no seu tableiro.
+     */
     public void colocarporth(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un portavions(5 casillas).");
@@ -386,6 +486,11 @@ public class Tableiro {
         }
         direccion=3;  
     }
+    /**
+     * Metodo que realiza as funcións necesaria para xogar, tras ter colocados os barcos.
+     * @param avisosxogar JOptionPane particular.
+     * @return Booleano que permite repetir as cogadas ata que todolos impactos necesarios sexan realizados.
+     */
     public Boolean xogar(JOptionPane avisosxogar){
         while(acertoH<acertofin&&acertoM<acertofin){
             String l="x";
@@ -417,6 +522,11 @@ public class Tableiro {
         }
         return false;
     }
+    /**
+     * Método que permite convertir as letras que identifican a columna a numeros, para poder consultar na taboa correspondente.
+     * @param caracter Caracter a consultar, entre "a" e "m".
+     * @return Enteiro xa traducido.
+     */
     private int convertirLetraANumero(String caracter) {
         int numero;
         switch(caracter){
@@ -465,6 +575,11 @@ public class Tableiro {
         }
         return numero;
     }
+    /**
+     * Método que permite convertir as letras que indican a direccion a os números que permiten definila.
+     * @param s String a consultar.
+     * @return Int xa convertido
+     */
     public int convertirDireccion(String s){
         if(s.equals("H")){
             return 1;
@@ -476,6 +591,11 @@ public class Tableiro {
         }
         return 3;
     }
+    /**
+     * Método que permite disparar e  comprobar o resultado do disparo a o xogador.
+     * @param elevacion
+     * @param direccion 
+     */
     private void comprobarDisparoHumano(int elevacion, int direccion) {
         if(taM[elevacion-1][direccion].equals("d")|| taM[elevacion-1][direccion].equals("s")|| taM[elevacion-1][direccion].equals("c")|| taM[elevacion-1][direccion].equals("p")){
             tiroH[elevacion-1][direccion]="X";
@@ -486,6 +606,11 @@ public class Tableiro {
             JOptionPane.showMessageDialog(null,"Auga");
         }
     }
+    /**
+     * Método que permite introducir as coordenadas para o disparo do xogador.
+     * @param avisosXogar JoptionPane requerido.
+     * @return Retorna as coordenadas en forma de vector.
+     */
     private int[] insertarCordenadasHumano (JOptionPane avisosXogar){
         int n=Integer.parseInt(Entradaspred.pedirString("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
         String l=Entradaspred.pedirString("Coordenadas de disparo\nIndique a direccion (letras maiusculas).");
@@ -493,12 +618,22 @@ public class Tableiro {
         int [] resultado = {n, le};
         return resultado;
     }
+    /**
+     * Método que permite obter as coordenadas de disparo da máquina.
+     * @return Coordenadas de disparo en forma de vector.
+     */
     private int[] insertarCordenadasMaquina (){
         aux1=(int)(Math.random()*tamañotab);
         aux2=(int)(Math.random()*tamañotab);
         int [] resultado = {aux1, aux2};
         return resultado;
     }
+    /**
+     * Metodo que comproba a validez das coordenadas do disparo do xogador.
+     * @param avisosXogar JOptionPane requerido.
+     * @param cordenadas Vector coas coordenadas do disparo do xogador.
+     * @return 
+     */
     private Boolean comprobarCordenadasHumano (JOptionPane avisosXogar, int [] cordenadas) {
         if((cordenadas[0]-1)<0||cordenadas[0]>getTamañotab()){
             avisosXogar.showMessageDialog(null,"Erro na elevación, introduza outras coordenadas(\""+cordenadas[0]+"\","+cordenadas[1]+")");

@@ -21,9 +21,7 @@ public class InterfazFlota extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     String[][] copiataH,tirohum;
     int n,p;
-    /**
-     * Creates new form Interfaz
-     */
+
     public InterfazFlota(Tableiro tableiro) {
         
         initComponents();
@@ -37,7 +35,7 @@ public class InterfazFlota extends javax.swing.JFrame {
             }
         }
         
-        tirohum = Tableiro.tiroH;
+        tirohum = tableiro.getTiroH();
         p = tirohum.length;
         model.setRowCount(p);
         model.setColumnCount(p);
@@ -66,7 +64,7 @@ public class InterfazFlota extends javax.swing.JFrame {
             }
         }
         
-        tirohum = Tableiro.tiroH;
+        tirohum = tableiro.getTiroH();
         p = tirohum.length;
         model.setRowCount(p);
         model.setColumnCount(p);
