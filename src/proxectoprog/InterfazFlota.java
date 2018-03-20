@@ -5,8 +5,12 @@
  */
 package proxectoprog;
 
+<<<<<<< HEAD
+import com.fran.xogadores.Puntuacion;
+=======
 import java.util.HashSet;
 import java.util.Set;
+>>>>>>> c32c9bcfd7f46b2a8e51a8782719fa32bece9819
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,12 +24,14 @@ public class InterfazFlota extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     String[][] copiataH,tirohum;
     int n,p;
+    Puntuacion punt=new Puntuacion();
     /**
      * Creates new form Interfaz
      */
     public InterfazFlota(Tableiro tableiro) {
         initComponents();
         copiataH = tableiro.getTaH();
+        
         n = tableiro.getTamañotab();
         model.setRowCount(tableiro.getTamañotab());
         model.setColumnCount(tableiro.getTamañotab());
@@ -52,7 +58,10 @@ public class InterfazFlota extends javax.swing.JFrame {
         TablaTiro.setShowVerticalLines(true);
 
     }
-
+    public void leer(){
+        punt.sumPuntuacion();
+        
+    }
     public void refrescarTablas (Tableiro tableiro){
         copiataH = tableiro.getTaH();
         n = tableiro.getTamañotab();
@@ -116,7 +125,11 @@ public class InterfazFlota extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+<<<<<<< HEAD
+        jTextField1 = new javax.swing.JTextField();
+=======
         jLabel2 = new javax.swing.JLabel();
+>>>>>>> c32c9bcfd7f46b2a8e51a8782719fa32bece9819
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 102, 0));
@@ -211,11 +224,51 @@ public class InterfazFlota extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Flota Enemiga");
 
+        jLabel1.setText("Score:");
+
+        jTextField1.setText("Puntuacion");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 68, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66))
+=======
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -249,12 +302,17 @@ public class InterfazFlota extends javax.swing.JFrame {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45))
+>>>>>>> c32c9bcfd7f46b2a8e51a8782719fa32bece9819
         );
 
         getAccessibleContext().setAccessibleParent(this);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+       punt.getPuntuacion();
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,12 +355,16 @@ public class InterfazFlota extends javax.swing.JFrame {
     private static javax.swing.JTable TabHumano;
     private javax.swing.JTable TablaTiro;
     private javax.swing.JLabel jLabel1;
+<<<<<<< HEAD
+=======
     private javax.swing.JLabel jLabel2;
+>>>>>>> c32c9bcfd7f46b2a8e51a8782719fa32bece9819
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
