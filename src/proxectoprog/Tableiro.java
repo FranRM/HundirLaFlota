@@ -492,9 +492,6 @@ public class Tableiro {
                 taH[aux1][aux2]="A";
                 avisosxogar.showMessageDialog(null,"Fogo enemigo entrante... Auga!!!");
             }
-
-            visualizartiroH();
-            visualizartabH();
             return true;
         }
         return false;
