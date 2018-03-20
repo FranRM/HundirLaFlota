@@ -18,9 +18,10 @@ public class ProxectoProg {
      */
 
     public static void main(String[] args) {
+        Puntuacion punt=new Puntuacion();
         boolean repetir=true;
         while(repetir){
-        String username=Entradaspred.pedirString("Benvido a Batalla naval, indique o seu usuario.");
+        punt.setUsername(Entradaspred.pedirString("Benvido a Batalla naval, indique o seu usuario."));
         String auxiliarTamaño;
         do{
         auxiliarTamaño=Entradaspred.pedirString("Elixa o tamaño do mapa.\n-Pequeno\n-Medio\n-Grande");
@@ -31,8 +32,11 @@ public class ProxectoProg {
         ventanaXogo.acotarMapa(tableiro);
         while (tableiro.xogar(new JOptionPane())){
             ventanaXogo.refrescarTablas(tableiro);
+            punt.sumPuntuacion();
         }
         JOptionPane.showMessageDialog(null, "Fin do xogo");
+        JOptionPane.showMessageDialog(null,"Puntuacion Final: "+punt.getPuntuacion());
+        punt.guardarFichero();
         ventanaXogo.setVisible(false);
         String auxiliar=Entradaspred.pedirString("Desexa volver a xogar?\n      Y/N");
         switch(auxiliar){
@@ -45,13 +49,7 @@ public class ProxectoProg {
         
     }
         JOptionPane.showMessageDialog(null, "Ata a proxima.");
-//Hola
-        
-//        Puntuacion p1=new Puntuacion();
-//        Xogadores x1=new Xogadores();
-//        PuntuacionFich pf1=new PuntuacionFich();
-//        p1.addScore(x1);
-//        pf1.guardar(p1);
+
 
 
 

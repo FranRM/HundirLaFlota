@@ -5,6 +5,7 @@
  */
 package proxectoprog;
 
+import com.fran.xogadores.Puntuacion;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +25,7 @@ public class InterfazFlota extends javax.swing.JFrame {
      * Creates new form Interfaz
      */
     public InterfazFlota(Tableiro tableiro) {
+        
         initComponents();
         copiataH = tableiro.getTaH();
         n = tableiro.getTamañotab();
