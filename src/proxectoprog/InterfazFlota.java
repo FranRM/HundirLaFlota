@@ -5,7 +5,12 @@
  */
 package proxectoprog;
 
+<<<<<<< HEAD
 import com.fran.xogadores.Puntuacion;
+=======
+import java.util.HashSet;
+import java.util.Set;
+>>>>>>> c32c9bcfd7f46b2a8e51a8782719fa32bece9819
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -84,6 +89,23 @@ public class InterfazFlota extends javax.swing.JFrame {
         TablaTiro.setShowHorizontalLines(true);
         TablaTiro.setShowVerticalLines(true);
     }
+    public void acotarMapa(Tableiro tableiro){
+        if(tableiro.getTamañotab()!=13){
+       for(int i=0;i<13;i++){
+            for (int j = p; j < 12; j++) {
+                TablaTiro.setValueAt("W", i, j);
+                TabHumano.setValueAt("W", i, j);
+            }
+        }
+    
+        for(int i=p;i<13;i++){
+            for (int j = 0; j < p; j++) {
+                TablaTiro.setValueAt("W", i, j);
+                TabHumano.setValueAt("W", i, j);
+            }
+        }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,12 +125,16 @@ public class InterfazFlota extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+<<<<<<< HEAD
         jTextField1 = new javax.swing.JTextField();
+=======
+        jLabel2 = new javax.swing.JLabel();
+>>>>>>> c32c9bcfd7f46b2a8e51a8782719fa32bece9819
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 102, 0));
 
-        jTable2.setBackground(new java.awt.Color(0, 0, 0));
-        jTable2.setForeground(new java.awt.Color(255, 153, 0));
+        jTable2.setBackground(new java.awt.Color(153, 102, 0));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1"},
@@ -125,6 +151,7 @@ public class InterfazFlota extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        TabHumano.setBackground(new java.awt.Color(51, 204, 255));
         TabHumano.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -146,8 +173,10 @@ public class InterfazFlota extends javax.swing.JFrame {
             }
 
         ));
+        TabHumano.setGridColor(new java.awt.Color(102, 102, 0));
         jScrollPane1.setViewportView(TabHumano);
 
+        TablaTiro.setBackground(new java.awt.Color(51, 204, 255));
         TablaTiro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -170,8 +199,7 @@ public class InterfazFlota extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(TablaTiro);
 
-        jTable3.setBackground(new java.awt.Color(0, 0, 0));
-        jTable3.setForeground(new java.awt.Color(255, 153, 0));
+        jTable3.setBackground(new java.awt.Color(153, 102, 0));
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1"},
@@ -186,7 +214,15 @@ public class InterfazFlota extends javax.swing.JFrame {
                 " "
             }
         ));
+        jTable3.setColumnSelectionAllowed(true);
         jScrollPane4.setViewportView(jTable3);
+        jTable3.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Flota Propia");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Flota Enemiga");
 
         jLabel1.setText("Score:");
 
@@ -202,6 +238,7 @@ public class InterfazFlota extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -231,6 +268,41 @@ public class InterfazFlota extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66))
+=======
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(170, 170, 170)))
+                .addGap(31, 31, 31))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45))
+>>>>>>> c32c9bcfd7f46b2a8e51a8782719fa32bece9819
         );
 
         getAccessibleContext().setAccessibleParent(this);
@@ -283,6 +355,10 @@ public class InterfazFlota extends javax.swing.JFrame {
     private static javax.swing.JTable TabHumano;
     private javax.swing.JTable TablaTiro;
     private javax.swing.JLabel jLabel1;
+<<<<<<< HEAD
+=======
+    private javax.swing.JLabel jLabel2;
+>>>>>>> c32c9bcfd7f46b2a8e51a8782719fa32bece9819
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
