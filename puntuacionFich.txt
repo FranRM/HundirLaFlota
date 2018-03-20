@@ -1,3 +1,4 @@
 Luis: 20 Puntos
 LL: 10 Puntos
 Fran: 30 Puntos
+Fran: 20 Puntos

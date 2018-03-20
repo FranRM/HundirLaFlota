@@ -13,7 +13,6 @@ import com.fran.metodos.Entradaspred;
  * @author femio23
  */
 public class Tableiro {
-    Barco b1=new Barco();
     private String tamaño;
     public static int tamañotab,acertoH,acertoM,acertofin,aux1=15,aux2=15;
     private String [][] taH;
@@ -222,7 +221,7 @@ public class Tableiro {
         switch(tamaño){
             case"Pequeno":
                 colocardesth();
-                colocarsubh();
+                //colocarsubh();
                 colocardestm();
                 colocarsubm();
 
@@ -344,29 +343,36 @@ public class Tableiro {
     public void colocardesth(){
         while(direccion!=1&&direccion!=2){
             JOptionPane.showMessageDialog(null,"Vai a colocar un destructor(2 casillas).");
-        direccion=convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
-        if(direccion==2){
-                    while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)){
-                        aux1=(-1)+Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
-                        String auxili=Entradaspred.pedirString("Letra de columna.");
-                            aux2=convertirLetraANumero(auxili);
-                    }
-                       
-                        taH[aux1][aux2]="d";
-                        taH[aux1+1][aux2]="d";
-                    }else{
-                        while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)){
-                            aux1=(-1)+Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
-                            String auxili=Entradaspred.pedirString("Letra de columna.");
-                            aux2=convertirLetraANumero(auxili);
+            try{
+                direccion=convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
+            }catch(NullPointerException npe1){
+                 JOptionPane.showMessageDialog(null,"Erro, colocase en horizontal por defecto.");
+                 direccion=1;
+            }
+                if(direccion==2){
+                            while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)){
+                                aux1=(-1)+Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
+                                String auxili=Entradaspred.pedirString("Letra de columna.");
+                                    aux2=convertirLetraANumero(auxili);
+                            }
+
+                                taH[aux1][aux2]="d";
+                                taH[aux1+1][aux2]="d";
+                            }else{
+                                while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)){
+                                    aux1=(-1)+Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
+                                    String auxili=Entradaspred.pedirString("Letra de columna.");
+                                    aux2=convertirLetraANumero(auxili);
+                                }
+             
+                                taH[aux1][aux2]="d";
+                                taH[aux1][aux2+1]="d";
+                            }System.out.println("Barco colocado.");
+                            aux1=15;
+                            aux2=15;
                         }
-                        taH[aux1][aux2]="d";
-                        taH[aux1][aux2+1]="d";
-                    }System.out.println("Barco colocado.");
-                    aux1=15;
-                    aux2=15;
-                }
-        direccion=3;
+                direccion=3;
+
     }
     public void colocarsubh(){
         while(direccion!=1&&direccion!=2){

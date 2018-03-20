@@ -46,7 +46,6 @@ public class ProxectoProg {
             default:
                 repetir=false;
         }
-        
     }
         JOptionPane.showMessageDialog(null, "Ata a proxima.");
 
