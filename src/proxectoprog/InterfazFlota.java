@@ -23,6 +23,8 @@ public class InterfazFlota extends javax.swing.JFrame {
     int n,p;
 
     public InterfazFlota(Tableiro tableiro) {
+
+
         
         initComponents();
         copiataH = tableiro.getTaH();
