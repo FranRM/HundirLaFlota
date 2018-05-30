@@ -17,6 +17,7 @@ public class ProxectoProg {
      */
 
     public static void main(String[] args) {
+        //Pasar punutacion a sql.
         Puntuacion punt=new Puntuacion();
         boolean repetir=true;
         punt.leerFicheiro();
