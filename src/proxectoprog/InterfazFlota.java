@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author adm
  */
 public class InterfazFlota extends javax.swing.JFrame {
-
+//Mantemos os strings onde se gardan os valores, pero debemos sustituir os tableiros.
     Tableiro tableiro;
     String[][] tab;
     DefaultTableModel model = new DefaultTableModel();
