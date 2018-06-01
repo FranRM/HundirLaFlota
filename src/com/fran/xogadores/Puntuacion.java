@@ -1,13 +1,76 @@
 
 package com.fran.xogadores;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import proxectoprog.Tableiro;
 
 public class Puntuacion {
+    
+    Connection connect;
+    ResultSet rs ;
+    Statement s;
+    private String ruta="Puntuacion.db";
+    ArrayList <Xogador>lista=new ArrayList();
+ 
+    
+    public Puntuacion(){}
+    
+    
+    
+    public void conectar(){
+        try{
+        connect=DriverManager.getConnection("jdbc:sqlite:"+ruta);
+        if(connect!=null){
+            System.out.println("Base conectada.");
+        }
+        }catch(SQLException sqe1){
+            System.out.println("Erro:"+sqe1.getMessage());
+        }
+    }
+    public void insertar(){
+    try {
+            PreparedStatement st = connect.prepareStatement("insert into xogador (nome, puntos) values (?,?)");
+            st.setString(1, this.getUsername());
+            st.setInt(2, this.getPuntuacion());
+
+            st.execute();
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+}
+    public void pechar(){
+        try {
+            connect.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Puntuacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /**
+     * Constructor paramétrico para os obxetos.
+     * @param nome String.
+     * @param puntos Cantidade de puntos a inserir.
+     */
+    public Puntuacion( String nome, int puntos) {
+        username=nome;
+        puntuacion=puntos;
+    }
+
+    
+            //codigo vello
     File archivo=null;
     PrintWriter pw = null;
     private String username;
@@ -45,16 +108,7 @@ public class Puntuacion {
     /**
      * Constructor da clase.
      */
-    public Puntuacion(){}
-    /**
-     * Constructor paramétrico para os obxetos.
-     * @param nome String.
-     * @param puntos Cantidade de puntos a inserir.
-     */
-    public Puntuacion( String nome, int puntos) {
-        username=nome;
-        puntuacion=puntos;
-    }
+    
     /**
      * Getter de puntuación.
      * @return Retorna un integer coa puntuación.

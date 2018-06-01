@@ -4,7 +4,6 @@ import com.fran.metodos.Entradaspred;
 import com.fran.xogadores.*;
 import javax.swing.JOptionPane;
 
-
 /**
  *Fran y Luis
  * 
@@ -17,6 +16,8 @@ public class ProxectoProg {
      */
 
     public static void main(String[] args) {
+        
+        //Pasar puntacion a sql.
         Puntuacion punt=new Puntuacion();
         boolean repetir=true;
         punt.leerFicheiro();
@@ -40,6 +41,8 @@ public class ProxectoProg {
         punt.vertablascore();
         punt.guardarFichero();
         ventanaXogo.setVisible(false);
+        GUIPunt poi=new GUIPunt();
+        poi.setVisible(true);
         String auxiliar=Entradaspred.pedirString("Desexa volver a xogar?\n      Y/N");
         switch(auxiliar){
             case"Y":
