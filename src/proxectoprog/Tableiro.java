@@ -85,7 +85,11 @@ public class Tableiro {
     /**
      * Getter de acertosHumano.
      * @return Int en cuestion.
-     */
+     */            
+    
+    //codigo novo
+    
+    
     public int getAcertoH(){
         return acertoH;
     }
