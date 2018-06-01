@@ -9,48 +9,28 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author adm
  */
+
 public class  GUIPunt extends javax.swing.JFrame {
     
-DefaultTableModel modelo=new DefaultTableModel();
-Puntuacion pu=new Puntuacion();
-    /**
-     * Creates new form GUIPunt
-     */
-    public GUIPunt() {
-        initComponents();
-        modelo = (DefaultTableModel) jtPoints.getModel();
-        pu.conectar();
-        pu.insertar();
-        consultar();
-        pu.pechar();
+
+Puntuacion punte= new Puntuacion();
+
+    public GUIPunt() {        initComponents();
+        punte.modelo = (DefaultTableModel) jtPoints.getModel();
+       
+        punte.conectar();
+        punte.insertar();
+        punte.consultar();
+        punte.pechar();
+
     }
-public void consultar(){
-    
-     modelo.setColumnCount(0);
-      modelo.setRowCount(0);
-      
-        try {
-           
-            pu.s=pu.connect.createStatement();
-            pu.rs=pu.s.executeQuery("select * from xogador order by puntos desc;");
-            
-            modelo.addColumn("ID");
-            modelo.addColumn("Points");
-            
-            while(pu.rs.next()){
-                
-            pu.lista.add(new Xogador(pu.rs.getString("nome"),pu.rs.getInt("puntos")));
-           modelo.addRow(new Object[]{pu.rs.getString(1), pu.rs.getInt(2)});
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Puntuacion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

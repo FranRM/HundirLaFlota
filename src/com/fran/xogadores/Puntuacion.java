@@ -23,13 +23,14 @@ public class Puntuacion {
     Statement s;
     private String ruta="Puntuacion.db";
     ArrayList <Xogador>lista=new ArrayList();
- 
+DefaultTableModel modelo=new DefaultTableModel();
     
     public Puntuacion(){}
     
     
     
     public void conectar(){
+        
         try{
         connect=DriverManager.getConnection("jdbc:sqlite:"+ruta);
         if(connect!=null){
@@ -39,14 +40,39 @@ public class Puntuacion {
             System.out.println("Erro:"+sqe1.getMessage());
         }
     }
+    public void consultar(){
+    
+      modelo.setColumnCount(0);
+      modelo.setRowCount(0);
+      
+        try {
+           
+            s=connect.createStatement();
+            rs=s.executeQuery("select * from xogador order by puntos desc;");
+            
+            modelo.addColumn("ID");
+            modelo.addColumn("Points");
+            
+            while(rs.next()){
+                
+            modelo.addRow(new Object[]{rs.getString(1),rs.getInt(2)});
+//            lista.add(new Xogador(rs.getString(1),rs.getInt(2)));
+            
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Puntuacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void insertar(){
+
     try {
             PreparedStatement st = connect.prepareStatement("insert into xogador (nome, puntos) values (?,?)");
-            st.setString(1, this.getUsername());
-            st.setInt(2, this.getPuntuacion());
+            
+            st.setString(1, "");
+            st.setInt(2,2 );
 
             st.execute();
-
+            
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }

@@ -49,6 +49,7 @@ public class ProxectoProg {
                 repetir=true;
                 break;
             default:
+                poi.setVisible(false);
                 repetir=false;
         }
     }
