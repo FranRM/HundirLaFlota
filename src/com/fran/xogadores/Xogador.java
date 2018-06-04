@@ -10,10 +10,36 @@ package com.fran.xogadores;
  * @author femio23
  */
 public class Xogador {
-    String nome;
-    int puntos;
-    public Xogador(String n,int p){
-        this.nome=n;
-        this.puntos=p;
+private String ID;
+   private int Points;
+
+    public Xogador() {
     }
+
+    public Xogador(String ID, int Points) {
+        this.ID = ID;
+        this.Points = Points;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public int getPoints() {
+        return Points;
+    }
+
+    public void setPoints(int Points) {
+        this.Points = Points;
+    }
+
+    @Override
+    public String toString() {
+        return "Xogador{" + "ID=" + ID + ", Points=" + Points + '}';
+    }
+   
 }
