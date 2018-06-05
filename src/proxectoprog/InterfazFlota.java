@@ -6,8 +6,10 @@
 package proxectoprog;
 
 import com.fran.xogadores.Puntuacion;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,10 +23,29 @@ public class InterfazFlota extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     String[][] copiataH,tirohum;
     int n,p;
-
+ArrayList<JButton>listabot=new ArrayList();
     public InterfazFlota(Tableiro tableiro) {
+        int x=10,y=10;
+        for(int i = 1; i <= 36; i++){
+            JButton boton = new JButton();
 
+            switch(i){
+                case 1: break;
+                case 7: x += 57; y = 10; break;
+                case 13: x += 57; y = 10; break;
+                case 19: x += 57; y = 10; break;
+                case 25: x += 57; y = 10; break;
+                case 31: x += 57; y = 10; break;
+                
+                default: y += 35; break;
+            }
 
+            boton.setBounds(0 + x, 0 + y, 48, 25);
+            this.add(boton);
+            listabot.add(boton);
+        }
+        
+        
         
         initComponents();
         copiataH = tableiro.getTaH();
@@ -97,6 +118,20 @@ public class InterfazFlota extends javax.swing.JFrame {
                 TabHumano.setValueAt("W", i, j);
             }
         }
+        }
+    }
+    public void conversor1(Tableiro tableiro){
+        
+        copiataH = tableiro.getTaH();
+       
+             for (int i = 0; i < copiataH.length; i++) {
+            for (int j = 0; j < copiataH.length; j++) {
+                 for(int z=0;z>listabot.size();z++){
+               listabot.get(z).setText("ASD");
+
+            }
+        }
+            
         }
     }
 
@@ -222,11 +257,11 @@ public class InterfazFlota extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(201, 201, 201))
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(82, 82, 82)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(58, 58, 58)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,12 +274,13 @@ public class InterfazFlota extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 

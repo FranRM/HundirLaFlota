@@ -97,24 +97,9 @@ public class Tableiro {
      * Método que, segundo o valor en Tamaño, parametriza o Tamaño das taboas e o numero de impactos a os que se xoga. 
      */
     private void modoxogo(){
-        switch(tamaño){
-            case "Pequeno":
-            setTamañotab(6);
-            setAcertofin(2);
-            break;
-            case "Medio":
-            setTamañotab(10);
-            setAcertofin(14);
-            break;
-            case "Grande":
-            setTamañotab(12);
-            setAcertofin(23);
-            break;
-            default:
-            setTamañotab(6);
-            setAcertofin(2);
-            break;
-        }
+       
+         setTamañotab(6);
+         setAcertofin(2);
         crearTab();
         montarTab();
     }
@@ -149,8 +134,7 @@ public class Tableiro {
      * Método utilizado para visualizar a taboa da maquina, evisualizar os seus barcos.
      */
     public void visualizartabM(){
-        switch(tamaño){
-            case"pequeno":
+        
                 System.out.println("Tableiro da máquina");
                 System.out.println("| |a|b|c|d|e|f|");
                 for(int i=0;i<tamañotab;i++){
@@ -160,30 +144,6 @@ public class Tableiro {
                     }
                     System.out.println();
                 }
-            break;
-            case"medio":
-                System.out.println("Tableiro da máquina");
-                System.out.println("| |a|b|c|d|e|f|g|h|i|j|");
-                for(int i=0;i<tamañotab;i++){
-                    System.out.print("|"+(i+1)+"|");
-                    for(int j=0;j<tamañotab;j++){
-                        System.out.print(taM[i][j]+"|");
-                    }
-                    System.out.println();
-                }
-            break;
-            case"grande":
-                System.out.println("Tableiro da máquina");
-                System.out.println("| |a|b|c|d|e|f|g|h|i|j|k|l|m|");
-                for(int i=0;i<tamañotab;i++){
-                    System.out.print("|"+(i+1)+"|");
-                    for(int j=0;j<tamañotab;j++){
-                        System.out.print(taM[i][j]+"|");
-                    }
-                    System.out.println();
-                }
-                break;
-        }
     }
     /**
      * Método que permite consultar, se unha posición en particular dunha taboa en particular , se esta ou non vacia, retornando o booleano correspondente.
@@ -203,43 +163,12 @@ public class Tableiro {
      * Metodo que define, en función do tamaño, os barcos a colocar.
      */
     public void montarTab(){
-        switch(tamaño){
-            case"Pequeno":
+        
                 colocardesth();
                 colocarsubh();
                 colocardestm();
                 colocarsubm();
                 colocarportm();
-
-            break;
-            case"Medio":
-                colocardesth();
-                colocarsubh();
-                colocarcruzh();
-                colocarporth();
-                
-                colocardestm();
-                colocarsubm();
-                colocarcruzm();
-                colocarportm();
-                
-            break;
-            case"Grande":
-                colocardestm();
-                colocardestm();
-                colocarsubm();
-                colocarsubm();
-                colocarcruzm();
-                colocarcruzm();
-
-                colocardesth();
-                colocardesth();
-                colocarsubh();
-                colocarsubh();
-                colocarcruzh();
-                colocarcruzh();
-            break;
-        }
     }
     /**
      * Metodo que coloca automaticamente un destructor no taboleiro da maquina.

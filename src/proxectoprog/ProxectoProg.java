@@ -23,16 +23,15 @@ public class ProxectoProg {
         boolean repetir=true;
         while(repetir){
         punt.nome();
-        String auxiliarTamaño;
-        do{
-        auxiliarTamaño=Entradaspred.pedirString("Elixa o tamaño do mapa.\n-Pequeno\n-Medio\n-Grande");
-        }while(!auxiliarTamaño.equalsIgnoreCase("Pequeno")&&!auxiliarTamaño.equalsIgnoreCase("Medio")&&!auxiliarTamaño.equalsIgnoreCase("Grande"));
-        Tableiro tableiro=new Tableiro(auxiliarTamaño);
+        
+        Tableiro tableiro=new Tableiro("Pequeno");
         InterfazFlota ventanaXogo = new InterfazFlota(tableiro);
         ventanaXogo.setVisible(true);
         ventanaXogo.acotarMapa(tableiro);
+        tableiro.visualizartabM();
         while (tableiro.xogar(new JOptionPane())){
             ventanaXogo.refrescarTablas(tableiro);
+            ventanaXogo.conversor1(tableiro);
             tableiro.visualizartabM();
         }
         
