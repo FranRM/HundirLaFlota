@@ -16,13 +16,12 @@ public class ProxectoProg {
      */
 
     public static void main(String[] args) {
-        
         //Pasar puntacion a sql.
         Puntuacion punt=new Puntuacion();
+//        Entradaspred.pedirString("Benvido a Batalla naval, indique o seu usuario.")
         boolean repetir=true;
-        punt.leerFicheiro();
         while(repetir){
-        punt.setUsername(Entradaspred.pedirString("Benvido a Batalla naval, indique o seu usuario."));
+        punt.nome();
         String auxiliarTamaño;
         do{
         auxiliarTamaño=Entradaspred.pedirString("Elixa o tamaño do mapa.\n-Pequeno\n-Medio\n-Grande");
@@ -35,12 +34,10 @@ public class ProxectoProg {
             ventanaXogo.refrescarTablas(tableiro);
             tableiro.visualizartabM();
         }
-        punt.sumPuntuacion(tableiro);
-        JOptionPane.showMessageDialog(null, "Fin do xogo.\nA sua puntuación: "+punt.getPuntuacion());
-        punt.ordear();
-        punt.vertablascore();
-        punt.guardarFichero();
+        
+//        JOptionPane.showMessageDialog(null, "Fin do xogo.\nA sua puntuación: "+punt.());
         ventanaXogo.setVisible(false);
+        punt.insertar(tableiro);
         GUIPunt poi=new GUIPunt();
         poi.setVisible(true);
         String auxiliar=Entradaspred.pedirString("Desexa volver a xogar?\n      Y/N");

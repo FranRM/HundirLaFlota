@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import proxectoprog.*;
 
 /**
  *
@@ -17,18 +18,17 @@ import javax.swing.table.TableModel;
  */
 
 public class  GUIPunt extends javax.swing.JFrame {
-    
-
+   
 Puntuacion punte= new Puntuacion();
 
     public GUIPunt() {        initComponents();
         punte.modelo = (DefaultTableModel) jtPoints.getModel();
-       
         punte.conectar();
-        punte.insertar();
+        punte.cargarArray();
+
         punte.consultar();
         punte.pechar();
-
+        
     }
 
     /**
