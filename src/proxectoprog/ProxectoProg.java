@@ -16,6 +16,7 @@ public class ProxectoProg {
      */
 
     public static void main(String[] args) {
+        System.out.println("Hola");
         //Pasar puntacion a sql.
         Puntuacion punt=new Puntuacion();
 //        Entradaspred.pedirString("Benvido a Batalla naval, indique o seu usuario.")
