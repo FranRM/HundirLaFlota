@@ -5,24 +5,25 @@ import javax.swing.JOptionPane;
 
 
 public class Soundtrack {
-    AudioClip music;
-        String ruta1="/soundtrack/Musica.wav";
-        String rutamisil="/soundtrack/Misil.wav";
+   static  AudioClip  music;
+        static String ruta1="/soundtrack/Musica.wav";
+        static String rutamisil="/soundtrack/Misil.wav";
        
-        public void musica(){
+        public  void musica(){
 
                music=java.applet.Applet.newAudioClip(getClass().getResource(ruta1));
 
         }
-        public void comenzar(){
+        public static void comenzar(){
             music.play(); 
         }
+        
         public void misil(){
         music=java.applet.Applet.newAudioClip(getClass().getResource(rutamisil));
        music.play();    
         }
         
-        public void parar(){
+        public static void parar(){
 
             music.stop();
         

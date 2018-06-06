@@ -23,11 +23,12 @@ public class GUIUsuario extends javax.swing.JFrame {
    Xogador xog=new Xogador();
    Puntuacion puntu=new Puntuacion();
    int sumpunt=0;
-   Soundtrack sonido=new Soundtrack();
+    Soundtrack sonido=new Soundtrack();
     public GUIUsuario() {
         initComponents();
+        
        sonido.musica();
-       sonido.comenzar();
+       Soundtrack.comenzar();
        jButton2.setVisible(false);
     }
 
@@ -167,13 +168,13 @@ public class GUIUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        sonido.comenzar();
+        Soundtrack.comenzar();
         jButton2.setVisible(false);
         jButton3.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        sonido.parar();
+        Soundtrack.parar();
         jButton3.setVisible(false);
         jButton2.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
