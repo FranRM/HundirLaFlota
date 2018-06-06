@@ -138,7 +138,6 @@
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-<<<<<<< HEAD
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="jLabel16" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
@@ -152,25 +151,6 @@
                           <Component id="jLabel21" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="jLabel23" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="jLabel24" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-=======
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="jLabel25" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel26" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel22" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel21" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel23" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel24" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel15" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel16" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel18" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel17" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel19" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel20" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                          </Group>
->>>>>>> 9adf5f93aa6c99ebc7db8e152c8c4ea491c71e6b
                       </Group>
                   </Group>
               </Group>
