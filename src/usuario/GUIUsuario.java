@@ -28,7 +28,7 @@ public class GUIUsuario extends javax.swing.JFrame {
         initComponents();
        sonido.musica();
        sonido.comenzar();
-       
+       jButton2.setVisible(false);
     }
 
     public void insertar(Tableiro t){
@@ -59,6 +59,7 @@ public class GUIUsuario extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jtID = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -78,6 +79,14 @@ public class GUIUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/usuario/audiosi.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, -1, -1));
 
         jPanel3.setOpaque(false);
 
@@ -148,6 +157,12 @@ public class GUIUsuario extends javax.swing.JFrame {
       pr.generarP();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        sonido.comenzar();
+        jButton2.setVisible(false);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -186,6 +201,7 @@ public class GUIUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
