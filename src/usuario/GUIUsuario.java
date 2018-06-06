@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import proxectoprog.Tableiro;
 import com.fran.xogadores.Puntuacion;
 import proxectoprog.ProxectoProg;
+import soundtrack.Soundtrack;
 
 
 public class GUIUsuario extends javax.swing.JFrame {
@@ -22,10 +23,11 @@ public class GUIUsuario extends javax.swing.JFrame {
    Xogador xog=new Xogador();
    Puntuacion puntu=new Puntuacion();
    int sumpunt=0;
-   
+   Soundtrack sonido=new Soundtrack();
     public GUIUsuario() {
         initComponents();
-       
+       sonido.musica();
+       sonido.comenzar();
        
     }
 
