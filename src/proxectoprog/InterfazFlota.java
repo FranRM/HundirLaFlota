@@ -25,26 +25,8 @@ public class InterfazFlota extends javax.swing.JFrame {
     int n,p;
 ArrayList<JButton>listabot=new ArrayList();
     public InterfazFlota(Tableiro tableiro) {
-        int x=10,y=10;
-        for(int i = 1; i <= 36; i++){
-            JButton boton = new JButton();
-
-            switch(i){
-                case 1: break;
-                case 7: x += 57; y = 10; break;
-                case 13: x += 57; y = 10; break;
-                case 19: x += 57; y = 10; break;
-                case 25: x += 57; y = 10; break;
-                case 31: x += 57; y = 10; break;
-                
-                default: y += 35; break;
-            }
-
-            boton.setBounds(0 + x, 0 + y, 48, 25);
-            this.add(boton);
-            listabot.add(boton);
-        }
         
+        conversor1(tableiro);
         
         
         initComponents();
@@ -121,19 +103,39 @@ ArrayList<JButton>listabot=new ArrayList();
         }
     }
     public void conversor1(Tableiro tableiro){
-        
         copiataH = tableiro.getTaH();
-       
-             for (int i = 0; i < copiataH.length; i++) {
-            for (int j = 0; j < copiataH.length; j++) {
-                 for(int z=0;z>listabot.size();z++){
-               listabot.get(z).setText("ASD");
-
+        int x=10,y=10;
+        for(int z = 1; z<= 36; z++){
+            JButton boton = new JButton();
+            for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+               //boton.setText(copiataH[0][0]);
+               boton.setText(copiataH[i][j]);
             }
         }
+            switch(z){
+                case 1: break;
+                case 7: x += 57; y = 10; break;
+                case 13: x += 57; y = 10; break;
+                case 19: x += 57; y = 10; break;
+                case 25: x += 57; y = 10; break;
+                case 31: x += 57; y = 10; break;
+                
+                default: y += 35; break;
+            }
+
+            boton.setBounds(0 + x, 0 + y, 48, 25);
+            
+            this.add(boton);
+            listabot.add(boton);
+        }
+        
+        
+       
+            
             
         }
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
