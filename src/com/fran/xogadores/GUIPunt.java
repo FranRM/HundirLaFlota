@@ -42,8 +42,10 @@ Puntuacion punte= new Puntuacion();
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jtPoints = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jtPoints.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -55,16 +57,11 @@ Puntuacion punte= new Puntuacion();
         ));
         jScrollPane1.setViewportView(jtPoints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 370, 180));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/fran/xogadores/untitled.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -95,6 +92,7 @@ Puntuacion punte= new Puntuacion();
             java.util.logging.Logger.getLogger(GUIPunt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -105,6 +103,7 @@ Puntuacion punte= new Puntuacion();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtPoints;
     // End of variables declaration//GEN-END:variables
