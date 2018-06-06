@@ -20,7 +20,13 @@ import proxectoprog.Tableiro;
 
 
 public class Puntuacion {
-
+    /*
+    *Primer atributo que crea la conexion necesaria para la base
+    *Segundo y tercer atributo tambien sirve para la conexion con la base pero para sacar los resultados de la base.
+    *Creamos un atributo para cargar la ruta de la base y usarla sin problema en diferentes ordenadores, sistemas operativos, etc.
+    *Creamos el arraylist de la clase jugador para guardar los id y la puntuacion.
+    *Por ultimo un DefaultTableModel donde se meteran los datos de la base.
+    */
     public Connection connect;
     ResultSet rs ;
     Statement s;
@@ -35,7 +41,9 @@ public class Puntuacion {
     public Puntuacion(){}
     
     
-    
+    /*
+    *Metodo conectar que solo ejerce la conexion con la base.
+    */
     public void conectar(){
         
         try{
@@ -48,7 +56,9 @@ public class Puntuacion {
             System.out.println("Erro:"+sqe1.getMessage());
         }
     }
-    
+    /*
+    *Metodo que hace un select en la base y lo guarda en un arraylist para poder acceder a el despues
+    */
         public ArrayList cargarArray(){
         try{
             s=connect.createStatement();
@@ -61,7 +71,9 @@ public class Puntuacion {
         }
         return lista;
     }
-        
+        /*
+        *Metodo consultar que muestra los datos en tabla.
+        */
     public void consultar(){
     
         
@@ -80,7 +92,9 @@ public class Puntuacion {
             Logger.getLogger(Puntuacion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /*
+    *Metodo pechar que cerra a conexion coa base.
+    */
     public void pechar(){
         try {
             connect.close();

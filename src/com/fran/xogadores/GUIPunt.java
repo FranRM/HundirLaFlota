@@ -23,6 +23,10 @@ public class  GUIPunt extends javax.swing.JFrame {
 Puntuacion punte= new Puntuacion();
 
     public GUIPunt() {        initComponents();
+        /*
+        *Llamada a metodos de la clase puntuacion que conecta a la base, carga el array, 
+        *consulta para mostrar en la tabla y cierra la conexion.
+        */
         punte.modelo = (DefaultTableModel) jtPoints.getModel();
         punte.conectar();
         punte.cargarArray();
@@ -122,12 +126,16 @@ Puntuacion punte= new Puntuacion();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /*
+    *Boton  si para volver activar el juego
+    */
     private void bYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bYesActionPerformed
        ProxectoProg.generarP();
        this.setVisible(false);
     }//GEN-LAST:event_bYesActionPerformed
-
+    /*
+    *Boton no para negar que quieras volver a jugar y cierra la aplicacion
+    */
     private void bNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNoActionPerformed
         JOptionPane.showMessageDialog(null, "Ata a proxima.");
         System.exit(0);

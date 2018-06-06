@@ -440,13 +440,17 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
     private void comboBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBarcoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBarcoActionPerformed
-
+    /*
+    *Boton para activar la musica, que hace invisible asi mismo y solo deja visible el boton para silenciar
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Soundtrack.comenzar();
         jButton1.setVisible(false);
         jButton2.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    /*
+    *Boton para desactivar la musica, que hace invisible asi mismo y solo deja visible el boton para activar
+    */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Soundtrack.parar();
         jButton2.setVisible(false);
