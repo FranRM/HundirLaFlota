@@ -46,12 +46,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/com/fran/xogadores/untitled.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="jLabel2"/>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
