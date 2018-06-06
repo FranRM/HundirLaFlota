@@ -29,42 +29,31 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
     DefaultTableModel model = new DefaultTableModel();
     String[][] copiataH, tirohum;
     int n, p;
+    int xBotonHumano=100,yBoton=100,xBotonMaquina=700;
     ArrayList<JButton> lH = new ArrayList();
     ArrayList<JButton> lM = new ArrayList();
 
     public InterfazFlota(Tableiro tableiro) {
-        
-        
         initComponents();
         copiataH = tableiro.getTaH();
         tirohum = tableiro.getTiroH();
-        conversorH(tableiro);
-        conversorM(tableiro);
+        lH = creabotons(xBotonHumano,yBoton,lH);
+        refrescaBotons(lH, copiataH);
+        lM = creabotons(xBotonMaquina,yBoton,lM);
+        refrescaBotons(lM, tirohum);
 
     }
-    public void refreshBut1() {
+    public void refrescaBotons(ArrayList<JButton> listaBotons, String[][] arrayTableiro) {
         int cont = 0;
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
-                lH.get(cont).setText(copiataH[j][i]);
+                listaBotons.get(cont).setText(arrayTableiro[j][i]);
                 cont++;
             }
         }
-        
     }
-    public void refreshBut2() {
-        int cont = 0;
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {
-                lM.get(cont).setText(tirohum[j][i]);
-                cont++;
-            }
-        }
-        
-    }
-    public void conversorH(Tableiro tableiro) {
 
-        copiataH = tableiro.getTaH();
+    public ArrayList<JButton> creabotons(int cordenadax,int cordenaday,ArrayList<JButton> listabotons) {
         int x = 10, y = 10;
 
         for (int z = 1; z <= 36; z++) {
@@ -100,64 +89,14 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
                     y += 35;
                     break;
             }
-
-            boton.setBounds(100 + x, 100 + y, 48, 25);
-
+            boton.setBounds(cordenadax + x, cordenaday + y, 48, 25);
             this.add(boton);
-            lH.add(boton);
-
+            listabotons.add(boton);
         }
-        refreshBut1();
+        return listabotons;
     }
 
-    public void conversorM(Tableiro tableiro) {
 
-        copiataH = tableiro.getTiroH();
-
-        int x = 10, y = 10;
-
-        for (int z = 1; z <= 36; z++) {
-            JButton boton = new JButton();
-            boton.setVisible(true);
-            boton.addActionListener(this);
-            switch (z) {
-                case 1:
-                    break;
-                case 7:
-                    x += 57;
-                    y = 10;
-                    break;
-                case 13:
-                    x += 57;
-                    y = 10;
-                    break;
-                case 19:
-                    x += 57;
-                    y = 10;
-                    break;
-                case 25:
-                    x += 57;
-                    y = 10;
-                    break;
-                case 31:
-                    x += 57;
-                    y = 10;
-                    break;
-
-                default:
-                    y += 35;
-                    break;
-            }
-
-            boton.setBounds(700 + x, 100 + y, 48, 25);
-
-            this.add(boton);
-            lM.add(boton);
-
-        }
-        refreshBut2();
-    }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -547,7 +486,7 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
         if(o==confPos){
         if(comboBarco.getSelectedIndex()==0){
                         Tableiro.colocardesth(Integer.parseInt(textoX.getText()),Integer.parseInt(textoY.getText()),comboPos.getSelectedIndex());
-                        refreshBut1();
+                        refrescaBotons(lH, copiataH);
                         Tableiro.bcolocados++;
                     }}else{
        for(int i=0;i<36;i++){

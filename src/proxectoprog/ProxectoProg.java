@@ -37,8 +37,9 @@ public class ProxectoProg {
 
         tableiro.visualizartabM();
         while (tableiro.xogar(new JOptionPane())){
-            ventanaXogo.refreshBut1();
-            ventanaXogo.refreshBut2();
+            ventanaXogo.refrescaBotons(ventanaXogo.lH, ventanaXogo.copiataH);
+            ventanaXogo.refrescaBotons(ventanaXogo.lM, ventanaXogo.tirohum);
+
             tableiro.visualizartabM();
         }
         
