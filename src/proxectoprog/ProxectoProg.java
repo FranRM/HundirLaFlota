@@ -19,16 +19,19 @@ public class ProxectoProg {
 
     public static void main(String[] args) {
 
-        /*
-        * El primero inicializa como GUIUsuario, y el segundo la hace visible
-         */
+        /**
+        * El primero inicializa como GUIUsuario 
+        *@param users
+        * el segundo la hace visible
+         ^**/
         users = new GUIUsuario();
         users.setVisible(true);
     }
 
     /**
      * Metodo estatico de Generar el mapa y juego como tal.
-     */
+     * 
+     **/
     public static void generarP() {
         Tableiro tableiro = new Tableiro("Pequeno");
         InterfazFlota ventanaXogo = new InterfazFlota(tableiro);

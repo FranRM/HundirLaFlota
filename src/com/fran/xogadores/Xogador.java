@@ -7,7 +7,7 @@ package com.fran.xogadores;
 
 /**
  *
- * @author femio23
+ * @author Fran & Luis
  */
 public class Xogador {
 

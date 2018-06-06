@@ -5,9 +5,12 @@ import javax.swing.JOptionPane;
 
 
 public class Soundtrack {
-    /*
+    /**
     *Clase con atributos estaticos para acceder dende os diferentes paquetes e interfaces
-    */
+    * @param music
+    * @param ruta1
+    * @param rutamisil
+    **/
         static  AudioClip  music;
         static String ruta1="/soundtrack/Musica.wav";
         static String rutamisil="/soundtrack/Misil.wav";
