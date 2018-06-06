@@ -14,21 +14,21 @@ public class ProxectoProg {
     /**
      * @param args the command line arguments
      */
-    static GUIUsuario users=new GUIUsuario();
+    static GUIUsuario users=null;
     static boolean res=true;
+    
     public static void main(String[] args) {
+        
         System.out.println("Hola");
         
-        
-        
-        
-        
-        while(res){
+   users=new GUIUsuario();
+       users.setVisible(true);
             
-        users.setVisible(true);
         
-        }
+        
 
+    }
+    public void generarP(){
         
         boolean repetir=true;
         while(repetir){
@@ -64,9 +64,6 @@ public class ProxectoProg {
         JOptionPane.showMessageDialog(null, "Ata a proxima.");
      
     }
-    public void cBoolean(){
-        res=false;
-        users.setVisible(false);
-    }
+
 }
 
