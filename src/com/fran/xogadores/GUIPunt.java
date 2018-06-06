@@ -5,35 +5,29 @@
  */
 package com.fran.xogadores;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import proxectoprog.*;
 
 /**
  *
- * @author adm
+ * @author Luis & Fran
  */
+public class GUIPunt extends javax.swing.JFrame {
 
-public class  GUIPunt extends javax.swing.JFrame {
-   
-Puntuacion punte= new Puntuacion();
+    Puntuacion punte = new Puntuacion();
 
-    public GUIPunt() {        initComponents();
-        /*
-        *Llamada a metodos de la clase puntuacion que conecta a la base, carga el array, 
-        *consulta para mostrar en la tabla y cierra la conexion.
-        */
+    /**
+     * Construtor da clase puntuacion. Chama a metodos da clase Puntuacion
+     * ,conecta coa BD, carga o array da consulta e pecha a conexion.
+     */
+    public GUIPunt() {
+        initComponents();
         punte.modelo = (DefaultTableModel) jtPoints.getModel();
         punte.conectar();
         punte.cargarArray();
-
         punte.consultar();
         punte.pechar();
-        
     }
 
     /**
@@ -126,16 +120,20 @@ Puntuacion punte= new Puntuacion();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    /*
-    *Boton  si para volver activar el juego
-    */
+    /**
+     * Action performed do Boton que permite reiniciar o xogo.
+     *
+     * @param evt
+     */
     private void bYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bYesActionPerformed
-       ProxectoProg.generarP();
-       this.setVisible(false);
+        ProxectoProg.generarP();
+        this.setVisible(false);
     }//GEN-LAST:event_bYesActionPerformed
-    /*
-    *Boton no para negar que quieras volver a jugar y cierra la aplicacion
-    */
+    /**
+     * ActionPerformed do boton que pecha o xogo.
+     *
+     * @param evt
+     */
     private void bNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNoActionPerformed
         JOptionPane.showMessageDialog(null, "Ata a proxima.");
         System.exit(0);

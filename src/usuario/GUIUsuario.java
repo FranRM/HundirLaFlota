@@ -13,9 +13,11 @@ import com.fran.xogadores.Puntuacion;
 import proxectoprog.ProxectoProg;
 import soundtrack.Soundtrack;
 
-
+/**
+ * 
+ * @author Femio & Luis
+ */
 public class GUIUsuario extends javax.swing.JFrame {
-
     /**
      * Creates new form GUIUsuario
      */
@@ -24,18 +26,19 @@ public class GUIUsuario extends javax.swing.JFrame {
    Puntuacion puntu=new Puntuacion();
    int sumpunt=0;
     Soundtrack sonido=new Soundtrack();
+    /**
+     * Constructor do interface que o visualiza e inicia o fio musical.
+     */
     public GUIUsuario() {
         initComponents();
-        /*
-        *Llamadas a los metodos de la clase Soundtrack para activar la musica
-        */
        sonido.musica();
        Soundtrack.comenzar();
        jButton2.setVisible(false);
     }
-    /*
-    *Metodo insertar que guarda en la base la informacion del jugador actual
-    */
+    /**
+     * Metodo que garda na base os datos do xogador actual.
+     * @param t 
+     */
     public void insertar(Tableiro t){
         puntu.conectar();
         sumpunt=t.getAcertoH()*10;
@@ -163,7 +166,10 @@ public class GUIUsuario extends javax.swing.JFrame {
     private void jtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtIDActionPerformed
-
+/**
+ * ActionPerformed do boton da primeira interface, a de logeo.
+ * @param evt 
+ */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         /*
         *Guardamos como id lo introducido en el textfield y hacemos que desaparezca la ventana ademas de general el juego
@@ -173,7 +179,10 @@ public class GUIUsuario extends javax.swing.JFrame {
       this.setVisible(false);
       pr.generarP();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+/**
+ * ActionPerformed do boton de activacion do fio musical.
+ * @param evt 
+ */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         /*
         *Boton que inicia la musica en caso de estar parada y a su vez desaparece y hace aparecer el otro boton
@@ -182,7 +191,10 @@ public class GUIUsuario extends javax.swing.JFrame {
         jButton2.setVisible(false);
         jButton3.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+/**
+ * ActionPerformed do boton de desactivacion do fio musical.
+ * @param evt 
+ */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         /*
         *Boton que para la musica en caso de estar iniciada y a su vez desaparece y hace aparecer el otro boton.

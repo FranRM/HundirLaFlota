@@ -5,23 +5,17 @@
  */
 package proxectoprog;
 
-import com.fran.xogadores.Puntuacion;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import soundtrack.Soundtrack;
 
 /**
  *
- * @author adm
+ * @author Luis & Fran
  */
 public class InterfazFlota extends javax.swing.JFrame implements ActionListener {
 //Mantemos os strings onde se gardan os valores, pero debemos sustituir os tableiros.
@@ -36,9 +30,14 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
     ArrayList<JButton> lM = new ArrayList();
     boolean gameOver = false;
 
+    /**
+     * Constructor do InterfazFlota.
+     *
+     * @param tableiro
+     */
     public InterfazFlota(Tableiro tableiro) {
         initComponents();
-        tableiroLocal=tableiro;
+        tableiroLocal = tableiro;
         copiataH = tableiro.getTaH();
         tirohum = tableiro.getTiroH();
         lH = creabotons(xBotonHumano, yBoton, lH);
@@ -47,6 +46,15 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
         refrescaBotons(lM, tirohum);
 
     }
+
+    /**
+     * Metodo que permite refescar o contido dos botons de xogo cada vez que se
+     * invoca.
+     *
+     * @param listaBotons ArrayList de botons que queremos actualizar.
+     * @param arrayTableiro Tableiro do cal sacamos os datos para a
+     * actualizacion.
+     */
     public void refrescaBotons(ArrayList<JButton> listaBotons, String[][] arrayTableiro) {
         int cont = 0;
         for (int i = 0; i < 6; i++) {
@@ -57,6 +65,14 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
         }
     }
 
+    /**
+     * Metodo que crea as formacions dos botons de xogo.
+     *
+     * @param cordenadax
+     * @param cordenaday
+     * @param listabotons ArrayList de botons que vamos a crear.
+     * @return
+     */
     public ArrayList<JButton> creabotons(int cordenadax, int cordenaday, ArrayList<JButton> listabotons) {
         int x = 10, y = 10;
 
@@ -422,41 +438,60 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
     private void comboPosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboPosActionPerformed
-
+    /**
+     * ActionPerformed Do boton que nos permite introducir barcos, neste caso 2.
+     *
+     * @param evt
+     */
     private void confPosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confPosActionPerformed
-        switch(comboBarco.getSelectedIndex()){
-            case 0:Tableiro.colocardesth(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());break;
-            case 1:Tableiro.colocarsubh(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());break;
-            case 2:Tableiro.colocarcruzh(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());break;
-            case 3:Tableiro.colocarporth(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());break;
+        switch (comboBarco.getSelectedIndex()) {
+            case 0:
+                Tableiro.colocardesth(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());
+                break;
+            case 1:
+                Tableiro.colocarsubh(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());
+                break;
+            case 2:
+                Tableiro.colocarcruzh(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());
+                break;
+            case 3:
+                Tableiro.colocarporth(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());
+                break;
         }
         Tableiro.bcolocados++;
         refrescaBotons(lH, copiataH);
-        
+
         this.refrescaBotons(this.lH, this.copiataH);
         this.refrescaBotons(this.lM, this.tirohum);
-        if(Tableiro.bcolocados>=2){
-        panelBarcos.setVisible(false);
+        if (Tableiro.bcolocados >= 2) {
+            panelBarcos.setVisible(false);
         }
         tableiroLocal.visualizartabM();
-        
-       
+
+
     }//GEN-LAST:event_confPosActionPerformed
 
     private void comboBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBarcoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBarcoActionPerformed
-    /*
-    *Boton para activar la musica, que hace invisible asi mismo y solo deja visible el boton para silenciar
-    */
+    /**
+     * Boton para activar la musica, que hace invisible asi mismo y solo deja
+     * visible el boton para silenciar
+     *
+     * @param evt
+     */
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Soundtrack.comenzar();
         jButton1.setVisible(false);
         jButton2.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-    /*
-    *Boton para desactivar la musica, que hace invisible asi mismo y solo deja visible el boton para activar
-    */
+    /**
+     * Boton para desactivar la musica, que hace invisible asi mismo y solo deja
+     * visible el boton para activar
+     *
+     * @param evt
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Soundtrack.parar();
         jButton2.setVisible(false);
@@ -539,333 +574,348 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JTextField textoX;
     private javax.swing.JTextField textoY;
     // End of variables declaration//GEN-END:variables
-
+/**
+     * ActionPerformed dos botons que interactuan cos barcos.
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton o = (JButton) e.getSource();
-            for (int i = 0; i < 36; i++) {
-                if (lH.get(i) == o) {
-                    switch (i) {
-                        case 0:
-                            textoX.setText("0");
-                            textoY.setText("0");
-                            break;
-                        case 1:
-                            textoX.setText("0");
-                            textoY.setText("1");
-                            break;
-                        case 2:
-                            textoX.setText("0");
-                            textoY.setText("2");
-                            break;
-                        case 3:
-                            textoX.setText("0");
-                            textoY.setText("3");
-                            break;
-                        case 4:
-                            textoX.setText("0");
-                            textoY.setText("4");
-                            break;
-                        case 5:
-                            textoX.setText("0");
-                            textoY.setText("5");
-                            break;
-                        case 6:
-                            textoX.setText("1");
-                            textoY.setText("0");
-                            break;
-                        case 7:
-                            textoX.setText("1");
-                            textoY.setText("1");
-                            break;
-                        case 8:
-                            textoX.setText("1");
-                            textoY.setText("2");
-                            break;
-                        case 9:
-                            textoX.setText("1");
-                            textoY.setText("3");
-                            break;
-                        case 10:
-                            textoX.setText("1");
-                            textoY.setText("4");
-                            break;
-                        case 11:
-                            textoX.setText("1");
-                            textoY.setText("5");
-                            break;
-                        case 12:
-                            textoX.setText("2");
-                            textoY.setText("0");
-                            break;
-                        case 13:
-                            textoX.setText("2");
-                            textoY.setText("1");
-                            break;
-                        case 14:
-                            textoX.setText("2");
-                            textoY.setText("2");
-                            break;
-                        case 15:
-                            textoX.setText("2");
-                            textoY.setText("3");
-                            break;
-                        case 16:
-                            textoX.setText("2");
-                            textoY.setText("4");
-                            break;
-                        case 17:
-                            textoX.setText("2");
-                            textoY.setText("5");
-                            break;
-                        case 18:
-                            textoX.setText("3");
-                            textoY.setText("0");
-                            break;
-                        case 19:
-                            textoX.setText("3");
-                            textoY.setText("1");
-                            break;
-                        case 20:
-                            textoX.setText("3");
-                            textoY.setText("2");
-                            break;
-                        case 21:
-                            textoX.setText("3");
-                            textoY.setText("3");
-                            break;
-                        case 22:
-                            textoX.setText("3");
-                            textoY.setText("4");
-                            break;
-                        case 23:
-                            textoX.setText("3");
-                            textoY.setText("5");
-                            break;
-                        case 24:
-                            textoX.setText("4");
-                            textoY.setText("0");
-                            break;
-                        case 25:
-                            textoX.setText("4");
-                            textoY.setText("1");
-                            break;
-                        case 26:
-                            textoX.setText("4");
-                            textoY.setText("2");
-                            break;
-                        case 27:
-                            textoX.setText("4");
-                            textoY.setText("3");
-                            break;
-                        case 28:
-                            textoX.setText("4");
-                            textoY.setText("4");
-                            break;
-                        case 29:
-                            textoX.setText("4");
-                            textoY.setText("5");
-                            break;
-                        case 30:
-                            textoX.setText("5");
-                            textoY.setText("0");
-                            break;
-                        case 31:
-                            textoX.setText("5");
-                            textoY.setText("1");
-                            break;
-                        case 32:
-                            textoX.setText("5");
-                            textoY.setText("2");
-                            break;
-                        case 33:
-                            textoX.setText("5");
-                            textoY.setText("3");
-                            break;
-                        case 34:
-                            textoX.setText("5");
-                            textoY.setText("4");
-                            break;
-                        case 35:
-                            textoX.setText("5");
-                            textoY.setText("5");
-                            break;
+        for (int i = 0; i < 36; i++) {
+            if (lH.get(i) == o) {
+                switch (i) {
+                    case 0:
+                        textoX.setText("0");
+                        textoY.setText("0");
+                        break;
+                    case 1:
+                        textoX.setText("0");
+                        textoY.setText("1");
+                        break;
+                    case 2:
+                        textoX.setText("0");
+                        textoY.setText("2");
+                        break;
+                    case 3:
+                        textoX.setText("0");
+                        textoY.setText("3");
+                        break;
+                    case 4:
+                        textoX.setText("0");
+                        textoY.setText("4");
+                        break;
+                    case 5:
+                        textoX.setText("0");
+                        textoY.setText("5");
+                        break;
+                    case 6:
+                        textoX.setText("1");
+                        textoY.setText("0");
+                        break;
+                    case 7:
+                        textoX.setText("1");
+                        textoY.setText("1");
+                        break;
+                    case 8:
+                        textoX.setText("1");
+                        textoY.setText("2");
+                        break;
+                    case 9:
+                        textoX.setText("1");
+                        textoY.setText("3");
+                        break;
+                    case 10:
+                        textoX.setText("1");
+                        textoY.setText("4");
+                        break;
+                    case 11:
+                        textoX.setText("1");
+                        textoY.setText("5");
+                        break;
+                    case 12:
+                        textoX.setText("2");
+                        textoY.setText("0");
+                        break;
+                    case 13:
+                        textoX.setText("2");
+                        textoY.setText("1");
+                        break;
+                    case 14:
+                        textoX.setText("2");
+                        textoY.setText("2");
+                        break;
+                    case 15:
+                        textoX.setText("2");
+                        textoY.setText("3");
+                        break;
+                    case 16:
+                        textoX.setText("2");
+                        textoY.setText("4");
+                        break;
+                    case 17:
+                        textoX.setText("2");
+                        textoY.setText("5");
+                        break;
+                    case 18:
+                        textoX.setText("3");
+                        textoY.setText("0");
+                        break;
+                    case 19:
+                        textoX.setText("3");
+                        textoY.setText("1");
+                        break;
+                    case 20:
+                        textoX.setText("3");
+                        textoY.setText("2");
+                        break;
+                    case 21:
+                        textoX.setText("3");
+                        textoY.setText("3");
+                        break;
+                    case 22:
+                        textoX.setText("3");
+                        textoY.setText("4");
+                        break;
+                    case 23:
+                        textoX.setText("3");
+                        textoY.setText("5");
+                        break;
+                    case 24:
+                        textoX.setText("4");
+                        textoY.setText("0");
+                        break;
+                    case 25:
+                        textoX.setText("4");
+                        textoY.setText("1");
+                        break;
+                    case 26:
+                        textoX.setText("4");
+                        textoY.setText("2");
+                        break;
+                    case 27:
+                        textoX.setText("4");
+                        textoY.setText("3");
+                        break;
+                    case 28:
+                        textoX.setText("4");
+                        textoY.setText("4");
+                        break;
+                    case 29:
+                        textoX.setText("4");
+                        textoY.setText("5");
+                        break;
+                    case 30:
+                        textoX.setText("5");
+                        textoY.setText("0");
+                        break;
+                    case 31:
+                        textoX.setText("5");
+                        textoY.setText("1");
+                        break;
+                    case 32:
+                        textoX.setText("5");
+                        textoY.setText("2");
+                        break;
+                    case 33:
+                        textoX.setText("5");
+                        textoY.setText("3");
+                        break;
+                    case 34:
+                        textoX.setText("5");
+                        textoY.setText("4");
+                        break;
+                    case 35:
+                        textoX.setText("5");
+                        textoY.setText("5");
+                        break;
                 }
             }
-                if(lM.get(i) == o){
-                    switch (i) {
-                        case 0:
-                            disparar(0,0,true);
-                            dispararMaquina();
-                            break;
-                        case 1:
-                            disparar(1,0,true);
-                            dispararMaquina();
-                            break;
-                        case 2:
-                            disparar(2,0,true);
-                            dispararMaquina();
-                            break;
-                        case 3:
-                            disparar(3,0,true);
-                            dispararMaquina();
-                            break;
-                        case 4:
-                            disparar(4,0,true);
-                            dispararMaquina();
-                            break;
-                        case 5:
-                            disparar(5,0,true);
-                            dispararMaquina();
-                            break;
-                        case 6:
-                            disparar(0,1,true);
-                            dispararMaquina();
-                            break;
-                        case 7:
-                            disparar(1,1,true);
-                            dispararMaquina();
-                            break;
-                        case 8:
-                            disparar(2,1,true);
-                            dispararMaquina();
-                            break;
-                        case 9:
-                            disparar(3,1,true);
-                            dispararMaquina();
-                            break;
-                        case 10:
-                            disparar(4,1,true);
-                            dispararMaquina();
-                            break;
-                        case 11:
-                            disparar(5,1,true);
-                            dispararMaquina();
-                            break;
-                        case 12:
-                            disparar(0,2,true);
-                            dispararMaquina();
-                            break;
-                        case 13:
-                            disparar(1,2,true);
-                            dispararMaquina();
-                            break;
-                        case 14:
-                            disparar(2,2,true);
-                            dispararMaquina();
-                            break;
-                        case 15:
-                            disparar(3,2,true);
-                            dispararMaquina();
-                            break;
-                        case 16:
-                            disparar(4,2,true);
-                            dispararMaquina();
-                            break;
-                        case 17:
-                            disparar(5,2,true);
-                            dispararMaquina();
-                            break;
-                        case 18:
-                            disparar(0,3,true);
-                            dispararMaquina();
-                            break;
-                        case 19:
-                            disparar(1,3,true);
-                            dispararMaquina();
-                            break;
-                        case 20:
-                            disparar(2,3,true);
-                            dispararMaquina();
-                            break;
-                        case 21:
-                            disparar(3,3,true);
-                            dispararMaquina();
-                            break;
-                        case 22:
-                            disparar(4,3,true);
-                            dispararMaquina();
-                            break;
-                        case 23:
-                            disparar(5,3,true);
-                            dispararMaquina();
-                            break;
-                        case 24:
-                            disparar(0,4,true);
-                            dispararMaquina();
-                            break;
-                        case 25:
-                            disparar(1,4,true);
-                            dispararMaquina();
-                            break;
-                        case 26:
-                            disparar(2,4,true);
-                            dispararMaquina();
-                            break;
-                        case 27:
-                            disparar(3,4,true);
-                            dispararMaquina();
-                            break;
-                        case 28:
-                            disparar(4,4,true);
-                            dispararMaquina();
-                            break;
-                        case 29:
-                            disparar(5,4,true);
-                            dispararMaquina();
-                            break;
-                        case 30:
-                            disparar(0,5,true);
-                            dispararMaquina();
-                            break;
-                        case 31:
-                            disparar(1,5,true);
-                            dispararMaquina();
-                            break;
-                        case 32:
-                            disparar(2,5,true);
-                            dispararMaquina();
-                            break;
-                        case 33:
-                            disparar(3,5,true);
-                            dispararMaquina();
-                            break;
-                        case 34:
-                            disparar(4,5,true);
-                            dispararMaquina();
-                            break;
-                        case 35:
-                            disparar(5,5,true);
-                            dispararMaquina();
-                            break;
+            if (lM.get(i) == o) {
+                switch (i) {
+                    case 0:
+                        disparar(0, 0, true);
+                        dispararMaquina();
+                        break;
+                    case 1:
+                        disparar(1, 0, true);
+                        dispararMaquina();
+                        break;
+                    case 2:
+                        disparar(2, 0, true);
+                        dispararMaquina();
+                        break;
+                    case 3:
+                        disparar(3, 0, true);
+                        dispararMaquina();
+                        break;
+                    case 4:
+                        disparar(4, 0, true);
+                        dispararMaquina();
+                        break;
+                    case 5:
+                        disparar(5, 0, true);
+                        dispararMaquina();
+                        break;
+                    case 6:
+                        disparar(0, 1, true);
+                        dispararMaquina();
+                        break;
+                    case 7:
+                        disparar(1, 1, true);
+                        dispararMaquina();
+                        break;
+                    case 8:
+                        disparar(2, 1, true);
+                        dispararMaquina();
+                        break;
+                    case 9:
+                        disparar(3, 1, true);
+                        dispararMaquina();
+                        break;
+                    case 10:
+                        disparar(4, 1, true);
+                        dispararMaquina();
+                        break;
+                    case 11:
+                        disparar(5, 1, true);
+                        dispararMaquina();
+                        break;
+                    case 12:
+                        disparar(0, 2, true);
+                        dispararMaquina();
+                        break;
+                    case 13:
+                        disparar(1, 2, true);
+                        dispararMaquina();
+                        break;
+                    case 14:
+                        disparar(2, 2, true);
+                        dispararMaquina();
+                        break;
+                    case 15:
+                        disparar(3, 2, true);
+                        dispararMaquina();
+                        break;
+                    case 16:
+                        disparar(4, 2, true);
+                        dispararMaquina();
+                        break;
+                    case 17:
+                        disparar(5, 2, true);
+                        dispararMaquina();
+                        break;
+                    case 18:
+                        disparar(0, 3, true);
+                        dispararMaquina();
+                        break;
+                    case 19:
+                        disparar(1, 3, true);
+                        dispararMaquina();
+                        break;
+                    case 20:
+                        disparar(2, 3, true);
+                        dispararMaquina();
+                        break;
+                    case 21:
+                        disparar(3, 3, true);
+                        dispararMaquina();
+                        break;
+                    case 22:
+                        disparar(4, 3, true);
+                        dispararMaquina();
+                        break;
+                    case 23:
+                        disparar(5, 3, true);
+                        dispararMaquina();
+                        break;
+                    case 24:
+                        disparar(0, 4, true);
+                        dispararMaquina();
+                        break;
+                    case 25:
+                        disparar(1, 4, true);
+                        dispararMaquina();
+                        break;
+                    case 26:
+                        disparar(2, 4, true);
+                        dispararMaquina();
+                        break;
+                    case 27:
+                        disparar(3, 4, true);
+                        dispararMaquina();
+                        break;
+                    case 28:
+                        disparar(4, 4, true);
+                        dispararMaquina();
+                        break;
+                    case 29:
+                        disparar(5, 4, true);
+                        dispararMaquina();
+                        break;
+                    case 30:
+                        disparar(0, 5, true);
+                        dispararMaquina();
+                        break;
+                    case 31:
+                        disparar(1, 5, true);
+                        dispararMaquina();
+                        break;
+                    case 32:
+                        disparar(2, 5, true);
+                        dispararMaquina();
+                        break;
+                    case 33:
+                        disparar(3, 5, true);
+                        dispararMaquina();
+                        break;
+                    case 34:
+                        disparar(4, 5, true);
+                        dispararMaquina();
+                        break;
+                    case 35:
+                        disparar(5, 5, true);
+                        dispararMaquina();
+                        break;
                 }
-                }
+            }
         }
     }
-    public void disparar(int coordenadaX,int coordenadaY, boolean humano){
-        if(humano){
-        tableiroLocal.comprobarDisparoHumano(coordenadaX,coordenadaY);
-        this.refrescaBotons(this.lM, this.tirohum);
-        }else{
-        tableiroLocal.comprobarCoordenadasMaquina(new JOptionPane(),coordenadaX,coordenadaY);
-        this.refrescaBotons(this.lH, this.copiataH);
+
+    /**
+     * Metodo que se encarga de realizar os disparos, de humano ou maquina.
+     *
+     * @param coordenadaX
+     * @param coordenadaY
+     * @param humano Boolean que indica que o metodo disparará pola maquina ou
+     * polo humano.
+     */
+    public void disparar(int coordenadaX, int coordenadaY, boolean humano) {
+        if (humano) {
+            tableiroLocal.comprobarDisparoHumano(coordenadaX, coordenadaY);
+            this.refrescaBotons(this.lM, this.tirohum);
+        } else {
+            tableiroLocal.comprobarCoordenadasMaquina(new JOptionPane(), coordenadaX, coordenadaY);
+            this.refrescaBotons(this.lH, this.copiataH);
         }
-        if(tableiroLocal.eGameOver()){
+        if (tableiroLocal.eGameOver()) {
             ProxectoProg.terminarPartida(this, tableiroLocal);
         }
     }
-    
-    public void dispararMaquina(){
-        
+
+    /**
+     * Implementación do metodo para que dispare a maquina.
+     */
+    public void dispararMaquina() {
+
         tableiroLocal.obterCordenadasMaquina();
         boolean coordenadaObtida = false;
-        while(!coordenadaObtida){
-            int [] coordenadasDisparoMaquina = tableiroLocal.obterCordenadasMaquina();
-            if(tableiroLocal.eCoordenadasMaquinaValida(coordenadasDisparoMaquina)){
-                disparar(coordenadasDisparoMaquina[0],coordenadasDisparoMaquina[1], false);
+        while (!coordenadaObtida) {
+            int[] coordenadasDisparoMaquina = tableiroLocal.obterCordenadasMaquina();
+            if (tableiroLocal.eCoordenadasMaquinaValida(coordenadasDisparoMaquina)) {
+                disparar(coordenadasDisparoMaquina[0], coordenadasDisparoMaquina[1], false);
                 coordenadaObtida = true;
             }
         }
-        
     }
 }
