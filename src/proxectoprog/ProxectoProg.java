@@ -18,6 +18,10 @@ public class ProxectoProg {
     static boolean res=true;
     
     public static void main(String[] args) {
+<<<<<<< HEAD
+=======
+        System.out.println("a");
+>>>>>>> 6e1a7e60661d10804e90b66c0371a5c3097358ce
         System.out.println("Hola");
         users=new GUIUsuario();
         users.setVisible(true);
