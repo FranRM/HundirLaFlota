@@ -18,18 +18,20 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proxectoprog.Tableiro;
 
+
 public class Puntuacion {
-    
-   
-    Connection connect;
+
+    public Connection connect;
     ResultSet rs ;
     Statement s;
     private String ruta="Puntuacion.db";
     ArrayList <Xogador>lista=new ArrayList();
     DefaultTableModel modelo=new DefaultTableModel();
-    Xogador xog=new Xogador();
-    int sumpunt=0;
-    String id;
+    
+
+    
+    
+    
     public Puntuacion(){}
     
     
@@ -37,6 +39,7 @@ public class Puntuacion {
     public void conectar(){
         
         try{
+            
         connect=DriverManager.getConnection("jdbc:sqlite:"+ruta);
         if(connect!=null){
             System.out.println("Base conectada.");
@@ -67,12 +70,6 @@ public class Puntuacion {
         modelo.addColumn("ID");
         modelo.addColumn("Points");
         
-//        Iterator<Xogador> it=this.cargarArray().iterator();
-//        
-//        while(it.hasNext()){
-//            Xogador x=it.next();
-//            modelo.addRow(new Object[]{x.getID(),x.getPoints()});
-//        }
         try{
             s=connect.createStatement();
             rs=s.executeQuery("select * from xogador order by puntos desc;");
@@ -83,22 +80,7 @@ public class Puntuacion {
             Logger.getLogger(Puntuacion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void insertar(Tableiro t){
-        conectar();
-        sumpunt=t.getAcertoH()*10;
-        
-    try {
-            PreparedStatement st = connect.prepareStatement("insert into xogador (nome, puntos) values (?,?)");
-            
-            st.setString(1, id);
-            st.setInt(2,sumpunt);
 
-            st.execute();
-            
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-}
     public void pechar(){
         try {
             connect.close();
@@ -106,7 +88,5 @@ public class Puntuacion {
             Logger.getLogger(Puntuacion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void nome(){
-        id=Entradaspred.pedirString("Benvido a Batalla naval, indique o seu usuario.");
-    }
+
 }

@@ -3,7 +3,7 @@ package proxectoprog;
 import com.fran.metodos.Entradaspred;
 import com.fran.xogadores.*;
 import javax.swing.JOptionPane;
-
+import usuario.GUIUsuario;
 /**
  *Fran y Luis
  * 
@@ -14,15 +14,24 @@ public class ProxectoProg {
     /**
      * @param args the command line arguments
      */
-
+    static GUIUsuario users=new GUIUsuario();
+    static boolean res=true;
     public static void main(String[] args) {
         System.out.println("Hola");
-        //Pasar puntacion a sql.
-        Puntuacion punt=new Puntuacion();
-//        Entradaspred.pedirString("Benvido a Batalla naval, indique o seu usuario.")
+        
+        
+        
+        
+        
+        while(res){
+            
+        users.setVisible(true);
+        
+        }
+
+        
         boolean repetir=true;
         while(repetir){
-        punt.nome();
         
         Tableiro tableiro=new Tableiro("Pequeno");
         InterfazFlota ventanaXogo = new InterfazFlota(tableiro);
@@ -37,7 +46,7 @@ public class ProxectoProg {
         
 //        JOptionPane.showMessageDialog(null, "Fin do xogo.\nA sua puntuación: "+punt.());
         ventanaXogo.setVisible(false);
-        punt.insertar(tableiro);
+        users.insertar(tableiro);
         GUIPunt poi=new GUIPunt();
         poi.setVisible(true);
         String auxiliar=Entradaspred.pedirString("Desexa volver a xogar?\n      Y/N");
@@ -51,7 +60,11 @@ public class ProxectoProg {
         }
     }
         JOptionPane.showMessageDialog(null, "Ata a proxima.");
+     
     }
-    
+    public void cBoolean(){
+        res=false;
+        users.setVisible(false);
+    }
 }
 
