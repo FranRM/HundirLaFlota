@@ -528,7 +528,7 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         JButton o =(JButton)e.getSource();
        for(JButton l1:lH){
-           l1
+
        }
     }
 }
