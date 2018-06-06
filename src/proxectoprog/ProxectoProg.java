@@ -27,11 +27,12 @@ public class ProxectoProg {
         Tableiro tableiro=new Tableiro("Pequeno");
         InterfazFlota ventanaXogo = new InterfazFlota(tableiro);
         ventanaXogo.setVisible(true);
-        ventanaXogo.acotarMapa(tableiro);
+
+
         tableiro.visualizartabM();
         while (tableiro.xogar(new JOptionPane())){
-            ventanaXogo.refrescarTablas(tableiro);
-            ventanaXogo.conversor1(tableiro);
+            ventanaXogo.refreshBut1();
+            ventanaXogo.refreshBut2();
             tableiro.visualizartabM();
         }
         
@@ -40,6 +41,7 @@ public class ProxectoProg {
         punt.insertar(tableiro);
         GUIPunt poi=new GUIPunt();
         poi.setVisible(true);
+        
         String auxiliar=Entradaspred.pedirString("Desexa volver a xogar?\n      Y/N");
         switch(auxiliar){
             case"Y":

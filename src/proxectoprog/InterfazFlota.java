@@ -6,10 +6,13 @@
 package proxectoprog;
 
 import com.fran.xogadores.Puntuacion;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,123 +21,140 @@ import javax.swing.table.DefaultTableModel;
  */
 public class InterfazFlota extends javax.swing.JFrame {
 //Mantemos os strings onde se gardan os valores, pero debemos sustituir os tableiros.
+
     Tableiro tableiro;
     String[][] tab;
     DefaultTableModel model = new DefaultTableModel();
-    String[][] copiataH,tirohum;
-    int n,p;
-ArrayList<JButton>listabot=new ArrayList();
+    String[][] copiataH, tirohum;
+    int n, p;
+    ArrayList<JButton> lH = new ArrayList();
+    ArrayList<JButton> lM = new ArrayList();
+
     public InterfazFlota(Tableiro tableiro) {
-        
-        conversor1(tableiro);
         
         
         initComponents();
         copiataH = tableiro.getTaH();
-        n = tableiro.getTamañotab();
-        model.setRowCount(tableiro.getTamañotab());
-        model.setColumnCount(tableiro.getTamañotab());
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                TabHumano.setValueAt(copiataH[i][j], i, j);
+        tirohum = tableiro.getTiroH();
+        conversorH(tableiro);
+        conversorM(tableiro);
+
+
+    }
+    public void refreshBut1() {
+        int cont = 0;
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                lH.get(cont).setText(copiataH[j][i]);
+                cont++;
             }
         }
         
-        tirohum = tableiro.getTiroH();
-        p = tirohum.length;
-        model.setRowCount(p);
-        model.setColumnCount(p);
-        for (int i = 0; i < p; i++) {
-            
-            for (int j = 0; j < p; j++) {
-                TablaTiro.setValueAt(tirohum[i][j], i, j);
-            }
-        }
-
-        TabHumano.setShowHorizontalLines(true);
-        TabHumano.setShowVerticalLines(true);
-        TablaTiro.setShowHorizontalLines(true);
-        TablaTiro.setShowVerticalLines(true);
-
     }
-
-    public void refrescarTablas (Tableiro tableiro){
-        copiataH = tableiro.getTaH();
-        n = tableiro.getTamañotab();
-        model.setRowCount(tableiro.getTamañotab());
-        model.setColumnCount(tableiro.getTamañotab());
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                TabHumano.setValueAt(copiataH[i][j], i, j);
+    public void refreshBut2() {
+        int cont = 0;
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                lM.get(cont).setText(tirohum[j][i]);
+                cont++;
             }
         }
         
-        tirohum = tableiro.getTiroH();
-        p = tirohum.length;
-        model.setRowCount(p);
-        model.setColumnCount(p);
-        for (int i = 0; i < p; i++) {
-            
-            for (int j = 0; j < p; j++) {
-                TablaTiro.setValueAt(tirohum[i][j], i, j);
-            }
-        }
+    }
+    public void conversorH(Tableiro tableiro) {
 
-        TabHumano.setShowHorizontalLines(true);
-        TabHumano.setShowVerticalLines(true);
-        TablaTiro.setShowHorizontalLines(true);
-        TablaTiro.setShowVerticalLines(true);
-    }
-    public void acotarMapa(Tableiro tableiro){
-        if(tableiro.getTamañotab()!=12){
-       for(int i=0;i<12;i++){
-            for (int j = p; j < 12; j++) {
-                TablaTiro.setValueAt("W", i, j);
-                TabHumano.setValueAt("W", i, j);
-            }
-        }
-    
-        for(int i=p;i<12;i++){
-            for (int j = 0; j < p; j++) {
-                TablaTiro.setValueAt("W", i, j);
-                TabHumano.setValueAt("W", i, j);
-            }
-        }
-        }
-    }
-    public void conversor1(Tableiro tableiro){
         copiataH = tableiro.getTaH();
-        int x=10,y=10;
-        for(int z = 1; z<= 36; z++){
+        int x = 10, y = 10;
+
+        for (int z = 1; z <= 36; z++) {
             JButton boton = new JButton();
-            for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-               //boton.setText(copiataH[0][0]);
-               boton.setText(copiataH[i][j]);
-            }
-        }
-            switch(z){
-                case 1: break;
-                case 7: x += 57; y = 10; break;
-                case 13: x += 57; y = 10; break;
-                case 19: x += 57; y = 10; break;
-                case 25: x += 57; y = 10; break;
-                case 31: x += 57; y = 10; break;
-                
-                default: y += 35; break;
+            boton.setVisible(true);
+
+            switch (z) {
+                case 1:
+                    break;
+                case 7:
+                    x += 57;
+                    y = 10;
+                    break;
+                case 13:
+                    x += 57;
+                    y = 10;
+                    break;
+                case 19:
+                    x += 57;
+                    y = 10;
+                    break;
+                case 25:
+                    x += 57;
+                    y = 10;
+                    break;
+                case 31:
+                    x += 57;
+                    y = 10;
+                    break;
+
+                default:
+                    y += 35;
+                    break;
             }
 
-            boton.setBounds(0 + x, 0 + y, 48, 25);
-            
+            boton.setBounds(100 + x, 100 + y, 48, 25);
+
             this.add(boton);
-            listabot.add(boton);
+            lH.add(boton);
+
         }
-        
-        
-       
+        refreshBut1();
+    }
+
+    public void conversorM(Tableiro tableiro) {
+
+        copiataH = tableiro.getTiroH();
+
+        int x = 10, y = 10;
+
+        for (int z = 1; z <= 36; z++) {
+            JButton boton = new JButton();
+            boton.setVisible(true);
             
-            
+            switch (z) {
+                case 1:
+                    break;
+                case 7:
+                    x += 57;
+                    y = 10;
+                    break;
+                case 13:
+                    x += 57;
+                    y = 10;
+                    break;
+                case 19:
+                    x += 57;
+                    y = 10;
+                    break;
+                case 25:
+                    x += 57;
+                    y = 10;
+                    break;
+                case 31:
+                    x += 57;
+                    y = 10;
+                    break;
+
+                default:
+                    y += 35;
+                    break;
+            }
+
+            boton.setBounds(700 + x, 100 + y, 48, 25);
+
+            this.add(boton);
+            lM.add(boton);
+
         }
+        refreshBut2();
+    }
     
 
     /**
@@ -146,107 +166,89 @@ ArrayList<JButton>listabot=new ArrayList();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TabHumano = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        TablaTiro = new javax.swing.JTable();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 102, 0));
-
-        jTable2.setBackground(new java.awt.Color(153, 102, 0));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"1"},
-                {"2"},
-                {"3"},
-                {"4"},
-                {"5"},
-                {"6"},
-                {"7"},{"8"},{"9"},{"10"},{"11"},{"12"}
-            },
-            new String [] {
-                " "
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        TabHumano.setBackground(new java.awt.Color(51, 204, 255));
-        TabHumano.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null,null},
-                {null, null, null, null, null, null, null, null, null, null, null, null,null},
-                {null, null, null, null, null, null, null, null, null, null, null, null,null},
-                {null, null, null, null, null, null, null, null, null, null, null, null,null},
-                {null, null, null, null, null, null, null, null, null, null, null, null,null},
-                {null, null, null, null, null, null, null, null, null, null, null, null,null},
-                {null, null, null, null, null, null, null, null, null, null, null, null,null},
-                {null, null, null, null, null, null, null, null, null, null, null, null,null},
-                {null, null, null, null, null, null, null, null, null, null, null, null,null},
-                {null, null, null, null, null, null, null, null, null, null, null, null,null},
-                {null, null, null, null, null, null, null, null, null, null, null, null,null}
-            },
-            new String [] {
-                "A" ,"B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"
-            }
-
-        ));
-        TabHumano.setGridColor(new java.awt.Color(102, 102, 0));
-        jScrollPane1.setViewportView(TabHumano);
-
-        TablaTiro.setBackground(new java.awt.Color(51, 204, 255));
-        TablaTiro.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-            },
-            new String [] {
-                "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"
-            }
-        ));
-        jScrollPane3.setViewportView(TablaTiro);
-
-        jTable3.setBackground(new java.awt.Color(153, 102, 0));
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"1"},
-                {"2"},
-                {"3"},
-                {"4"},
-                {"5"},
-                {"6"},
-                {"7"},{"8"},{"9"},{"10"},{"11"},{"12"}
-            },
-            new String [] {
-                " "
-            }
-        ));
-        jTable3.setColumnSelectionAllowed(true);
-        jScrollPane4.setViewportView(jTable3);
-        jTable3.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Flota Propia");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Flota Enemiga");
+
+        jLabel3.setText("1");
+
+        jLabel5.setText("2");
+
+        jLabel7.setText("3");
+
+        jLabel9.setText("4");
+
+        jLabel11.setText("5");
+
+        jLabel13.setText("6");
+
+        jLabel10.setText("4");
+
+        jLabel4.setText("1");
+
+        jLabel12.setText("5");
+
+        jLabel14.setText("6");
+
+        jLabel6.setText("2");
+
+        jLabel8.setText("3");
+
+        jLabel15.setText("A");
+
+        jLabel16.setText("B");
+
+        jLabel17.setText("D");
+
+        jLabel18.setText("C");
+
+        jLabel19.setText("E");
+
+        jLabel20.setText("F");
+
+        jLabel21.setText("D");
+
+        jLabel22.setText("C");
+
+        jLabel23.setText("E");
+
+        jLabel24.setText("F");
+
+        jLabel25.setText("A");
+
+        jLabel26.setText("B");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -256,34 +258,105 @@ ArrayList<JButton>listabot=new ArrayList();
                 .addGap(235, 235, 235)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(201, 201, 201))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(252, 252, 252))
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(473, 473, 473))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(124, 124, 124))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleParent(this);
@@ -327,17 +400,33 @@ ArrayList<JButton>listabot=new ArrayList();
         });
     }
 
-            
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JTable TabHumano;
-    private javax.swing.JTable TablaTiro;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
