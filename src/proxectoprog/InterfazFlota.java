@@ -14,33 +14,36 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import soundtrack.Soundtrack;
+
 /**
  *
  * @author adm
  */
-public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
+public class InterfazFlota extends javax.swing.JFrame implements ActionListener {
 //Mantemos os strings onde se gardan os valores, pero debemos sustituir os tableiros.
 
-    Tableiro tableiro;
+    Tableiro tableiroLocal;
     String[][] tab;
     DefaultTableModel model = new DefaultTableModel();
     String[][] copiataH, tirohum;
     int n, p;
-    int xBotonHumano=100,yBoton=100,xBotonMaquina=700;
+    int xBotonHumano = 100, yBoton = 100, xBotonMaquina = 700;
     ArrayList<JButton> lH = new ArrayList();
     ArrayList<JButton> lM = new ArrayList();
-    
+    boolean gameOver = false;
+
     public InterfazFlota(Tableiro tableiro) {
         initComponents();
-
+        tableiroLocal=tableiro;
         copiataH = tableiro.getTaH();
         tirohum = tableiro.getTiroH();
-        lH = creabotons(xBotonHumano,yBoton,lH);
+        lH = creabotons(xBotonHumano, yBoton, lH);
         refrescaBotons(lH, copiataH);
-        lM = creabotons(xBotonMaquina,yBoton,lM);
+        lM = creabotons(xBotonMaquina, yBoton, lM);
         refrescaBotons(lM, tirohum);
 
     }
@@ -54,7 +57,7 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
         }
     }
 
-    public ArrayList<JButton> creabotons(int cordenadax,int cordenaday,ArrayList<JButton> listabotons) {
+    public ArrayList<JButton> creabotons(int cordenadax, int cordenaday, ArrayList<JButton> listabotons) {
         int x = 10, y = 10;
 
         for (int z = 1; z <= 36; z++) {
@@ -96,8 +99,6 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
         }
         return listabotons;
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -425,7 +426,15 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
     }//GEN-LAST:event_comboPosActionPerformed
 
     private void confPosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confPosActionPerformed
-        // TODO add your handling code here:
+        Tableiro.colocardesth(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());
+        refrescaBotons(lH, copiataH);
+        Tableiro.bcolocados++;
+        while (tableiroLocal.xogar(new JOptionPane())){
+            this.refrescaBotons(this.lH, this.copiataH);
+            this.refrescaBotons(this.lM, this.tirohum);
+            tableiroLocal.visualizartabM();
+        }
+        ProxectoProg.terminarPartida(this, tableiroLocal);
     }//GEN-LAST:event_confPosActionPerformed
 
     private void comboBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBarcoActionPerformed
@@ -439,9 +448,9 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       Soundtrack.parar();
-       jButton2.setVisible(false);
-       jButton1.setVisible(true);
+        Soundtrack.parar();
+        jButton2.setVisible(false);
+        jButton1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -523,56 +532,303 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JButton o =(JButton)e.getSource();
-        if(o==confPos){
-        if(comboBarco.getSelectedIndex()==0){
-                        Tableiro.colocardesth(Integer.parseInt(textoX.getText()),Integer.parseInt(textoY.getText()),comboPos.getSelectedIndex());
-                        refrescaBotons(lH, copiataH);
-                        Tableiro.bcolocados++;
-                    }}else{
-       for(int i=0;i<36;i++){
-           if(lH.get(i)==o){
-            switch(i){
-               case 0:textoX.setText("0");textoY.setText("0");break;
-               case 1:textoX.setText("0");textoY.setText("1");break;
-               case 2:textoX.setText("0");textoY.setText("2");break;
-               case 3:textoX.setText("0");textoY.setText("3");break;
-               case 4:textoX.setText("0");textoY.setText("4");break;
-               case 5:textoX.setText("0");textoY.setText("5");break;
-               case 6:textoX.setText("1");textoY.setText("0");break;
-               case 7:textoX.setText("1");textoY.setText("1");break;
-               case 8:textoX.setText("1");textoY.setText("2");break;
-               case 9:textoX.setText("1");textoY.setText("3");break;
-               case 10:textoX.setText("1");textoY.setText("4");break;
-               case 11:textoX.setText("1");textoY.setText("5");break;
-               case 12:textoX.setText("2");textoY.setText("0");break;
-               case 13:textoX.setText("2");textoY.setText("1");break;
-               case 14:textoX.setText("2");textoY.setText("2");break;
-               case 15:textoX.setText("2");textoY.setText("3");break;
-               case 16:textoX.setText("2");textoY.setText("4");break;
-               case 17:textoX.setText("2");textoY.setText("5");break;
-               case 18:textoX.setText("3");textoY.setText("0");break;
-               case 19:textoX.setText("3");textoY.setText("1");break;
-               case 20:textoX.setText("3");textoY.setText("2");break;
-               case 21:textoX.setText("3");textoY.setText("3");break;
-               case 22:textoX.setText("3");textoY.setText("4");break;
-               case 23:textoX.setText("3");textoY.setText("5");break;
-               case 24:textoX.setText("4");textoY.setText("0");break;
-               case 25:textoX.setText("4");textoY.setText("1");break;
-               case 26:textoX.setText("4");textoY.setText("2");break;
-               case 27:textoX.setText("4");textoY.setText("3");break;
-               case 28:textoX.setText("4");textoY.setText("4");break;
-               case 29:textoX.setText("4");textoY.setText("5");break;
-               case 30:textoX.setText("5");textoY.setText("0");break;
-               case 31:textoX.setText("5");textoY.setText("1");break;
-               case 32:textoX.setText("5");textoY.setText("2");break;
-               case 33:textoX.setText("5");textoY.setText("3");break;
-               case 34:textoX.setText("5");textoY.setText("4");break;
-               case 35:textoX.setText("5");textoY.setText("5");break;
-           }
-           }
-       } 
-           }
-       }
+        JButton o = (JButton) e.getSource();
+            for (int i = 0; i < 36; i++) {
+                if (lH.get(i) == o) {
+                    switch (i) {
+                        case 0:
+                            textoX.setText("0");
+                            textoY.setText("0");
+                            break;
+                        case 1:
+                            textoX.setText("0");
+                            textoY.setText("1");
+                            break;
+                        case 2:
+                            textoX.setText("0");
+                            textoY.setText("2");
+                            break;
+                        case 3:
+                            textoX.setText("0");
+                            textoY.setText("3");
+                            break;
+                        case 4:
+                            textoX.setText("0");
+                            textoY.setText("4");
+                            break;
+                        case 5:
+                            textoX.setText("0");
+                            textoY.setText("5");
+                            break;
+                        case 6:
+                            textoX.setText("1");
+                            textoY.setText("0");
+                            break;
+                        case 7:
+                            textoX.setText("1");
+                            textoY.setText("1");
+                            break;
+                        case 8:
+                            textoX.setText("1");
+                            textoY.setText("2");
+                            break;
+                        case 9:
+                            textoX.setText("1");
+                            textoY.setText("3");
+                            break;
+                        case 10:
+                            textoX.setText("1");
+                            textoY.setText("4");
+                            break;
+                        case 11:
+                            textoX.setText("1");
+                            textoY.setText("5");
+                            break;
+                        case 12:
+                            textoX.setText("2");
+                            textoY.setText("0");
+                            break;
+                        case 13:
+                            textoX.setText("2");
+                            textoY.setText("1");
+                            break;
+                        case 14:
+                            textoX.setText("2");
+                            textoY.setText("2");
+                            break;
+                        case 15:
+                            textoX.setText("2");
+                            textoY.setText("3");
+                            break;
+                        case 16:
+                            textoX.setText("2");
+                            textoY.setText("4");
+                            break;
+                        case 17:
+                            textoX.setText("2");
+                            textoY.setText("5");
+                            break;
+                        case 18:
+                            textoX.setText("3");
+                            textoY.setText("0");
+                            break;
+                        case 19:
+                            textoX.setText("3");
+                            textoY.setText("1");
+                            break;
+                        case 20:
+                            textoX.setText("3");
+                            textoY.setText("2");
+                            break;
+                        case 21:
+                            textoX.setText("3");
+                            textoY.setText("3");
+                            break;
+                        case 22:
+                            textoX.setText("3");
+                            textoY.setText("4");
+                            break;
+                        case 23:
+                            textoX.setText("3");
+                            textoY.setText("5");
+                            break;
+                        case 24:
+                            textoX.setText("4");
+                            textoY.setText("0");
+                            break;
+                        case 25:
+                            textoX.setText("4");
+                            textoY.setText("1");
+                            break;
+                        case 26:
+                            textoX.setText("4");
+                            textoY.setText("2");
+                            break;
+                        case 27:
+                            textoX.setText("4");
+                            textoY.setText("3");
+                            break;
+                        case 28:
+                            textoX.setText("4");
+                            textoY.setText("4");
+                            break;
+                        case 29:
+                            textoX.setText("4");
+                            textoY.setText("5");
+                            break;
+                        case 30:
+                            textoX.setText("5");
+                            textoY.setText("0");
+                            break;
+                        case 31:
+                            textoX.setText("5");
+                            textoY.setText("1");
+                            break;
+                        case 32:
+                            textoX.setText("5");
+                            textoY.setText("2");
+                            break;
+                        case 33:
+                            textoX.setText("5");
+                            textoY.setText("3");
+                            break;
+                        case 34:
+                            textoX.setText("5");
+                            textoY.setText("4");
+                            break;
+                        case 35:
+                            textoX.setText("5");
+                            textoY.setText("5");
+                            break;
+                }
+            }if(lM.get(i) == o){
+                    switch (i) {
+                        case 0:
+                            textoX.setText("p0");
+                            textoY.setText("p0");
+                            break;
+                        case 1:
+                            textoX.setText("0");
+                            textoY.setText("1");
+                            break;
+                        case 2:
+                            textoX.setText("0");
+                            textoY.setText("2");
+                            break;
+                        case 3:
+                            textoX.setText("0");
+                            textoY.setText("3");
+                            break;
+                        case 4:
+                            textoX.setText("0");
+                            textoY.setText("4");
+                            break;
+                        case 5:
+                            textoX.setText("0");
+                            textoY.setText("5");
+                            break;
+                        case 6:
+                            textoX.setText("1");
+                            textoY.setText("0");
+                            break;
+                        case 7:
+                            textoX.setText("1");
+                            textoY.setText("1");
+                            break;
+                        case 8:
+                            textoX.setText("1");
+                            textoY.setText("2");
+                            break;
+                        case 9:
+                            textoX.setText("1");
+                            textoY.setText("3");
+                            break;
+                        case 10:
+                            textoX.setText("1");
+                            textoY.setText("4");
+                            break;
+                        case 11:
+                            textoX.setText("1");
+                            textoY.setText("5");
+                            break;
+                        case 12:
+                            textoX.setText("2");
+                            textoY.setText("0");
+                            break;
+                        case 13:
+                            textoX.setText("2");
+                            textoY.setText("1");
+                            break;
+                        case 14:
+                            textoX.setText("2");
+                            textoY.setText("2");
+                            break;
+                        case 15:
+                            textoX.setText("2");
+                            textoY.setText("3");
+                            break;
+                        case 16:
+                            textoX.setText("2");
+                            textoY.setText("4");
+                            break;
+                        case 17:
+                            textoX.setText("2");
+                            textoY.setText("5");
+                            break;
+                        case 18:
+                            textoX.setText("3");
+                            textoY.setText("0");
+                            break;
+                        case 19:
+                            textoX.setText("3");
+                            textoY.setText("1");
+                            break;
+                        case 20:
+                            textoX.setText("3");
+                            textoY.setText("2");
+                            break;
+                        case 21:
+                            textoX.setText("3");
+                            textoY.setText("3");
+                            break;
+                        case 22:
+                            textoX.setText("3");
+                            textoY.setText("4");
+                            break;
+                        case 23:
+                            textoX.setText("3");
+                            textoY.setText("5");
+                            break;
+                        case 24:
+                            textoX.setText("4");
+                            textoY.setText("0");
+                            break;
+                        case 25:
+                            textoX.setText("4");
+                            textoY.setText("1");
+                            break;
+                        case 26:
+                            textoX.setText("4");
+                            textoY.setText("2");
+                            break;
+                        case 27:
+                            textoX.setText("4");
+                            textoY.setText("3");
+                            break;
+                        case 28:
+                            textoX.setText("4");
+                            textoY.setText("4");
+                            break;
+                        case 29:
+                            textoX.setText("4");
+                            textoY.setText("5");
+                            break;
+                        case 30:
+                            textoX.setText("5");
+                            textoY.setText("0");
+                            break;
+                        case 31:
+                            textoX.setText("5");
+                            textoY.setText("1");
+                            break;
+                        case 32:
+                            textoX.setText("5");
+                            textoY.setText("2");
+                            break;
+                        case 33:
+                            textoX.setText("5");
+                            textoY.setText("3");
+                            break;
+                        case 34:
+                            textoX.setText("5");
+                            textoY.setText("4");
+                            break;
+                        case 35:
+                            textoX.setText("5");
+                            textoY.setText("5");
+                            break;
+                }
+                }
+        }
     }
-
+}

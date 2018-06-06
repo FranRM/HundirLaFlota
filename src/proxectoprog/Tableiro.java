@@ -316,22 +316,20 @@ public class Tableiro {
      * Metodo que coloca un destructor, nas coordenadas dadas polo xogador, no
      * seu tableiro.
      */
-    public static void colocardesth(int px, int py, int d) {
-        direccion = d;
-        aux1 = px;
-        aux2 = py;
+    public static void colocardesth(int coordenadaX, int coordenadaY, int direccion) {
+
         if (direccion == 1) {
-            while(ocupado(taH, aux1, aux2) || ocupado(taH, aux1 + 1, aux2)) {
+            while(ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX + 1, coordenadaY)) {
                 JOptionPane.showMessageDialog(null, "Coordenadas ocupadas, introduza outras.");
             }
-            taH[aux1][aux2] = "d";
-            taH[aux1 + 1][aux2] = "d";
+            taH[coordenadaX][coordenadaY] = "d";
+            taH[coordenadaX + 1][coordenadaY] = "d";
         } else {
-            while(ocupado(taH, aux1, aux2) || ocupado(taH, aux1, aux2 + 1)) {
+            while(ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1)) {
 
             }
-            taH[aux1][aux2] = "d";
-            taH[aux1][aux2 + 1] = "d";
+            taH[coordenadaX][coordenadaY] = "d";
+            taH[coordenadaX][coordenadaY + 1] = "d";
         }
         System.out.println("Barco colocado.");
     }
