@@ -10,9 +10,14 @@ package com.fran.xogadores;
  * @author femio23
  */
 public class Xogador {
+    /*
+    *Atributos de xogador, que son id y puntos de la persona que juega
+    */
     private String id;
    private int points;
-
+    /*
+    *Toda la clase goza los getters y setters necesarios para poder acceder desde fuera.
+    */
     public Xogador() {
     }
 

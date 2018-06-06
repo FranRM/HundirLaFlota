@@ -26,12 +26,16 @@ public class GUIUsuario extends javax.swing.JFrame {
     Soundtrack sonido=new Soundtrack();
     public GUIUsuario() {
         initComponents();
-        
+        /*
+        *Llamadas a los metodos de la clase Soundtrack para activar la musica
+        */
        sonido.musica();
        Soundtrack.comenzar();
        jButton2.setVisible(false);
     }
-
+    /*
+    *Metodo insertar que guarda en la base la informacion del jugador actual
+    */
     public void insertar(Tableiro t){
         puntu.conectar();
         sumpunt=t.getAcertoH()*10;
@@ -161,19 +165,28 @@ public class GUIUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jtIDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      xog.setID(jtID.getText());
+        /*
+        *Guardamos como id lo introducido en el textfield y hacemos que desaparezca la ventana ademas de general el juego
+        */
+        xog.setID(jtID.getText());
      
       this.setVisible(false);
       pr.generarP();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        /*
+        *Boton que inicia la musica en caso de estar parada y a su vez desaparece y hace aparecer el otro boton
+        */
         Soundtrack.comenzar();
         jButton2.setVisible(false);
         jButton3.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        /*
+        *Boton que para la musica en caso de estar iniciada y a su vez desaparece y hace aparecer el otro boton.
+        */
         Soundtrack.parar();
         jButton3.setVisible(false);
         jButton2.setVisible(true);
