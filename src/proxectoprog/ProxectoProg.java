@@ -53,16 +53,8 @@ public class ProxectoProg {
         GUIPunt poi = new GUIPunt();
         poi.setVisible(true);
 
-        String auxiliar = Entradaspred.pedirString("Desexa volver a xogar?\n      Y/N");
-        switch (auxiliar) {
-            case "Y":
-                tableiro.resetearAcertos();
-                generarP();
-                break;
-            default:
-                poi.setVisible(false);
-                JOptionPane.showMessageDialog(null, "Ata a proxima.");
-        }
+        
+        
     }
 
 }
