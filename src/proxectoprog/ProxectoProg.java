@@ -18,7 +18,7 @@ public class ProxectoProg {
     static boolean res=true;
     
     public static void main(String[] args) {
-        
+        System.out.println("a");
         System.out.println("Hola");
         
    users=new GUIUsuario();
