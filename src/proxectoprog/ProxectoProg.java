@@ -47,6 +47,7 @@ public class ProxectoProg {
         String auxiliar = Entradaspred.pedirString("Desexa volver a xogar?\n      Y/N");
         switch (auxiliar) {
             case "Y":
+                tableiro.resetearAcertos();
                 generarP();
                 break;
             default:

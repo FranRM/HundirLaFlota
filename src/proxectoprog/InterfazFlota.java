@@ -429,12 +429,11 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
         Tableiro.colocardesth(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());
         refrescaBotons(lH, copiataH);
         Tableiro.bcolocados++;
-        while (tableiroLocal.xogar(new JOptionPane())){
-            this.refrescaBotons(this.lH, this.copiataH);
-            this.refrescaBotons(this.lM, this.tirohum);
-            tableiroLocal.visualizartabM();
-        }
-        ProxectoProg.terminarPartida(this, tableiroLocal);
+        this.refrescaBotons(this.lH, this.copiataH);
+        this.refrescaBotons(this.lM, this.tirohum);
+        tableiroLocal.visualizartabM();
+        
+       
     }//GEN-LAST:event_confPosActionPerformed
 
     private void comboBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBarcoActionPerformed
@@ -681,154 +680,181 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
                             textoY.setText("5");
                             break;
                 }
-            }if(lM.get(i) == o){
+            }
+                if(lM.get(i) == o){
                     switch (i) {
                         case 0:
-                            textoX.setText("p0");
-                            textoY.setText("p0");
+                            disparar(0,0,true);
+                            dispararMaquina();
                             break;
                         case 1:
-                            textoX.setText("0");
-                            textoY.setText("1");
+                            disparar(1,0,true);
+                            dispararMaquina();
                             break;
                         case 2:
-                            textoX.setText("0");
-                            textoY.setText("2");
+                            disparar(2,0,true);
+                            dispararMaquina();
                             break;
                         case 3:
-                            textoX.setText("0");
-                            textoY.setText("3");
+                            disparar(3,0,true);
+                            dispararMaquina();
                             break;
                         case 4:
-                            textoX.setText("0");
-                            textoY.setText("4");
+                            disparar(4,0,true);
+                            dispararMaquina();
                             break;
                         case 5:
-                            textoX.setText("0");
-                            textoY.setText("5");
+                            disparar(5,0,true);
+                            dispararMaquina();
                             break;
                         case 6:
-                            textoX.setText("1");
-                            textoY.setText("0");
+                            disparar(0,1,true);
+                            dispararMaquina();
                             break;
                         case 7:
-                            textoX.setText("1");
-                            textoY.setText("1");
+                            disparar(1,1,true);
+                            dispararMaquina();
                             break;
                         case 8:
-                            textoX.setText("1");
-                            textoY.setText("2");
+                            disparar(2,1,true);
+                            dispararMaquina();
                             break;
                         case 9:
-                            textoX.setText("1");
-                            textoY.setText("3");
+                            disparar(3,1,true);
+                            dispararMaquina();
                             break;
                         case 10:
-                            textoX.setText("1");
-                            textoY.setText("4");
+                            disparar(4,1,true);
+                            dispararMaquina();
                             break;
                         case 11:
-                            textoX.setText("1");
-                            textoY.setText("5");
+                            disparar(5,1,true);
+                            dispararMaquina();
                             break;
                         case 12:
-                            textoX.setText("2");
-                            textoY.setText("0");
+                            disparar(0,2,true);
+                            dispararMaquina();
                             break;
                         case 13:
-                            textoX.setText("2");
-                            textoY.setText("1");
+                            disparar(1,2,true);
+                            dispararMaquina();
                             break;
                         case 14:
-                            textoX.setText("2");
-                            textoY.setText("2");
+                            disparar(2,2,true);
+                            dispararMaquina();
                             break;
                         case 15:
-                            textoX.setText("2");
-                            textoY.setText("3");
+                            disparar(3,2,true);
+                            dispararMaquina();
                             break;
                         case 16:
-                            textoX.setText("2");
-                            textoY.setText("4");
+                            disparar(4,2,true);
+                            dispararMaquina();
                             break;
                         case 17:
-                            textoX.setText("2");
-                            textoY.setText("5");
+                            disparar(5,2,true);
+                            dispararMaquina();
                             break;
                         case 18:
-                            textoX.setText("3");
-                            textoY.setText("0");
+                            disparar(0,3,true);
+                            dispararMaquina();
                             break;
                         case 19:
-                            textoX.setText("3");
-                            textoY.setText("1");
+                            disparar(1,3,true);
+                            dispararMaquina();
                             break;
                         case 20:
-                            textoX.setText("3");
-                            textoY.setText("2");
+                            disparar(2,3,true);
+                            dispararMaquina();
                             break;
                         case 21:
-                            textoX.setText("3");
-                            textoY.setText("3");
+                            disparar(3,3,true);
+                            dispararMaquina();
                             break;
                         case 22:
-                            textoX.setText("3");
-                            textoY.setText("4");
+                            disparar(4,3,true);
+                            dispararMaquina();
                             break;
                         case 23:
-                            textoX.setText("3");
-                            textoY.setText("5");
+                            disparar(5,3,true);
+                            dispararMaquina();
                             break;
                         case 24:
-                            textoX.setText("4");
-                            textoY.setText("0");
+                            disparar(0,4,true);
+                            dispararMaquina();
                             break;
                         case 25:
-                            textoX.setText("4");
-                            textoY.setText("1");
+                            disparar(1,4,true);
+                            dispararMaquina();
                             break;
                         case 26:
-                            textoX.setText("4");
-                            textoY.setText("2");
+                            disparar(2,4,true);
+                            dispararMaquina();
                             break;
                         case 27:
-                            textoX.setText("4");
-                            textoY.setText("3");
+                            disparar(3,4,true);
+                            dispararMaquina();
                             break;
                         case 28:
-                            textoX.setText("4");
-                            textoY.setText("4");
+                            disparar(4,4,true);
+                            dispararMaquina();
                             break;
                         case 29:
-                            textoX.setText("4");
-                            textoY.setText("5");
+                            disparar(5,4,true);
+                            dispararMaquina();
                             break;
                         case 30:
-                            textoX.setText("5");
-                            textoY.setText("0");
+                            disparar(0,5,true);
+                            dispararMaquina();
                             break;
                         case 31:
-                            textoX.setText("5");
-                            textoY.setText("1");
+                            disparar(1,5,true);
+                            dispararMaquina();
                             break;
                         case 32:
-                            textoX.setText("5");
-                            textoY.setText("2");
+                            disparar(2,5,true);
+                            dispararMaquina();
                             break;
                         case 33:
-                            textoX.setText("5");
-                            textoY.setText("3");
+                            disparar(3,5,true);
+                            dispararMaquina();
                             break;
                         case 34:
-                            textoX.setText("5");
-                            textoY.setText("4");
+                            disparar(4,5,true);
+                            dispararMaquina();
                             break;
                         case 35:
-                            textoX.setText("5");
-                            textoY.setText("5");
+                            disparar(5,5,true);
+                            dispararMaquina();
                             break;
                 }
                 }
         }
+    }
+    public void disparar(int coordenadaX,int coordenadaY, boolean humano){
+        if(humano){
+        tableiroLocal.comprobarDisparoHumano(coordenadaX,coordenadaY);
+        this.refrescaBotons(this.lM, this.tirohum);
+        }else{
+        tableiroLocal.comprobarCoordenadasMaquina(new JOptionPane(),coordenadaX,coordenadaY);
+        this.refrescaBotons(this.lH, this.copiataH);
+        }
+        if(tableiroLocal.eGameOver()){
+            ProxectoProg.terminarPartida(this, tableiroLocal);
+        }
+    }
+    
+    public void dispararMaquina(){
+        
+        tableiroLocal.obterCordenadasMaquina();
+        boolean coordenadaObtida = false;
+        while(!coordenadaObtida){
+            int [] coordenadasDisparoMaquina = tableiroLocal.obterCordenadasMaquina();
+            if(tableiroLocal.eCoordenadasMaquinaValida(coordenadasDisparoMaquina)){
+                disparar(coordenadasDisparoMaquina[0],coordenadasDisparoMaquina[1], false);
+                coordenadaObtida = true;
+            }
+        }
+        
     }
 }

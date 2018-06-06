@@ -465,36 +465,42 @@ public class Tableiro {
      * @return Booleano que permite repetir as cogadas ata que todolos impactos
      * necesarios sexan realizados.
      */
-    public Boolean xogar(JOptionPane avisosxogar) {
-        while(acertoH < acertofin && acertoM < acertofin) {
-            String l = "x";
-            System.out.println(" acertoH " + acertoH + " acertoM " + acertoM + " acertofin " + acertofin);
-            int[] cordenadas = insertarCordenadasHumano(avisosxogar);
-            while(!comprobarCordenadasHumano(avisosxogar, cordenadas)) {
-                cordenadas = insertarCordenadasHumano(avisosxogar);
-            }
-            comprobarDisparoHumano(cordenadas[0], cordenadas[1]);
-            aux1 = 15;
-            aux2 = 15;
-            while(aux1 >= tamañotab || aux2 >= tamañotab) {
-                int[] cordenadasMaquina = insertarCordenadasMaquina();
-                while(taH[aux1][aux2].equals("A") || taH[aux1][aux2].equals("X")) {
-                    cordenadasMaquina = insertarCordenadasMaquina();
-                    aux1 = cordenadasMaquina[0];
-                    aux2 = cordenadasMaquina[1];
-                }
-            }
-            if (taH[aux1][aux2].equals("d") || taH[aux1][aux2].equals("s") || taH[aux1][aux2].equals("c") || taH[aux1][aux2].equals("p")) {
-                taH[aux1][aux2] = "X";
+    public boolean eGameOver(){
+        return !(acertoH < acertofin && acertoM < acertofin);
+    }
+//    public Boolean xogar(JOptionPane avisosxogar) {
+//        if(acertoH < acertofin && acertoM < acertofin) {
+//            
+//            
+//            while(aux1 >= tamañotab || aux2 >= tamañotab) {
+//                int[] cordenadasMaquina = obterCordenadasMaquina();
+//                while(taH[aux1][aux2].equals("A") || taH[aux1][aux2].equals("X")) {
+//                    cordenadasMaquina = insertarCordenadasMaquina();
+//                    aux1 = cordenadasMaquina[0];
+//                    aux2 = cordenadasMaquina[1];
+//                }
+//            }
+//            
+//        }
+//        return false;
+//    }
+    public void resetearAcertos(){
+        acertoH=0;
+        acertoM=0;
+    }
+    public boolean eCoordenadasMaquinaValida(int [] coordenadas){
+        return !(coordenadas[0] >= tamañotab || coordenadas[1] >= tamañotab); 
+    }
+    public boolean comprobarCoordenadasMaquina(JOptionPane avisosxogar,int coordenadasX,int coordenadasY){
+    if (taH[coordenadasX][coordenadasY].equals("d") || taH[coordenadasX][coordenadasY].equals("s") || taH[coordenadasX][coordenadasY].equals("c") || taH[coordenadasX][aux2].equals("p")) {
+                taH[coordenadasX][coordenadasY] = "X";
                 avisosxogar.showMessageDialog(null, "Fogo enemigo entrante... Impacto!!!");
                 acertoM++;
             } else {
-                taH[aux1][aux2] = "A";
+                taH[coordenadasX][coordenadasY] = "A";
                 avisosxogar.showMessageDialog(null, "Fogo enemigo entrante... Auga!!!");
             }
             return true;
-        }
-        return false;
     }
 
     /**
@@ -578,14 +584,16 @@ public class Tableiro {
      * @param elevacion
      * @param direccion
      */
-    private void comprobarDisparoHumano(int elevacion, int direccion) {
-        if (taM[elevacion - 1][direccion].equals("d") || taM[elevacion - 1][direccion].equals("s") || taM[elevacion - 1][direccion].equals("c") || taM[elevacion - 1][direccion].equals("p")) {
-            tiroH[elevacion - 1][direccion] = "X";
+    public boolean comprobarDisparoHumano(int elevacion, int direccion) {
+        if (taM[elevacion][direccion].equals("d") || taM[elevacion][direccion].equals("s") || taM[elevacion][direccion].equals("c") || taM[elevacion][direccion].equals("p")) {
+            tiroH[elevacion][direccion] = "X";
             JOptionPane.showMessageDialog(null, "Impacto");
             acertoH++;
+            return true;
         } else {
-            tiroH[elevacion - 1][direccion] = "A";
+            tiroH[elevacion][direccion] = "A";
             JOptionPane.showMessageDialog(null, "Auga");
+            return false;
         }
     }
 
@@ -595,20 +603,14 @@ public class Tableiro {
      * @param avisosXogar JoptionPane requerido.
      * @return Retorna as coordenadas en forma de vector.
      */
-    private int[] insertarCordenadasHumano(JOptionPane avisosXogar) {
-        int n = Integer.parseInt(Entradaspred.pedirString("Coordenadas de disparo.\nIndique a elevacion (numeros)."));
-        String l = Entradaspred.pedirString("Coordenadas de disparo\nIndique a direccion (letras maiusculas).");
-        int le = convertirLetraANumero(l);
-        int[] resultado = {n, le};
-        return resultado;
-    }
+   
 
     /**
      * Método que permite obter as coordenadas de disparo da máquina.
      *
      * @return Coordenadas de disparo en forma de vector.
      */
-    private int[] insertarCordenadasMaquina() {
+    public int[] obterCordenadasMaquina() {
         aux1 = (int) (Math.random() * tamañotab);
         aux2 = (int) (Math.random() * tamañotab);
         int[] resultado = {aux1, aux2};
