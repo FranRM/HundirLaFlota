@@ -338,123 +338,84 @@ public class Tableiro {
      * Metodo que coloca un submarino, nas coordenadas dadas polo xogador, no
      * seu tableiro.
      */
-    public void colocarsubh() {
-        while(direccion != 1 && direccion != 2) {
-            JOptionPane.showMessageDialog(null, "Vai a colocar un submarino(3 casillas).");
-            try {
-                direccion = convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
-            } catch (NullPointerException npe1) {
-                JOptionPane.showMessageDialog(null, "Erro, colocase en horizontal por defecto.");
-                direccion = 1;
-            }
-            if (direccion == 2) {
-                while((aux1 + 2) >= tamañotab || (aux2) >= tamañotab || ocupado(taH, aux1, aux2) || ocupado(taH, aux1 + 1, aux2) || ocupado(taH, aux1 + 2, aux2)) {
-                    aux1 = (-1) + Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
-                    String auxili = Entradaspred.pedirString("Letra de columna.");
-                    aux2 = convertirLetraANumero(auxili);
+   public static void colocarsubh(int coordenadaX, int coordenadaY, int direccion) {
+       
+                
+            if (direccion == 1) {
+                if((coordenadaX + 2) >= tamañotab || (coordenadaY) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX + 1, coordenadaY) || ocupado(taH, coordenadaX + 2, coordenadaY)) {
+                   JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                }else{
+                taH[coordenadaX][coordenadaY] = "s";
+                taH[coordenadaX + 1][coordenadaY] = "s";
+                taH[coordenadaX + 2][coordenadaY] = "s";
                 }
-                taH[aux1][aux2] = "s";
-                taH[aux1 + 1][aux2] = "s";
-                taH[aux1 + 2][aux2] = "s";
             } else {
-                while((aux1) >= tamañotab || (aux2 + 2) >= tamañotab || ocupado(taH, aux1, aux2) || ocupado(taH, aux1, aux2 + 1) || ocupado(taH, aux1, aux2 + 2)) {
-                    aux1 = (-1) + Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
-                    String auxili = Entradaspred.pedirString("Letra de columna.");
-                    aux2 = convertirLetraANumero(auxili);
+                if((coordenadaX) >= tamañotab || (coordenadaY + 2) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1) || ocupado(taH, coordenadaX, coordenadaY + 2)) {
+                    JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                }else{
+                taH[coordenadaX][coordenadaY] = "s";
+                taH[coordenadaX][coordenadaY + 1] = "s";
+                taH[coordenadaX][coordenadaY + 2] = "s";
                 }
-                taH[aux1][aux2] = "s";
-                taH[aux1][aux2 + 1] = "s";
-                taH[aux1][aux2 + 2] = "s";
             }
             System.out.println("Barco colocado.");
-            aux1 = 15;
-            aux2 = 15;
-        }
-        direccion = 3;
     }
 
     /**
      * Metodo que coloca un cruceiro, nas coordenadas dadas polo xogador, no seu
      * tableiro.
      */
-    public void colocarcruzh() {
-        while(direccion != 1 && direccion != 2) {
-            JOptionPane.showMessageDialog(null, "Vai a colocar un cruceiro(4 casillas).");
-            try {
-                direccion = convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
-            } catch (NullPointerException npe1) {
-                JOptionPane.showMessageDialog(null, "Erro, colocase en horizontal por defecto.");
-                direccion = 1;
-            }
-            if (direccion == 2) {
-                while((aux1 + 3) >= tamañotab || (aux2) >= tamañotab || ocupado(taH, aux1, aux2) || ocupado(taH, aux1 + 1, aux2) || ocupado(taH, aux1 + 2, aux2) || ocupado(taH, aux1 + 3, aux2)) {
-                    aux1 = (-1) + Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
-                    String auxili = Entradaspred.pedirString("Letra de columna.");
-                    aux2 = convertirLetraANumero(auxili);
+    public static void colocarcruzh(int coordenadaX, int coordenadaY, int direccion) {
+        
+            if (direccion == 1) {
+                if((coordenadaX + 3) >= tamañotab || (coordenadaY) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX + 1, coordenadaY) || ocupado(taH, coordenadaX + 2, coordenadaY) || ocupado(taH, coordenadaX + 3, coordenadaY)) {
+                    JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                }else{
+                taH[coordenadaX][coordenadaY] = "c";
+                taH[coordenadaX + 1][coordenadaY] = "c";
+                taH[coordenadaX + 2][coordenadaY] = "c";
+                taH[coordenadaX + 3][coordenadaY] = "c";
                 }
-                taH[aux1][aux2] = "c";
-                taH[aux1 + 1][aux2] = "c";
-                taH[aux1 + 2][aux2] = "c";
-                taH[aux1 + 3][aux2] = "c";
             } else {
-                while((aux1) >= tamañotab || (aux2 + 3) >= tamañotab || ocupado(taH, aux1, aux2) || ocupado(taH, aux1, aux2 + 1) || ocupado(taH, aux1, aux2 + 2) || ocupado(taH, aux1, aux2 + 3)) {
-                    aux1 = (-1) + Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
-                    String auxili = Entradaspred.pedirString("Letra de columna.");
-                    aux2 = convertirLetraANumero(auxili);
+                if((coordenadaX) >= tamañotab || (coordenadaY + 3) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1) || ocupado(taH, coordenadaX, coordenadaY + 2) || ocupado(taH, coordenadaX, coordenadaY + 3)) {
+                    JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                }else{
+                taH[coordenadaX][coordenadaY] = "c";
+                taH[coordenadaX][coordenadaY + 1] = "c";
+                taH[coordenadaX][coordenadaY + 2] = "c";
+                taH[coordenadaX][coordenadaY + 3] = "c";
                 }
-                taH[aux1][aux2] = "c";
-                taH[aux1][aux2 + 1] = "c";
-                taH[aux1][aux2 + 2] = "c";
-                taH[aux1][aux2 + 3] = "c";
-            }
             System.out.println("Barco colocado.");
-            aux1 = 15;
-            aux2 = 15;
         }
-        direccion = 3;
     }
 
     /**
      * Metodo que coloca un portaavions, nas coordenadas dadas polo xogador, no
      * seu tableiro.
      */
-    public void colocarporth() {
-        while(direccion != 1 && direccion != 2) {
-            JOptionPane.showMessageDialog(null, "Vai a colocar un portavions(5 casillas).");
-            try {
-                direccion = convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
-            } catch (NullPointerException npe1) {
-                JOptionPane.showMessageDialog(null, "Erro, colocase en horizontal por defecto.");
-                direccion = 1;
-            }
-            if (direccion == 2) {
-                while((aux1 + 4) >= tamañotab || (aux2) >= tamañotab || ocupado(taH, aux1, aux2) || ocupado(taH, aux1 + 1, aux2) || ocupado(taH, aux1 + 2, aux2) || ocupado(taH, aux1 + 3, aux2) || ocupado(taH, aux1 + 4, aux2)) {
-                    aux1 = (-1) + Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
-                    String auxili = Entradaspred.pedirString("Letra de columna.");
-                    aux2 = convertirLetraANumero(auxili);
+    public static void colocarporth(int coordenadaX, int coordenadaY, int direccion) {
+            if (direccion ==1) {
+                if((coordenadaX + 4) >= tamañotab || (coordenadaY) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX + 1, coordenadaY) || ocupado(taH, coordenadaX + 2, coordenadaY) || ocupado(taH, coordenadaX + 3, coordenadaY) || ocupado(taH, coordenadaX + 4, coordenadaY)) {
+                    JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                }else{
+                taH[coordenadaX][coordenadaY] = "p";
+                taH[coordenadaX + 1][coordenadaY] = "p";
+                taH[coordenadaX + 2][coordenadaY] = "p";
+                taH[coordenadaX + 3][coordenadaY] = "p";
+                taH[coordenadaX + 4][coordenadaY] = "p";
                 }
-                taH[aux1][aux2] = "p";
-                taH[aux1 + 1][aux2] = "p";
-                taH[aux1 + 2][aux2] = "p";
-                taH[aux1 + 3][aux2] = "p";
-                taH[aux1 + 4][aux2] = "p";
             } else {
-                while((aux1) >= tamañotab || (aux2 + 4) >= tamañotab || ocupado(taH, aux1, aux2) || ocupado(taH, aux1, aux2 + 1) || ocupado(taH, aux1, aux2 + 2) || ocupado(taH, aux1, aux2 + 3) || ocupado(taH, aux1, aux2 + 4)) {
-                    aux1 = (-1) + Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
-                    String auxili = Entradaspred.pedirString("Letra de columna.");
-                    aux2 = convertirLetraANumero(auxili);
+                if((coordenadaX) >= tamañotab || (coordenadaY + 4) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1) || ocupado(taH, coordenadaX, coordenadaY + 2) || ocupado(taH, coordenadaX, coordenadaY + 3) || ocupado(taH, coordenadaX, coordenadaY + 4)) {
+                    JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                }else{
+                taH[coordenadaX][coordenadaY] = "p";
+                taH[coordenadaX][coordenadaY + 1] = "p";
+                taH[coordenadaX][coordenadaY + 2] = "p";
+                taH[coordenadaX][coordenadaY + 3] = "p";
+                taH[coordenadaX][coordenadaY + 4] = "p";
                 }
-                taH[aux1][aux2] = "p";
-                taH[aux1][aux2 + 1] = "p";
-                taH[aux1][aux2 + 2] = "p";
-                taH[aux1][aux2 + 3] = "p";
-                taH[aux1][aux2 + 4] = "p";
             }
             System.out.println("Barco colocado.");
-            aux1 = 15;
-            aux2 = 15;
-        }
-        direccion = 3;
     }
 
     /**

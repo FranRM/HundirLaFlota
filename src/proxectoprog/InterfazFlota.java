@@ -135,7 +135,7 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        panelBarcos = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         comboBarco = new javax.swing.JComboBox<>();
         comboPos = new javax.swing.JComboBox<>();
@@ -204,7 +204,7 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
 
         jLabel26.setText("B");
 
-        jPanel1.setBackground(new java.awt.Color(195, 179, 163));
+        panelBarcos.setBackground(new java.awt.Color(195, 179, 163));
 
         jLabel27.setText("Colocación dos seus barcos");
 
@@ -231,46 +231,46 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelBarcosLayout = new javax.swing.GroupLayout(panelBarcos);
+        panelBarcos.setLayout(panelBarcosLayout);
+        panelBarcosLayout.setHorizontalGroup(
+            panelBarcosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBarcosLayout.createSequentialGroup()
+                .addGroup(panelBarcosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBarcosLayout.createSequentialGroup()
                         .addGap(170, 170, 170)
                         .addComponent(jLabel27))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelBarcosLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(panelBarcosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBarcosLayout.createSequentialGroup()
                                 .addComponent(comboPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                                 .addComponent(textoX, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(textoY, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(panelBarcosLayout.createSequentialGroup()
                                 .addComponent(comboBarco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel28)
                                 .addGap(35, 35, 35)))))
                 .addGap(69, 69, 69))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBarcosLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(confPos)
                 .addGap(206, 206, 206))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelBarcosLayout.setVerticalGroup(
+            panelBarcosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBarcosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel27)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBarcosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBarco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBarcosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textoY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textoX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -281,7 +281,6 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
 
         panelinvi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\adm\\Desktop\\audiono.png")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -289,7 +288,6 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
         });
         panelinvi.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\adm\\Desktop\\audiosi.png")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -305,7 +303,7 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
                 .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelBarcos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,7 +410,7 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
                             .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelBarcos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
 
@@ -426,11 +424,20 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
     }//GEN-LAST:event_comboPosActionPerformed
 
     private void confPosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confPosActionPerformed
-        Tableiro.colocardesth(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());
-        refrescaBotons(lH, copiataH);
+        switch(comboBarco.getSelectedIndex()){
+            case 0:Tableiro.colocardesth(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());break;
+            case 1:Tableiro.colocarsubh(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());break;
+            case 2:Tableiro.colocarcruzh(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());break;
+            case 3:Tableiro.colocarporth(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());break;
+        }
         Tableiro.bcolocados++;
+        refrescaBotons(lH, copiataH);
+        
         this.refrescaBotons(this.lH, this.copiataH);
         this.refrescaBotons(this.lM, this.tirohum);
+        if(Tableiro.bcolocados>=2){
+        panelBarcos.setVisible(false);
+        }
         tableiroLocal.visualizartabM();
         
        
@@ -527,7 +534,7 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel panelBarcos;
     private javax.swing.JPanel panelinvi;
     private javax.swing.JTextField textoX;
     private javax.swing.JTextField textoY;
