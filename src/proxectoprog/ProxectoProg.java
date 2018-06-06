@@ -18,17 +18,13 @@ public class ProxectoProg {
     static boolean res=true;
     
     public static void main(String[] args) {
-        
         System.out.println("Hola");
-        
-   users=new GUIUsuario();
-       users.setVisible(true);
-            
-        
+        users=new GUIUsuario();
+        users.setVisible(true);
+     }
+    public void generarP(){
         
 
-    }
-    public void generarP(){
         
         boolean repetir=true;
         while(repetir){

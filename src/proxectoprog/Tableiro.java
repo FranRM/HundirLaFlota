@@ -6,18 +6,18 @@
 package proxectoprog;
 import javax.swing.JOptionPane;
 import com.fran.metodos.Entradaspred;
+
 /**
  *
  * @author femio23
  */
 
 public class Tableiro {
-    private String tamaño;
-    private static int tamañotab,acertoH,acertoM,acertofin,aux1=15,aux2=15;
-    private String [][] taH;
-    private int puntuacion=0;
+    static private String tamaño;private static int tamañotab,acertoH,acertoM,acertofin,aux1=15,aux2=15;
+    static private String [][] taH;
+    static private int puntuacion=0;
     private static String[][] taM,tiroH;
-    int direccion;
+    static int direccion,bcolocados=0;
 /**
  * Constructor parametrico da clase taboleiro.
  * @param tamaño Valor a engadir.
@@ -152,7 +152,7 @@ public class Tableiro {
      * @param b Posicion de columna.
      * @return Boolean que retorna true se esta ocupado, e viceversa.
      */
-    public boolean ocupado(String[][] tab,int a, int b){
+    static public boolean ocupado(String[][] tab,int a, int b){
         if(tab[a][b].equals(" ")){
             return false;
         }else{
@@ -163,9 +163,6 @@ public class Tableiro {
      * Metodo que define, en función do tamaño, os barcos a colocar.
      */
     public void montarTab(){
-        
-                colocardesth();
-                colocarsubh();
                 colocardestm();
                 colocarsubm();
                 colocarportm();
@@ -274,36 +271,23 @@ public class Tableiro {
     /**
      * Metodo que coloca un destructor, nas coordenadas dadas polo xogador, no seu tableiro.
      */
-    public void colocardesth(){
-        while(direccion!=1&&direccion!=2){
-            JOptionPane.showMessageDialog(null,"Vai a colocar un destructor(2 casillas).");
-            try{
-                direccion=convertirDireccion(Entradaspred.pedirString("Colocar en horizontal ou en vertical?\nH/V"));
-            }catch(NullPointerException npe1){
-                 JOptionPane.showMessageDialog(null,"Erro, colocase en horizontal por defecto.");
-                 direccion=1;
-            }
-                if(direccion==2){
-                            while((aux1+1)>=tamañotab||(aux2)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)){
-                                aux1=(-1)+Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
-                                String auxili=Entradaspred.pedirString("Letra de columna.");
-                                    aux2=convertirLetraANumero(auxili);
+    public static void colocardesth(int px,int py,int d){
+                direccion=d;
+                aux1=px;
+                aux2=py;
+                if(direccion==1){
+                            while(ocupado(taH,aux1,aux2)||ocupado(taH,aux1+1,aux2)){
+                                JOptionPane.showMessageDialog(null,"Coordenadas ocupadas, introduza outras.");
                             }
                                 taH[aux1][aux2]="d";
                                 taH[aux1+1][aux2]="d";
                             }else{
-                                while((aux1)>=tamañotab||(aux2+1)>=tamañotab||ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)){
-                                    aux1=(-1)+Integer.parseInt(Entradaspred.pedirString("Numero de fila."));
-                                    String auxili=Entradaspred.pedirString("Letra de columna.");
-                                    aux2=convertirLetraANumero(auxili);
+                                while(ocupado(taH,aux1,aux2)||ocupado(taH,aux1,aux2+1)){
+                                    
                                 }
                                 taH[aux1][aux2]="d";
                                 taH[aux1][aux2+1]="d";
                             }System.out.println("Barco colocado.");
-                            aux1=15;
-                            aux2=15;
-                        }
-                direccion=3;
     }
     /**
      * Metodo que coloca un submarino, nas coordenadas dadas polo xogador, no seu tableiro.

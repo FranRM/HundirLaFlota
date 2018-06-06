@@ -41,7 +41,6 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
         conversorH(tableiro);
         conversorM(tableiro);
 
-
     }
     public void refreshBut1() {
         int cont = 0;
@@ -197,8 +196,8 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
         jLabel26 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboBarco = new javax.swing.JComboBox<>();
+        comboPos = new javax.swing.JComboBox<>();
         textoX = new javax.swing.JTextField();
         textoY = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
@@ -265,18 +264,28 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
 
         jLabel27.setText("Colocación dos seus barcos");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destructor", "Submarino", "Cruceiro", "Portaavions" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Horizontal", "Vertical" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        comboBarco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Destructor", "Submarino", "Cruceiro", "Portaavions" }));
+        comboBarco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                comboBarcoActionPerformed(evt);
+            }
+        });
+
+        comboPos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Horizontal", "Vertical" }));
+        comboPos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboPosActionPerformed(evt);
             }
         });
 
         jLabel28.setText("Coordenadas:");
 
         confPos.setText("Aceptar");
+        confPos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confPosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -291,13 +300,13 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                                 .addComponent(textoX, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(textoY, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboBarco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel28)
                                 .addGap(35, 35, 35)))))
@@ -314,11 +323,11 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
                 .addComponent(jLabel27)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBarco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textoY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textoX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -446,9 +455,17 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void comboPosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_comboPosActionPerformed
+
+    private void confPosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confPosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confPosActionPerformed
+
+    private void comboBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBarcoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBarcoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -488,9 +505,9 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboBarco;
+    private javax.swing.JComboBox<String> comboPos;
     private javax.swing.JButton confPos;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -527,8 +544,55 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton o =(JButton)e.getSource();
-       for(JButton l1:lH){
-
+        if(o==confPos){
+        if(comboBarco.getSelectedIndex()==0){
+                        Tableiro.colocardesth(Integer.parseInt(textoX.getText()),Integer.parseInt(textoY.getText()),comboPos.getSelectedIndex());
+                        refreshBut1();
+                        Tableiro.bcolocados++;
+                    }}else{
+       for(int i=0;i<36;i++){
+           if(lH.get(i)==o){
+            switch(i){
+               case 0:textoX.setText("0");textoY.setText("0");break;
+               case 1:textoX.setText("0");textoY.setText("1");break;
+               case 2:textoX.setText("0");textoY.setText("2");break;
+               case 3:textoX.setText("0");textoY.setText("3");break;
+               case 4:textoX.setText("0");textoY.setText("4");break;
+               case 5:textoX.setText("0");textoY.setText("5");break;
+               case 6:textoX.setText("1");textoY.setText("0");break;
+               case 7:textoX.setText("1");textoY.setText("1");break;
+               case 8:textoX.setText("1");textoY.setText("2");break;
+               case 9:textoX.setText("1");textoY.setText("3");break;
+               case 10:textoX.setText("1");textoY.setText("4");break;
+               case 11:textoX.setText("1");textoY.setText("5");break;
+               case 12:textoX.setText("2");textoY.setText("0");break;
+               case 13:textoX.setText("2");textoY.setText("1");break;
+               case 14:textoX.setText("2");textoY.setText("2");break;
+               case 15:textoX.setText("2");textoY.setText("3");break;
+               case 16:textoX.setText("2");textoY.setText("4");break;
+               case 17:textoX.setText("2");textoY.setText("5");break;
+               case 18:textoX.setText("3");textoY.setText("0");break;
+               case 19:textoX.setText("3");textoY.setText("1");break;
+               case 20:textoX.setText("3");textoY.setText("2");break;
+               case 21:textoX.setText("3");textoY.setText("3");break;
+               case 22:textoX.setText("3");textoY.setText("4");break;
+               case 23:textoX.setText("3");textoY.setText("5");break;
+               case 24:textoX.setText("4");textoY.setText("0");break;
+               case 25:textoX.setText("4");textoY.setText("1");break;
+               case 26:textoX.setText("4");textoY.setText("2");break;
+               case 27:textoX.setText("4");textoY.setText("3");break;
+               case 28:textoX.setText("4");textoY.setText("4");break;
+               case 29:textoX.setText("4");textoY.setText("5");break;
+               case 30:textoX.setText("5");textoY.setText("0");break;
+               case 31:textoX.setText("5");textoY.setText("1");break;
+               case 32:textoX.setText("5");textoY.setText("2");break;
+               case 33:textoX.setText("5");textoY.setText("3");break;
+               case 34:textoX.setText("5");textoY.setText("4");break;
+               case 35:textoX.setText("5");textoY.setText("5");break;
+           }
+           }
+       } 
+           }
        }
     }
-}
+
