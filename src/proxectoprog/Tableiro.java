@@ -314,14 +314,19 @@ public class Tableiro {
             }
             taH[coordenadaX][coordenadaY] = "d";
             taH[coordenadaX + 1][coordenadaY] = "d";
+            bcolocados++;
+            System.out.println("Barco colocado.");
         } else {
             while (ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1)) {
 
             }
             taH[coordenadaX][coordenadaY] = "d";
             taH[coordenadaX][coordenadaY + 1] = "d";
+            bcolocados++;
+            System.out.println("Barco colocado.");
         }
-        System.out.println("Barco colocado.");
+
+        
     }
 
     /**
@@ -337,6 +342,8 @@ public class Tableiro {
                 taH[coordenadaX][coordenadaY] = "s";
                 taH[coordenadaX + 1][coordenadaY] = "s";
                 taH[coordenadaX + 2][coordenadaY] = "s";
+                bcolocados++;
+            System.out.println("Barco colocado.");
             }
         } else {
             if ((coordenadaX) >= tamañotab || (coordenadaY + 2) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1) || ocupado(taH, coordenadaX, coordenadaY + 2)) {
@@ -345,9 +352,10 @@ public class Tableiro {
                 taH[coordenadaX][coordenadaY] = "s";
                 taH[coordenadaX][coordenadaY + 1] = "s";
                 taH[coordenadaX][coordenadaY + 2] = "s";
+                bcolocados++;
+                System.out.println("Barco colocado.");
             }
         }
-        System.out.println("Barco colocado.");
     }
 
     /**
@@ -364,6 +372,8 @@ public class Tableiro {
                 taH[coordenadaX + 1][coordenadaY] = "c";
                 taH[coordenadaX + 2][coordenadaY] = "c";
                 taH[coordenadaX + 3][coordenadaY] = "c";
+                bcolocados++;
+                System.out.println("Barco colocado.");
             }
         } else {
             if ((coordenadaX) >= tamañotab || (coordenadaY + 3) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1) || ocupado(taH, coordenadaX, coordenadaY + 2) || ocupado(taH, coordenadaX, coordenadaY + 3)) {
@@ -373,8 +383,9 @@ public class Tableiro {
                 taH[coordenadaX][coordenadaY + 1] = "c";
                 taH[coordenadaX][coordenadaY + 2] = "c";
                 taH[coordenadaX][coordenadaY + 3] = "c";
+                bcolocados++;
+                System.out.println("Barco colocado.");
             }
-            System.out.println("Barco colocado.");
         }
     }
 
@@ -392,6 +403,8 @@ public class Tableiro {
                 taH[coordenadaX + 2][coordenadaY] = "p";
                 taH[coordenadaX + 3][coordenadaY] = "p";
                 taH[coordenadaX + 4][coordenadaY] = "p";
+                bcolocados++;
+                System.out.println("Barco colocado.");
             }
         } else {
             if ((coordenadaX) >= tamañotab || (coordenadaY + 4) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1) || ocupado(taH, coordenadaX, coordenadaY + 2) || ocupado(taH, coordenadaX, coordenadaY + 3) || ocupado(taH, coordenadaX, coordenadaY + 4)) {
@@ -402,9 +415,10 @@ public class Tableiro {
                 taH[coordenadaX][coordenadaY + 2] = "p";
                 taH[coordenadaX][coordenadaY + 3] = "p";
                 taH[coordenadaX][coordenadaY + 4] = "p";
+                bcolocados++;
+                System.out.println("Barco colocado.");
             }
         }
-        System.out.println("Barco colocado.");
     }
 
     /**

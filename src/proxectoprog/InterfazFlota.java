@@ -458,7 +458,6 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
                 Tableiro.colocarporth(Integer.parseInt(textoX.getText()), Integer.parseInt(textoY.getText()), comboPos.getSelectedIndex());
                 break;
         }
-        Tableiro.bcolocados++;
         refrescaBotons(lH, copiataH);
 
         this.refrescaBotons(this.lH, this.copiataH);
