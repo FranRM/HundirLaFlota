@@ -6,7 +6,8 @@
 package proxectoprog;
 
 import javax.swing.JOptionPane;
-import com.fran.metodos.Entradaspred;
+import com.fran.metodos.VerTexto;
+import soundtrack.Soundtrack;
 
 public class Tableiro {
 
@@ -16,6 +17,7 @@ public class Tableiro {
     static private int puntuacion = 0;
     private static String[][] taM, tiroH;
     static int direccion, bcolocados = 0;
+    Soundtrack impacto=new Soundtrack();
 
     /**
      * Constructor parametrico da clase taboleiro.
@@ -306,24 +308,25 @@ public class Tableiro {
      * Metodo que coloca un destructor, nas coordenadas dadas polo xogador, no
      * seu tableiro.
      */
-    public static void colocardesth(int coordenadaX, int coordenadaY, int direccion) {
-
+    public static void colocardesth(int coordenadaY, int coordenadaX, int direccion) {
         if (direccion == 1) {
-            while (ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX + 1, coordenadaY)) {
-                JOptionPane.showMessageDialog(null, "Coordenadas ocupadas, introduza outras.");
-            }
+            if((coordenadaX + 1) >= tamañotab || (coordenadaY) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX + 1, coordenadaY)) {
+                VerTexto.sacarJOP("Coordenadas erroneas, introduza outras.");
+            }else{
             taH[coordenadaX][coordenadaY] = "d";
             taH[coordenadaX + 1][coordenadaY] = "d";
             bcolocados++;
             System.out.println("Barco colocado.");
-        } else {
-            while (ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1)) {
-
             }
+        } else {
+            if ((coordenadaX) >= tamañotab || (coordenadaY + 1) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1)) {
+                VerTexto.sacarJOP("Coordenadas erroneas, introduza outras.");
+            }else{
             taH[coordenadaX][coordenadaY] = "d";
             taH[coordenadaX][coordenadaY + 1] = "d";
             bcolocados++;
             System.out.println("Barco colocado.");
+            }
         }
 
         
@@ -333,11 +336,11 @@ public class Tableiro {
      * Metodo que coloca un submarino, nas coordenadas dadas polo xogador, no
      * seu tableiro.
      */
-    public static void colocarsubh(int coordenadaX, int coordenadaY, int direccion) {
+    public static void colocarsubh(int coordenadaY, int coordenadaX, int direccion) {
 
         if (direccion == 1) {
             if ((coordenadaX + 2) >= tamañotab || (coordenadaY) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX + 1, coordenadaY) || ocupado(taH, coordenadaX + 2, coordenadaY)) {
-                JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                VerTexto.sacarJOP("Coordenadas erroneas, introduza outras.");
             } else {
                 taH[coordenadaX][coordenadaY] = "s";
                 taH[coordenadaX + 1][coordenadaY] = "s";
@@ -347,7 +350,7 @@ public class Tableiro {
             }
         } else {
             if ((coordenadaX) >= tamañotab || (coordenadaY + 2) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1) || ocupado(taH, coordenadaX, coordenadaY + 2)) {
-                JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                VerTexto.sacarJOP("Coordenadas erroneas, introduza outras.");
             } else {
                 taH[coordenadaX][coordenadaY] = "s";
                 taH[coordenadaX][coordenadaY + 1] = "s";
@@ -362,11 +365,11 @@ public class Tableiro {
      * Metodo que coloca un cruceiro, nas coordenadas dadas polo xogador, no seu
      * tableiro.
      */
-    public static void colocarcruzh(int coordenadaX, int coordenadaY, int direccion) {
+    public static void colocarcruzh(int coordenadaY, int coordenadaX, int direccion) {
 
         if (direccion == 1) {
             if ((coordenadaX + 3) >= tamañotab || (coordenadaY) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX + 1, coordenadaY) || ocupado(taH, coordenadaX + 2, coordenadaY) || ocupado(taH, coordenadaX + 3, coordenadaY)) {
-                JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                VerTexto.sacarJOP("Coordenadas erroneas, introduza outras.");
             } else {
                 taH[coordenadaX][coordenadaY] = "c";
                 taH[coordenadaX + 1][coordenadaY] = "c";
@@ -377,7 +380,7 @@ public class Tableiro {
             }
         } else {
             if ((coordenadaX) >= tamañotab || (coordenadaY + 3) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1) || ocupado(taH, coordenadaX, coordenadaY + 2) || ocupado(taH, coordenadaX, coordenadaY + 3)) {
-                JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                VerTexto.sacarJOP("Coordenadas erroneas, introduza outras.");
             } else {
                 taH[coordenadaX][coordenadaY] = "c";
                 taH[coordenadaX][coordenadaY + 1] = "c";
@@ -393,10 +396,10 @@ public class Tableiro {
      * Metodo que coloca un portaavions, nas coordenadas dadas polo xogador, no
      * seu tableiro.
      */
-    public static void colocarporth(int coordenadaX, int coordenadaY, int direccion) {
+    public static void colocarporth(int coordenadaY, int coordenadaX, int direccion) {
         if (direccion == 1) {
             if ((coordenadaX + 4) >= tamañotab || (coordenadaY) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX + 1, coordenadaY) || ocupado(taH, coordenadaX + 2, coordenadaY) || ocupado(taH, coordenadaX + 3, coordenadaY) || ocupado(taH, coordenadaX + 4, coordenadaY)) {
-                JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                VerTexto.sacarJOP("Coordenadas erroneas, introduza outras.");
             } else {
                 taH[coordenadaX][coordenadaY] = "p";
                 taH[coordenadaX + 1][coordenadaY] = "p";
@@ -408,7 +411,7 @@ public class Tableiro {
             }
         } else {
             if ((coordenadaX) >= tamañotab || (coordenadaY + 4) >= tamañotab || ocupado(taH, coordenadaX, coordenadaY) || ocupado(taH, coordenadaX, coordenadaY + 1) || ocupado(taH, coordenadaX, coordenadaY + 2) || ocupado(taH, coordenadaX, coordenadaY + 3) || ocupado(taH, coordenadaX, coordenadaY + 4)) {
-                JOptionPane.showMessageDialog(null, "Coordenadas erroneas, introduza outras.");
+                VerTexto.sacarJOP("Coordenadas erroneas, introduza outras.");
             } else {
                 taH[coordenadaX][coordenadaY] = "p";
                 taH[coordenadaX][coordenadaY + 1] = "p";
@@ -462,11 +465,12 @@ public class Tableiro {
     public boolean comprobarCoordenadasMaquina(JOptionPane avisosxogar, int coordenadasX, int coordenadasY) {
         if (taH[coordenadasX][coordenadasY].equals("d") || taH[coordenadasX][coordenadasY].equals("s") || taH[coordenadasX][coordenadasY].equals("c") || taH[coordenadasX][aux2].equals("p")) {
             taH[coordenadasX][coordenadasY] = "X";
-            avisosxogar.showMessageDialog(null, "Fogo enemigo entrante... Impacto!!!");
+            impacto.misil();
+            VerTexto.sacarJOP("Fogo enemigo entrante... Impacto!!!");
             acertoM++;
         } else {
             taH[coordenadasX][coordenadasY] = "A";
-            avisosxogar.showMessageDialog(null, "Fogo enemigo entrante... Auga!!!");
+            VerTexto.sacarJOP("Fogo enemigo entrante... Auga!!!");
         }
         return true;
     }
@@ -488,12 +492,14 @@ public class Tableiro {
     public boolean comprobarDisparoHumano(int elevacion, int direccion) {
         if (taM[elevacion][direccion].equals("d") || taM[elevacion][direccion].equals("s") || taM[elevacion][direccion].equals("c") || taM[elevacion][direccion].equals("p")) {
             tiroH[elevacion][direccion] = "X";
-            JOptionPane.showMessageDialog(null, "Impacto");
+            impacto.misil();
+            VerTexto.sacarJOP("Impacto");
             acertoH++;
+            
             return true;
         } else {
             tiroH[elevacion][direccion] = "A";
-            JOptionPane.showMessageDialog(null, "Auga");
+            VerTexto.sacarJOP("Auga");
             return false;
         }
     }

@@ -5,7 +5,7 @@
  */
 package com.fran.xogadores;
 
-import javax.swing.JOptionPane;
+import com.fran.metodos.VerTexto;
 import javax.swing.table.DefaultTableModel;
 import proxectoprog.*;
 
@@ -135,7 +135,7 @@ public class GUIPunt extends javax.swing.JFrame {
      * @param evt
      */
     private void bNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNoActionPerformed
-        JOptionPane.showMessageDialog(null, "Ata a proxima.");
+        VerTexto.sacarJOP("Ata a proxima.");
         System.exit(0);
     }//GEN-LAST:event_bNoActionPerformed
 
