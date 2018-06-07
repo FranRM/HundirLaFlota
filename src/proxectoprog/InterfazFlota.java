@@ -295,21 +295,24 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
+        panelinvi.setOpaque(false);
         panelinvi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proxectoprog/audiosi.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        panelinvi.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
+        panelinvi.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 50));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proxectoprog/audiono.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        panelinvi.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
+        panelinvi.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -404,14 +407,14 @@ public class InterfazFlota extends javax.swing.JFrame implements ActionListener 
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)))
-                            .addComponent(panelinvi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(47, 47, 47)
+                            .addComponent(panelinvi, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
