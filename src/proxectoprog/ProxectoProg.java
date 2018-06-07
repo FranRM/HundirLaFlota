@@ -51,6 +51,11 @@ public class ProxectoProg {
         users.insertar(tableiro);
         GUIPunt poi = new GUIPunt();
         poi.setVisible(true);
+        if(Tableiro.getAcertoH()== tableiro.getAcertofin()){
+            GUIPunt.imprimirResultadoPartida("Victoria");
+        }else{
+            GUIPunt.imprimirResultadoPartida("Derrota");
+        }
     }
 
 }
